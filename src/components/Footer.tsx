@@ -1,56 +1,77 @@
 "use client";
 
 import Link from "next/link";
-import { Instagram, Linkedin, Mail } from "lucide-react";
+import { Mail, Instagram, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   return (
-    <footer className="py-24 px-6 border-t border-brown-100 bg-transparent relative z-10">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-start">
-        <div>
-          <Link href="/" className="text-3xl font-display font-bold text-brown-900 tracking-tighter">
-            LYA BIWA
-          </Link>
-          <p className="text-brown-500 mt-6 text-lg max-w-xs leading-relaxed">
-            Créer des expériences de communication mémorables et impactantes.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest text-brown-400 font-bold mb-6">Navigation</h4>
-            <Link href="/" className="block text-brown-700 hover:text-accent transition-colors font-medium">Accueil</Link>
-            <Link href="/about" className="block text-brown-700 hover:text-accent transition-colors font-medium">À propos</Link>
-            <Link href="/projects" className="block text-brown-700 hover:text-accent transition-colors font-medium">Projets</Link>
-            <Link href="/contact" className="block text-brown-700 hover:text-accent transition-colors font-medium">Contact</Link>
+    <footer className="relative z-10 border-t border-brown-100/60 bg-white/40 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-6 py-12 md:py-14">
+        {/* Main Row */}
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
+          {/* Brand */}
+          <div className="flex-shrink-0">
+            <Link
+              href="/"
+              className="font-display text-2xl font-bold text-brown-900 tracking-tighter hover:text-accent transition-colors"
+            >
+              LYA BIWA
+            </Link>
+            <p className="text-brown-500 text-sm mt-1 font-medium">
+              Communication · Événementiel · Création
+            </p>
           </div>
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-widest text-brown-400 font-bold mb-6">Social</h4>
-            <a href="#" className="block text-brown-700 hover:text-accent transition-colors font-medium">Instagram</a>
-            <a href="#" className="block text-brown-700 hover:text-accent transition-colors font-medium">LinkedIn</a>
-            <a href="#" className="block text-brown-700 hover:text-accent transition-colors font-medium">Behance</a>
-          </div>
-        </div>
 
-        <div className="bg-white/40 backdrop-blur-md p-10 rounded-[2rem] border border-white/40">
-          <h4 className="text-xl font-display font-bold text-brown-900 mb-4">Un projet ?</h4>
-          <p className="text-brown-600 mb-8 text-sm leading-relaxed">
-            N'hésitez pas à me contacter pour discuter de vos besoins en communication.
-          </p>
-          <Link 
-            href="/contact" 
-            className="inline-flex items-center gap-2 text-accent font-bold hover:gap-4 transition-all"
+          {/* Nav Links — horizontal on desktop, hidden on mobile */}
+          <div className="hidden md:flex items-center gap-8">
+            {[
+              { label: "Accueil", href: "/" },
+              { label: "À propos", href: "/about" },
+              { label: "Projets", href: "/projects" },
+              { label: "Contact", href: "/contact" },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-brown-600 hover:text-accent transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-brown-900 text-white text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:bg-accent transition-all hover:scale-105 self-start md:self-auto"
           >
-            Démarrer la discussion <Mail size={18} />
+            <Mail size={14} />
+            Me contacter
           </Link>
         </div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-brown-50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-brown-400 uppercase tracking-widest font-bold">
-        <span>© {new Date().getFullYear()} Lya Biwa — Tous droits réservés.</span>
-        <div className="flex gap-8">
-          <a href="#" className="hover:text-brown-900">Mentions Légales</a>
-          <a href="#" className="hover:text-brown-900">Confidentialité</a>
+
+        {/* Divider */}
+        <div className="border-t border-brown-100/60 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <span className="text-[11px] text-brown-400 font-medium tracking-wider uppercase">
+            © {new Date().getFullYear()} Lya Biwa — Tous droits réservés.
+          </span>
+          <div className="flex items-center gap-4">
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="w-8 h-8 flex items-center justify-center rounded-full border border-brown-200 text-brown-500 hover:bg-brown-900 hover:text-white hover:border-brown-900 transition-all"
+            >
+              <Instagram size={14} />
+            </a>
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              className="w-8 h-8 flex items-center justify-center rounded-full border border-brown-200 text-brown-500 hover:bg-brown-900 hover:text-white hover:border-brown-900 transition-all"
+            >
+              <Linkedin size={14} />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
