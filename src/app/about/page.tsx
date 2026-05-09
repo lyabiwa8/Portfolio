@@ -91,6 +91,7 @@ export default function About() {
               style={{ boxShadow: "0 24px 64px -12px rgba(26,15,8,0.25), 0 0 0 1px rgba(107,62,32,0.14)" }}
             >
               <Image
+                loader={imageLoader}
                 src="/images/photos-presentation/bio-photo.jpg"
                 alt="Lya Biwa" fill sizes="320px"
                 className="object-cover object-top" priority

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import imageLoader from "@/utils/imageLoader";
 
 export function About() {
   return (
@@ -15,6 +16,7 @@ export function About() {
           className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
         >
           <Image
+            loader={imageLoader}
             src="/images/photos-presentation/bio-photo.jpg"
             alt="Lya Biwa Portfolio"
             fill

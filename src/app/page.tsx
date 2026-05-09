@@ -46,6 +46,7 @@ export default function Home() {
           className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-warm-900/15"
         >
           <Image
+            loader={imageLoader}
             src="/images/photos-presentation/photo-runway-mode.jpg"
             alt="Lya Biwa" fill priority
             className="object-cover object-center"
@@ -119,6 +120,7 @@ export default function Home() {
               style={{ boxShadow: "0 24px 64px -12px rgba(30,18,8,0.25), 0 0 0 1px rgba(168,112,63,0.12)" }}
             >
               <Image
+                loader={imageLoader}
                 src="/images/photos-presentation/bio-photo.jpg"
                 alt="Lya Biwa" fill sizes="330px"
                 className="object-cover object-top"
@@ -387,6 +389,7 @@ export default function Home() {
             style={{ minHeight: "300px" }}
           >
             <Image
+              loader={imageLoader}
               src="/images/photos-presentation/photo-mer.jpg"
               alt="La mer" fill
               className="object-cover brightness-[0.28]"

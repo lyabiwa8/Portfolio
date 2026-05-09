@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import imageLoader from "@/utils/imageLoader";
 
 const passions = [
   {
@@ -59,6 +60,7 @@ export function Passions() {
               )}
             >
               <Image
+                loader={imageLoader}
                 src={passion.image}
                 alt={passion.title}
                 fill
