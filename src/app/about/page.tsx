@@ -116,62 +116,64 @@ export default function About() {
         </div>
 
         {/* Parcours Section */}
-        <div className="grid md:grid-cols-2 gap-20 py-24 border-t border-brown-100">
-          <div>
-            <h3 className="text-3xl font-display font-bold text-brown-900 mb-12 flex items-center gap-4">
-              <span className="w-12 h-12 rounded-full bg-beige-100 flex items-center justify-center text-accent">
-                <GraduationCap size={24} />
-              </span>
-              Formation
-            </h3>
-            <div className="space-y-12 relative before:absolute before:left-[23px] before:top-2 before:bottom-2 before:w-px before:bg-brown-100">
-              {education.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="pl-16 relative"
-                >
-                  <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white border border-brown-100 flex items-center justify-center text-brown-400 z-10">
-                    {item.icon}
-                  </div>
-                  <span className="text-sm font-bold text-accent mb-2 block">{item.year}</span>
-                  <h4 className="text-xl font-display font-bold text-brown-900 mb-2">{item.title}</h4>
-                  <p className="text-brown-600 font-medium mb-2">{item.institution}</p>
-                  <p className="text-brown-500 text-sm">{item.desc}</p>
-                </motion.div>
-              ))}
+        <div className="bg-beige-100 -mx-6 px-6 py-32 mt-24 border-t border-brown-100">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
+            <div>
+              <h3 className="text-3xl font-display font-bold text-brown-900 mb-16 flex items-center gap-4">
+                <span className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-accent shadow-sm">
+                  <GraduationCap size={28} />
+                </span>
+                Formation
+              </h3>
+              <div className="space-y-12 relative before:absolute before:left-[27px] before:top-2 before:bottom-2 before:w-px before:bg-brown-200">
+                {education.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="pl-20 relative"
+                  >
+                    <div className="absolute left-0 top-0 w-14 h-14 rounded-full bg-white border border-brown-100 flex items-center justify-center text-brown-400 z-10 shadow-sm">
+                      {item.icon}
+                    </div>
+                    <span className="text-sm font-bold text-accent mb-2 block">{item.year}</span>
+                    <h4 className="text-2xl font-display font-bold text-brown-900 mb-2">{item.title}</h4>
+                    <p className="text-brown-700 font-bold mb-3">{item.institution}</p>
+                    <p className="text-brown-500 text-base leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h3 className="text-3xl font-display font-bold text-brown-900 mb-12 flex items-center gap-4">
-              <span className="w-12 h-12 rounded-full bg-beige-100 flex items-center justify-center text-accent">
-                <Briefcase size={24} />
-              </span>
-              Expérience
-            </h3>
-            <div className="space-y-12 relative before:absolute before:left-[23px] before:top-2 before:bottom-2 before:w-px before:bg-brown-100">
-              {experience.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="pl-16 relative"
-                >
-                  <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white border border-brown-100 flex items-center justify-center text-brown-400 z-10">
-                    {item.icon}
-                  </div>
-                  <span className="text-sm font-bold text-accent mb-2 block">{item.year}</span>
-                  <h4 className="text-xl font-display font-bold text-brown-900 mb-2">{item.title}</h4>
-                  <p className="text-brown-600 font-medium mb-2">{item.institution}</p>
-                  <p className="text-brown-500 text-sm">{item.desc}</p>
-                </motion.div>
-              ))}
+            <div>
+              <h3 className="text-3xl font-display font-bold text-brown-900 mb-16 flex items-center gap-4">
+                <span className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-accent shadow-sm">
+                  <Briefcase size={28} />
+                </span>
+                Expérience
+              </h3>
+              <div className="space-y-12 relative before:absolute before:left-[27px] before:top-2 before:bottom-2 before:w-px before:bg-brown-200">
+                {experience.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="pl-20 relative"
+                  >
+                    <div className="absolute left-0 top-0 w-14 h-14 rounded-full bg-white border border-brown-100 flex items-center justify-center text-brown-400 z-10 shadow-sm">
+                      {item.icon}
+                    </div>
+                    <span className="text-sm font-bold text-accent mb-2 block">{item.year}</span>
+                    <h4 className="text-2xl font-display font-bold text-brown-900 mb-2">{item.title}</h4>
+                    <p className="text-brown-700 font-bold mb-3">{item.institution}</p>
+                    <p className="text-brown-500 text-base leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

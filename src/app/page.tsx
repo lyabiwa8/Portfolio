@@ -92,31 +92,31 @@ export default function Home() {
       </section>
 
       {/* Categories Preview */}
-      <section className="bg-brown-50 py-24 px-6">
+      <section className="bg-beige-100 py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
             <div>
-              <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-4">Mes Domaines</h2>
+              <h2 className="text-sm uppercase tracking-widest text-accent font-bold mb-4">Mes Domaines</h2>
               <h3 className="text-4xl md:text-5xl font-display font-bold text-brown-900">Expertise & Création</h3>
             </div>
-            <Link href="/projects" className="text-brown-700 font-medium hover:text-accent transition-colors flex items-center gap-2">
+            <Link href="/projects" className="text-brown-700 font-bold hover:text-accent transition-colors flex items-center gap-2 border-b-2 border-accent/20 pb-1">
               Tous les projets <ArrowRight size={18} />
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10">
             {[
               { 
                 title: "Vidéo & Motion", 
                 icon: <Play size={32} />, 
                 desc: "Création de contenus dynamiques et montages percutants.",
-                color: "bg-stone-100"
+                color: "bg-white"
               },
               { 
                 title: "Design Visuel", 
                 icon: <Camera size={32} />, 
                 desc: "Identité visuelle, photographie et direction artistique.",
-                color: "bg-beige-100"
+                color: "bg-beige-200"
               },
               { 
                 title: "Stratégie Com", 
@@ -131,34 +131,35 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={cn("p-12 rounded-[2rem] transition-all duration-500 hover:shadow-xl group", cat.color)}
+                className={cn("p-12 rounded-[3rem] transition-all duration-500 hover:shadow-2xl group", cat.color)}
               >
-                <div className="text-brown-900 mb-6 group-hover:scale-110 transition-transform duration-500">
+                <div className="text-accent mb-8 group-hover:scale-110 transition-transform duration-500">
                   {cat.icon}
                 </div>
-                <h4 className="text-2xl font-display font-bold text-brown-900 mb-4">{cat.title}</h4>
-                <p className="text-brown-700 leading-relaxed">{cat.desc}</p>
+                <h4 className="text-2xl font-display font-bold text-brown-900 mb-6">{cat.title}</h4>
+                <p className="text-brown-700 leading-relaxed text-base">{cat.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Quote */}
-      <section className="py-24 px-6 text-center max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <span className="text-9xl font-display absolute -top-12 left-0 opacity-10 text-brown-900">“</span>
-          <p className="text-3xl md:text-4xl font-display font-bold text-brown-900 italic leading-snug">
-            Les vagues de la mer étaient un plaisir à capturer car à chaque angle que je choisissais, 
-            il y avait toujours un nouveau motif à observer.
-          </p>
-          <div className="w-20 h-1 bg-accent mx-auto mt-8" />
-        </motion.div>
+      {/* Featured Quote - Deep Brown */}
+      <section className="bg-brown-900 py-32 px-6 text-center">
+        <div className="max-w-4xl mx-auto relative">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-9xl font-display absolute -top-16 left-0 opacity-10 text-beige-50">“</span>
+            <p className="text-3xl md:text-5xl font-display font-bold text-beige-100 italic leading-tight">
+              Les vagues de la mer étaient un plaisir à capturer car à chaque angle que je choisissais, 
+              il y avait toujours un nouveau motif à observer.
+            </p>
+            <div className="w-24 h-1 bg-accent mx-auto mt-12" />
+          </motion.div>
+        </div>
       </section>
     </PageWrapper>
   );

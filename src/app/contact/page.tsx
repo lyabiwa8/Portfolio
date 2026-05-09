@@ -18,54 +18,31 @@ export default function Contact() {
 
   return (
     <PageWrapper>
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20">
-        <div>
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+        <div className="py-12">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-7xl md:text-8xl font-display font-bold text-brown-900 mb-8 tracking-tighter"
+            className="text-7xl md:text-8xl font-display font-bold text-brown-900 mb-10 tracking-tighter leading-none"
           >
-            DISONS-NOUS BONJOUR.
+            DISONS-NOUS <br/><span className="text-accent italic">BONJOUR.</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-brown-600 leading-relaxed mb-12 max-w-md"
-          >
-            Un projet en tête ? Une question ou simplement envie de discuter communication ? 
-            N'hésitez pas à m'envoyer un message.
-          </motion.p>
-
-          <div className="space-y-8">
-            <div className="flex items-center gap-6 group cursor-pointer">
-              <div className="w-16 h-16 rounded-full bg-beige-100 flex items-center justify-center text-brown-900 group-hover:bg-brown-900 group-hover:text-white transition-all duration-500">
-                <Mail size={24} />
+          
+          <div className="grid sm:grid-cols-2 gap-8 mb-16">
+            <div className="p-8 rounded-[2rem] bg-beige-100 border border-brown-100 group cursor-pointer hover:bg-brown-900 transition-all duration-500">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                <Mail size={22} />
               </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-brown-400 font-bold mb-1">Email</p>
-                <p className="text-xl font-display font-bold text-brown-900">contact@lyabiwa.com</p>
-              </div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-brown-400 font-bold mb-2 group-hover:text-beige-200">Email</p>
+              <p className="text-base font-bold text-brown-900 group-hover:text-white break-words">contact@lyabiwa.com</p>
             </div>
 
-            <div className="flex items-center gap-6 group cursor-pointer">
-              <div className="w-16 h-16 rounded-full bg-beige-100 flex items-center justify-center text-brown-900 group-hover:bg-brown-900 group-hover:text-white transition-all duration-500">
-                <Instagram size={24} />
+            <div className="p-8 rounded-[2rem] bg-beige-100 border border-brown-100 group cursor-pointer hover:bg-brown-900 transition-all duration-500">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-accent mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                <Instagram size={22} />
               </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-brown-400 font-bold mb-1">Instagram</p>
-                <p className="text-xl font-display font-bold text-brown-900">@lyabiwa_com</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-6 group cursor-pointer">
-              <div className="w-16 h-16 rounded-full bg-beige-100 flex items-center justify-center text-brown-900 group-hover:bg-brown-900 group-hover:text-white transition-all duration-500">
-                <Linkedin size={24} />
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-widest text-brown-400 font-bold mb-1">LinkedIn</p>
-                <p className="text-xl font-display font-bold text-brown-900">Lya Biwa</p>
-              </div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-brown-400 font-bold mb-2 group-hover:text-beige-200">Instagram</p>
+              <p className="text-base font-bold text-brown-900 group-hover:text-white">@lyabiwa_com</p>
             </div>
           </div>
         </div>

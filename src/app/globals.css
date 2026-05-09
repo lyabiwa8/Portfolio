@@ -5,20 +5,22 @@
   --font-sans: "Inter", sans-serif;
   --font-display: "Playfair Display", serif;
   
-  --color-beige-50: #FAFAF9;
-  --color-beige-100: #F5F5F4;
-  --color-brown-50: #F5F5F4;
-  --color-brown-100: #E7E5E4;
-  --color-brown-200: #D6D3D1;
-  --color-brown-300: #A8A29E;
-  --color-brown-400: #78716C;
-  --color-brown-500: #57534E;
-  --color-brown-600: #44403C;
-  --color-brown-700: #292524;
-  --color-brown-800: #1C1917;
-  --color-brown-900: #0C0A09;
+  --color-beige-50: #F7F3F0;
+  --color-beige-100: #EFE9E1;
+  --color-beige-200: #E5DDD3;
+  --color-brown-50: #FAF7F5;
+  --color-brown-100: #E5DDD3;
+  --color-brown-200: #D7C9B7;
+  --color-brown-300: #BCA38B;
+  --color-brown-400: #967259;
+  --color-brown-500: #634832;
+  --color-brown-600: #4B3621;
+  --color-brown-700: #3C2A21;
+  --color-brown-800: #2D2018;
+  --color-brown-900: #1A120B;
   
-  --color-accent: #CA8A04;
+  --color-accent: #967259;
+  --color-accent-light: #D7C9B7;
 }
 
 @layer base {
@@ -43,23 +45,33 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    color: var(--color-brown-900);
   }
 }
 
 @layer utilities {
   .glass {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(239, 233, 225, 0.6);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    border: 1px solid rgba(150, 114, 89, 0.1);
+    box-shadow: 0 4px 12px -1px rgb(60 42 33 / 0.05);
   }
 
   .liquid-glass-hover {
     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     &:hover {
       backdrop-filter: blur(16px);
-      background-color: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.3);
+      background-color: rgba(239, 233, 225, 0.3);
+      border-color: rgba(150, 114, 89, 0.2);
     }
+  }
+
+  .bg-warm-beige {
+    background-color: var(--color-beige-100);
+  }
+
+  .bg-deep-brown {
+    background-color: var(--color-brown-900);
+    color: var(--color-beige-50);
   }
 }
