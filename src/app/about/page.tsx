@@ -182,7 +182,7 @@ export default function About() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.38 }}
-              href={getAssetPath("/cv/cv-lya.pdf")}
+              href={getAssetPath("/cv/cv_lya_alternance.pdf")}
               download
               className="inline-flex items-center gap-2.5 btn-primary text-sm font-bold px-8 py-4 rounded-full"
             >
