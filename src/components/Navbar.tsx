@@ -54,14 +54,14 @@ export function Navbar() {
             className={cn(
               "max-w-7xl mx-auto pointer-events-auto flex justify-between items-center px-5 md:px-8 py-3 rounded-full transition-all duration-500",
               scrolled
-                ? "bg-white/80 backdrop-blur-2xl border border-white/60 shadow-xl shadow-brown-900/8"
-                : "bg-white/50 backdrop-blur-xl border border-white/30 shadow-lg shadow-brown-900/5"
+                ? "bg-brown-900/90 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/30"
+                : "bg-brown-900/60 backdrop-blur-xl border border-white/8 shadow-lg shadow-black/20"
             )}
           >
             {/* Logo */}
             <Link
               href="/"
-              className="font-display font-bold text-brown-900 tracking-tighter text-lg md:text-xl transition-all duration-300 hover:text-accent"
+              className="font-display font-bold text-beige-50 tracking-tighter text-lg md:text-xl transition-all duration-300 hover:text-accent"
             >
               LYA BIWA
             </Link>
@@ -76,7 +76,7 @@ export function Navbar() {
                     "text-[13px] font-semibold tracking-wide transition-all duration-300 relative group py-1",
                     pathname === item.href
                       ? "text-accent"
-                      : "text-brown-600 hover:text-brown-900"
+                      : "text-beige-100/70 hover:text-beige-50"
                   )}
                 >
                   {item.name}
@@ -91,7 +91,7 @@ export function Navbar() {
 
               <Link
                 href="/contact"
-                className="ml-2 bg-brown-900 text-white text-[12px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-full hover:bg-accent transition-all duration-300 hover:scale-105"
+                className="ml-2 bg-accent text-white text-[12px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-full hover:brightness-110 transition-all duration-300 hover:scale-105"
               >
                 Me contacter
               </Link>
@@ -105,19 +105,19 @@ export function Navbar() {
             >
               <span
                 className={cn(
-                  "block w-5 h-[1.5px] bg-brown-900 transition-all duration-300 origin-center",
+                  "block w-5 h-[1.5px] bg-beige-100 transition-all duration-300 origin-center",
                   isMenuOpen && "rotate-45 translate-y-[6.5px]"
                 )}
               />
               <span
                 className={cn(
-                  "block w-5 h-[1.5px] bg-brown-900 transition-all duration-300",
+                  "block w-5 h-[1.5px] bg-beige-100 transition-all duration-300",
                   isMenuOpen && "opacity-0 scale-x-0"
                 )}
               />
               <span
                 className={cn(
-                  "block w-5 h-[1.5px] bg-brown-900 transition-all duration-300 origin-center",
+                  "block w-5 h-[1.5px] bg-beige-100 transition-all duration-300 origin-center",
                   isMenuOpen && "-rotate-45 -translate-y-[6.5px]"
                 )}
               />
@@ -145,7 +145,7 @@ export function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
               className="fixed top-20 left-4 right-4 z-50 md:hidden"
             >
-              <div className="bg-white/95 backdrop-blur-2xl border border-brown-100/50 rounded-3xl p-8 shadow-2xl shadow-brown-900/15">
+              <div className="bg-brown-900/95 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-2xl shadow-black/40">
                 <div className="flex flex-col gap-6">
                   {navItems.map((item, i) => (
                     <motion.div
@@ -160,7 +160,7 @@ export function Navbar() {
                           "block text-2xl font-display font-bold transition-colors",
                           pathname === item.href
                             ? "text-accent"
-                            : "text-brown-800 hover:text-accent"
+                            : "text-beige-100 hover:text-accent"
                         )}
                         onClick={() => setIsMenuOpen(false)}
                       >
@@ -168,10 +168,10 @@ export function Navbar() {
                       </Link>
                     </motion.div>
                   ))}
-                  <div className="pt-4 border-t border-brown-100">
+                  <div className="pt-4 border-t border-white/10">
                     <Link
                       href="/contact"
-                      className="block w-full text-center bg-brown-900 text-white font-bold py-3.5 rounded-full hover:bg-accent transition-all"
+                      className="block w-full text-center bg-accent text-white font-bold py-3.5 rounded-full hover:brightness-110 transition-all"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       Me contacter
