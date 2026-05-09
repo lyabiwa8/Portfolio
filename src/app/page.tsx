@@ -9,23 +9,23 @@ import { ArrowRight, Play, Camera, FileText, Music, Film, Dumbbell, Globe } from
 
 /* ── Gallery photos ── */
 const gallery = [
-  { src: "/lya-portfolio/images/photos-presentation/photo-runway-mode.jpg",    label: "Runway" },
-  { src: "/lya-portfolio/images/photos-presentation/vogue-lifestyle.jpg",       label: "Style" },
-  { src: "/lya-portfolio/images/photos-presentation/photo-mode-work.jpg",       label: "Travail" },
-  { src: "/lya-portfolio/images/photos-presentation/gymnast-mode.jpg",          label: "Sportive" },
-  { src: "/lya-portfolio/images/photos-presentation/photo-mode-musee.jpg",      label: "Culture" },
-  { src: "/lya-portfolio/images/photos-presentation/acting-passion.jpg",        label: "Passion" },
-  { src: "/lya-portfolio/images/photos-presentation/photo-runway-mode-2.jpg",   label: "Runway" },
+  { src: "/images/photos-presentation/photo-runway-mode.jpg",    label: "Runway" },
+  { src: "/images/photos-presentation/vogue-lifestyle.jpg",       label: "Style" },
+  { src: "/images/photos-presentation/photo-mode-work.jpg",       label: "Travail" },
+  { src: "/images/photos-presentation/gymnast-mode.jpg",          label: "Sportive" },
+  { src: "/images/photos-presentation/photo-mode-musee.jpg",      label: "Culture" },
+  { src: "/images/photos-presentation/acting-passion.jpg",        label: "Passion" },
+  { src: "/images/photos-presentation/photo-runway-mode-2.jpg",   label: "Runway" },
 ];
 
 /* ── Hobbies ── */
 const hobbies = [
-  { title: "Gymnastique",  icon: <Dumbbell size={16} />, img: "/lya-portfolio/images/photos-presentation/gymnastique-life.jpg", wide: true },
-  { title: "Cinéma",       icon: <Film     size={16} />, img: "/lya-portfolio/images/photos-presentation/cinema-life-2.jpg" },
-  { title: "Musique",      icon: <Music    size={16} />, img: "/lya-portfolio/images/photos-presentation/what-music-represent-to-me.jpg" },
-  { title: "Voyages",      icon: <Globe    size={16} />, img: "/lya-portfolio/images/photos-presentation/photo-plage.jpg" },
-  { title: "Événementiel", icon: <Camera   size={16} />, img: "/lya-portfolio/images/photos-presentation/mode-lifestyle.jpg" },
-  { title: "Pop Culture",  icon: <Play     size={16} />, img: "/lya-portfolio/images/photos-presentation/dragon-ball.jpg" },
+  { title: "Gymnastique",  icon: <Dumbbell size={16} />, img: "/images/photos-presentation/gymnastique-life.jpg", wide: true },
+  { title: "Cinéma",       icon: <Film     size={16} />, img: "/images/photos-presentation/cinema-life-2.jpg" },
+  { title: "Musique",      icon: <Music    size={16} />, img: "/images/photos-presentation/what-music-represent-to-me.jpg" },
+  { title: "Voyages",      icon: <Globe    size={16} />, img: "/images/photos-presentation/photo-plage.jpg" },
+  { title: "Événementiel", icon: <Camera   size={16} />, img: "/images/photos-presentation/mode-lifestyle.jpg" },
+  { title: "Pop Culture",  icon: <Play     size={16} />, img: "/images/photos-presentation/dragon-ball.jpg" },
 ];
 
 export default function Home() {
@@ -45,7 +45,7 @@ export default function Home() {
           className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-warm-900/15"
         >
           <Image
-            src="/lya-portfolio/images/photos-presentation/photo-runway-mode.jpg"
+            src="/images/photos-presentation/photo-runway-mode.jpg"
             alt="Lya Biwa" fill priority
             className="object-cover object-center"
           />
@@ -118,7 +118,7 @@ export default function Home() {
               style={{ boxShadow: "0 24px 64px -12px rgba(30,18,8,0.25), 0 0 0 1px rgba(168,112,63,0.12)" }}
             >
               <Image
-                src="/lya-portfolio/images/photos-presentation/bio-photo.jpg"
+                src="/images/photos-presentation/bio-photo.jpg"
                 alt="Lya Biwa" fill sizes="330px"
                 className="object-cover object-top"
               />
@@ -293,9 +293,9 @@ export default function Home() {
 
         <div className="grid sm:grid-cols-3 gap-4">
           {[
-            { icon: <Play size={20} />, title: "Vidéo & Motion", desc: "Montages percutants, storytelling visuel et contenus dynamiques.", img: "/lya-portfolio/images/photos-presentation/cinema-life-3.jpg" },
-            { icon: <Camera size={20} />, title: "Design Visuel", desc: "Identité de marque, photographie et direction artistique.", img: "/lya-portfolio/images/photos-presentation/photo-mode-musee.jpg" },
-            { icon: <FileText size={20} />, title: "Stratégie Com", desc: "Plans de communication multicanaux et ingénierie événementielle.", img: "/lya-portfolio/images/photos-presentation/photo-mode-work.jpg" },
+            { icon: <Play size={20} />, title: "Vidéo & Motion", desc: "Montages percutants, storytelling visuel et contenus dynamiques.", img: "/images/photos-presentation/cinema-life-3.jpg" },
+            { icon: <Camera size={20} />, title: "Design Visuel", desc: "Identité de marque, photographie et direction artistique.", img: "/images/photos-presentation/photo-mode-musee.jpg" },
+            { icon: <FileText size={20} />, title: "Stratégie Com", desc: "Plans de communication multicanaux et ingénierie événementielle.", img: "/images/photos-presentation/photo-mode-work.jpg" },
           ].map((c, i) => (
             <motion.div
               key={i}
@@ -386,7 +386,7 @@ export default function Home() {
             style={{ minHeight: "300px" }}
           >
             <Image
-              src="/lya-portfolio/images/photos-presentation/photo-mer.jpg"
+              src="/images/photos-presentation/photo-mer.jpg"
               alt="La mer" fill
               className="object-cover brightness-[0.28]"
             />
@@ -420,5 +420,6 @@ export default function Home() {
     </PageWrapper>
   );
 }
+
 
 
