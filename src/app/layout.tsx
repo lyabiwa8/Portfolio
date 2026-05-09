@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <head>
-        <link rel="icon" href={getAssetPath("/favicon.png")} />
+        <link rel="icon" href={getAssetPath("/images/logos/logo lya final.png")} />
       </head>
       <body className="antialiased selection:bg-accent/30 relative">
         <ModernBackground />

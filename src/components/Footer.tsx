@@ -1,24 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Music2, Linkedin } from "lucide-react";
+import Image from "next/image";
+import { getAssetPath } from "@/utils/imageLoader";
 
 export function Footer() {
   return (
     <footer
       className="relative z-10 mt-4"
-      style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "rgba(17,24,39,0.9)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+      style={{ 
+        borderTop: "1px solid rgba(255,255,255,0.06)", 
+        background: "rgba(15, 23, 42, 0.95)", // Explicit Navy
+        backdropFilter: "blur(20px)", 
+        WebkitBackdropFilter: "blur(20px)" 
+      }}
     >
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-12">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
 
           {/* Brand */}
           <div>
             <Link href="/"
               className="flex items-center gap-3 group mb-2"
             >
-              <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-[#9F1239]">
-                LB
+              <div className="relative w-8 h-8 md:w-10 md:h-10">
+                <Image 
+                  src={getAssetPath("/images/logos/logo lya final.png")} 
+                  alt="Logo Lya Biwa" 
+                  fill 
+                  className="object-contain"
+                />
               </div>
               <span 
                 className="font-display text-xl font-bold tracking-tight transition-colors hover:text-[#9F1239]"
@@ -27,7 +38,7 @@ export function Footer() {
                 LYA BIWA
               </span>
             </Link>
-            <p className="text-[11px] mt-0.5 font-medium tracking-wide" style={{ color: "rgba(226,232,240,0.4)" }}>
+            <p className="text-[11px] mt-0.5 font-medium tracking-wide uppercase" style={{ color: "rgba(226,232,240,0.4)" }}>
               Communication · Événementiel · Création
             </p>
           </div>
@@ -35,10 +46,11 @@ export function Footer() {
           {/* Nav */}
           <div className="hidden md:flex items-center gap-8">
             {[
-              { label: "Accueil",  href: "/" },
-              { label: "À propos", href: "/about" },
-              { label: "Projets",  href: "/projects" },
-              { label: "Contact",  href: "/contact" },
+              { label: "Accueil",     href: "/" },
+              { label: "À propos",    href: "/about" },
+              { label: "Compétences", href: "/skills" },
+              { label: "Projets",     href: "/projects" },
+              { label: "Contact",     href: "/contact" },
             ].map((item) => (
               <Link
                 key={item.label}
@@ -54,48 +66,48 @@ export function Footer() {
           {/* CTA */}
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 btn-primary text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-full self-start md:self-auto"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] px-8 py-4 rounded-full transition-all shadow-2xl shadow-[#9F1239]/20"
+            style={{ 
+              backgroundColor: "#9F1239", 
+              color: "#FFFFFF",
+              border: "1px solid rgba(255,255,255,0.1)"
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#BE123C"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#9F1239"; }}
           >
-            <Mail size={13} />
+            <Mail size={14} />
             Me contacter
           </Link>
         </div>
 
         {/* Bottom */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.5rem" }}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2rem" }}
         >
-          <span className="text-[11px] font-medium tracking-wider uppercase"
+          <span className="text-[10px] font-bold tracking-[0.2em] uppercase"
             style={{ color: "rgba(226,232,240,0.3)" }}
           >
             © {new Date().getFullYear()} Lya Biwa — Tous droits réservés.
           </span>
-          <div className="flex items-center gap-2.5">
-            {[
-              { icon: <Music2 size={13} />, label: "TikTok", href: "https://www.tiktok.com/@atnightimbatman" },
-              { icon: <Linkedin  size={13} />, label: "LinkedIn", href: "#" },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 flex items-center justify-center rounded-full transition-all"
-                style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(226,232,240,0.5)" }}
-                onMouseEnter={(e) => { 
-                  (e.currentTarget as HTMLElement).style.background = "#9F1239"; 
-                  (e.currentTarget as HTMLElement).style.color = "white"; 
-                  (e.currentTarget as HTMLElement).style.borderColor = "#9F1239"; 
-                }}
-                onMouseLeave={(e) => { 
-                  (e.currentTarget as HTMLElement).style.background = ""; 
-                  (e.currentTarget as HTMLElement).style.color = "rgba(226,232,240,0.5)"; 
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)"; 
-                }}
-              >
-                {s.icon}
-              </a>
-            ))}
+
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:lyabiwa8@gmail.com"
+              className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors hover:text-[#9F1239]"
+              style={{ color: "rgba(226,232,240,0.5)" }}
+            >
+              <Mail size={14} /> Mail
+            </a>
+            <div className="w-[1px] h-3 bg-white/10" />
+            <a
+              href="https://www.linkedin.com/in/lya-biwa-130832255/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors hover:text-[#9F1239]"
+              style={{ color: "rgba(226,232,240,0.5)" }}
+            >
+              <Linkedin size={14} /> LinkedIn
+            </a>
           </div>
         </div>
       </div>

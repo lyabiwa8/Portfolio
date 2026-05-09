@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Send, Music2, Linkedin } from "lucide-react";
+import { Mail, Send, Linkedin } from "lucide-react";
 
 export function Contact() {
   const [formState, setFormState] = useState<{
@@ -54,12 +54,16 @@ export function Contact() {
             </div>
           </div>
 
+          {/* Social Links - LinkedIn Only */}
           <div className="flex gap-4 mt-16">
-            <a href="https://www.tiktok.com/@atnightimbatman" target="_blank" rel="noopener noreferrer" className="p-4 bg-[#111827] rounded-2xl hover:bg-[#9F1239] transition-all border border-white/5 group shadow-lg">
-              <Music2 size={24} className="group-hover:text-white" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-4 bg-[#111827] rounded-2xl hover:bg-[#9F1239] transition-all border border-white/5 group shadow-lg">
-              <Linkedin size={24} className="group-hover:text-white" />
+            <a 
+              href="https://www.linkedin.com/in/lya-biwa-130832255/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-3 px-6 py-4 bg-[#111827] rounded-2xl hover:bg-[#9F1239] transition-all border border-white/5 group shadow-lg"
+            >
+              <Linkedin size={24} className="text-[#9F1239] group-hover:text-white transition-colors" />
+              <span className="font-display font-bold text-white group-hover:text-white">LinkedIn</span>
             </a>
           </div>
         </div>

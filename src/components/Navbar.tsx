@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { getAssetPath } from "@/utils/imageLoader";
 
 const links = [
   { href: "/",        label: "Accueil" },
@@ -57,8 +59,14 @@ export function Navbar() {
           <Link href="/"
             className="flex items-center gap-3 group"
           >
-            <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-[#9F1239]">
-              LB
+            <div className="relative w-8 h-8 md:w-10 md:h-10">
+              <Image 
+                src={getAssetPath("/images/logos/logo lya final.png")} 
+                alt="Logo Lya Biwa" 
+                fill 
+                className="object-contain"
+                priority
+              />
             </div>
             <span 
               className="font-display font-bold text-lg md:text-xl tracking-tight transition-colors text-[#F8FAFC]"
