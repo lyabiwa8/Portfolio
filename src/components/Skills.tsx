@@ -28,7 +28,7 @@ const expertise = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 bg-[#0F172A]">
+    <section id="skills" className="py-24 px-6 bg-[#111827]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2 className="text-sm uppercase tracking-[0.3em] text-[#9F1239] font-bold mb-4">Expertise</h2>

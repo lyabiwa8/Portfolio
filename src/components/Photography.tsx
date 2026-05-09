@@ -13,7 +13,7 @@ const photos = [
 
 export function Photography() {
   return (
-    <section id="photography" className="py-24 px-6 bg-[#0F172A]">
+    <section id="photography" className="py-24 px-6 bg-[#111827]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-sm uppercase tracking-widest text-[#9F1239] font-semibold mb-4">Capturer l'instant</h2>

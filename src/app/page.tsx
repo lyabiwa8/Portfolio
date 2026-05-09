@@ -217,56 +217,6 @@ export default function Home() {
       {/* ════════════ SKILLS SECTION ════════════ */}
       <Skills />
 
-      {/* ════════════ PHOTO GALLERY ════════════ */}
-      <section className="px-4 md:px-6 py-14 md:py-20">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <span className="text-[10px] uppercase tracking-[0.22em] font-semibold block mb-1.5 text-[#9F1239]">
-              Photographie
-            </span>
-            <h3 className="font-display font-bold text-3xl md:text-4xl text-[#F8FAFC]">
-              Instants captés
-            </h3>
-          </motion.div>
-
-          {/* Asymmetric grid */}
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3"
-            style={{ gridAutoRows: "clamp(140px, 20vw, 220px)" }}
-          >
-            {gallery.map((p, i) => (
-              <motion.div
-                key={p.src}
-                initial={{ opacity: 0, scale: 0.96 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.055, duration: 0.55, ease: "easeOut" }}
-                whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                className={`img-zoom relative rounded-xl md:rounded-2xl overflow-hidden shadow-2xl border border-white/5 ${
-                  i === 0 ? "md:col-span-2 md:row-span-2" :
-                  i === 3 ? "md:row-span-2" : ""
-                }`}
-              >
-                <Image src={getAssetPath(p.src)} alt={p.label} fill className="object-cover" />
-                <div
-                  className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-3"
-                  style={{ background: "linear-gradient(to top, rgba(15,23,42,0.8) 0%, transparent 60%)" }}
-                >
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#E2E8F0]">
-                    {p.label}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ════════════ HOBBIES ════════════ */}
       <section className="max-w-6xl mx-auto px-4 md:px-6 pb-14 md:pb-20">

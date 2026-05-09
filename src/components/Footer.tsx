@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer
       className="relative z-10 mt-4"
-      style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "rgba(15,23,42,0.85)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+      style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "rgba(17,24,39,0.9)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
     >
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-12">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
@@ -27,7 +27,7 @@ export function Footer() {
                 LYA BIWA
               </span>
             </Link>
-            <p className="text-[11px] mt-0.5 font-medium tracking-wide" style={{ color: "rgba(226,232,240,0.45)" }}>
+            <p className="text-[11px] mt-0.5 font-medium tracking-wide" style={{ color: "rgba(226,232,240,0.4)" }}>
               Communication · Événementiel · Création
             </p>
           </div>
@@ -43,8 +43,8 @@ export function Footer() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm font-medium transition-colors"
-                style={{ color: "rgba(45,27,14,0.50)" }}
+                className="text-sm font-medium transition-colors hover:text-[#9F1239]"
+                style={{ color: "rgba(226,232,240,0.5)" }}
               >
                 {item.label}
               </Link>
@@ -63,10 +63,10 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4"
-          style={{ borderTop: "1px solid rgba(30,18,8,0.07)", paddingTop: "1.5rem" }}
+          style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "1.5rem" }}
         >
           <span className="text-[11px] font-medium tracking-wider uppercase"
-            style={{ color: "rgba(226,232,240,0.35)" }}
+            style={{ color: "rgba(226,232,240,0.3)" }}
           >
             © {new Date().getFullYear()} Lya Biwa — Tous droits réservés.
           </span>
@@ -81,9 +81,17 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center rounded-full transition-all"
-                style={{ border: "1px solid rgba(255,255,255,0.14)", color: "rgba(226,232,240,0.45)" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#9F1239"; (e.currentTarget as HTMLElement).style.color = "white"; (e.currentTarget as HTMLElement).style.borderColor = "#9F1239"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = ""; (e.currentTarget as HTMLElement).style.color = "rgba(226,232,240,0.45)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.14)"; }}
+                style={{ border: "1px solid rgba(255,255,255,0.1)", color: "rgba(226,232,240,0.5)" }}
+                onMouseEnter={(e) => { 
+                  (e.currentTarget as HTMLElement).style.background = "#9F1239"; 
+                  (e.currentTarget as HTMLElement).style.color = "white"; 
+                  (e.currentTarget as HTMLElement).style.borderColor = "#9F1239"; 
+                }}
+                onMouseLeave={(e) => { 
+                  (e.currentTarget as HTMLElement).style.background = ""; 
+                  (e.currentTarget as HTMLElement).style.color = "rgba(226,232,240,0.5)"; 
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)"; 
+                }}
               >
                 {s.icon}
               </a>
@@ -94,8 +102,3 @@ export function Footer() {
     </footer>
   );
 }
-
-
-
-
-

@@ -42,7 +42,7 @@ export function Contact() {
 
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-white/5 rounded-full text-[#9F1239]">
+              <div className="p-3 bg-[#111827] rounded-full text-[#9F1239] border border-white/5">
                 <Mail size={24} />
               </div>
               <div>
@@ -54,7 +54,7 @@ export function Contact() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-white/5 rounded-full text-[#9F1239]">
+              <div className="p-3 bg-[#111827] rounded-full text-[#9F1239] border border-white/5">
                 <Phone size={24} />
               </div>
               <div>
@@ -66,7 +66,7 @@ export function Contact() {
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-white/5 rounded-full text-[#9F1239]">
+              <div className="p-3 bg-[#111827] rounded-full text-[#9F1239] border border-white/5">
                 <MapPin size={24} />
               </div>
               <div>
@@ -77,11 +77,11 @@ export function Contact() {
           </div>
 
           <div className="flex gap-4 mt-12">
-            <a href="https://www.tiktok.com/@atnightimbatman" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-[#9F1239] transition-all">
-              <Music2 size={20} />
+            <a href="https://www.tiktok.com/@atnightimbatman" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#111827] rounded-full hover:bg-[#9F1239] transition-all border border-white/5 group">
+              <Music2 size={20} className="group-hover:text-white" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-[#9F1239] transition-all">
-              <Linkedin size={20} />
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#111827] rounded-full hover:bg-[#9F1239] transition-all border border-white/5 group">
+              <Linkedin size={20} className="group-hover:text-white" />
             </a>
           </div>
         </div>
@@ -90,7 +90,7 @@ export function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white/[0.03] p-8 md:p-12 rounded-3xl backdrop-blur-sm border border-white/5"
+          className="bg-[#111827] p-8 md:p-12 rounded-3xl border border-white/5 shadow-2xl"
         >
           {formState.submitted ? (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12">
@@ -108,7 +108,7 @@ export function Contact() {
                   <input
                     required
                     type="text"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
+                    className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
                     placeholder="Jean Dupont"
                   />
                 </div>
@@ -117,7 +117,7 @@ export function Contact() {
                   <input
                     required
                     type="email"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
+                    className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
                     placeholder="jean@exemple.com"
                   />
                 </div>
@@ -127,7 +127,7 @@ export function Contact() {
                 <input
                   required
                   type="text"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
+                  className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
                   placeholder="Collaboration..."
                 />
               </div>
@@ -136,7 +136,7 @@ export function Contact() {
                 <textarea
                   required
                   rows={4}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors resize-none"
+                  className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors resize-none"
                   placeholder="Dites-moi tout !"
                 />
               </div>
@@ -149,19 +149,7 @@ export function Contact() {
             </form>
           )}
         </motion.div>
-
       </div>
-
-      <footer className="mt-24 pt-12 border-t border-white/10 text-center">
-        <p className="text-beige-400 text-sm">
-          © {new Date().getFullYear()} Lya Biwa. Réalisé avec passion.
-        </p>
-      </footer>
     </section>
   );
 }
-
-
-
-
-
