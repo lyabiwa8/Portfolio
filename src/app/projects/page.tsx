@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Play, FileText, ImageIcon, ExternalLink } from "lucide-react";
 import { useState } from "react";
-import imageLoader from "@/utils/imageLoader";
+import imageLoader, { getAssetPath } from "@/utils/imageLoader";
 
 const categories = ["Tous", "Vidéo", "Design", "Rédaction"];
 
@@ -138,7 +138,7 @@ export default function Projects() {
                   
                   <div className="flex gap-4">
                     <a
-                      href={project.src}
+                      href={getAssetPath(project.src)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 bg-white text-brown-900 rounded-full hover:bg-accent hover:text-white transition-colors"

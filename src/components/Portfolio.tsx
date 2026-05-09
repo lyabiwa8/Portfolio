@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Play, FileText, Camera } from "lucide-react";
 import Image from "next/image";
-import imageLoader from "@/utils/imageLoader";
+import imageLoader, { getAssetPath } from "@/utils/imageLoader";
 
 const projects = [
   {
@@ -121,7 +121,7 @@ export function Portfolio() {
                 </h4>
                 
                 <a
-                  href={project.link}
+                  href={getAssetPath(project.link)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-beige-50 font-medium border-b border-beige-50/30 pb-1 hover:border-accent transition-colors w-fit"

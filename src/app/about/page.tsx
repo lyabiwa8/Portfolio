@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Download, GraduationCap, Briefcase, MapPin, Globe, Mail } from "lucide-react";
-import imageLoader from "@/utils/imageLoader";
+import imageLoader, { getAssetPath } from "@/utils/imageLoader";
 
 const education = [
   {
@@ -183,7 +183,7 @@ export default function About() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.38 }}
-              href="/lya-portfolio/cv/cv-lya.pdf"
+              href={getAssetPath("/cv/cv-lya.pdf")}
               download
               className="inline-flex items-center gap-2.5 btn-primary text-sm font-bold px-8 py-4 rounded-full"
             >
