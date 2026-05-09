@@ -15,7 +15,7 @@ export function About() {
           className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl"
         >
           <Image
-            src="/lya-portfolio/images/photos-presentation/bio-photo.jpg"
+            src="/images/photos-presentation/bio-photo.jpg"
             alt="Lya Biwa Portfolio"
             fill
             className="object-cover"
@@ -61,6 +61,7 @@ export function About() {
     </section>
   );
 }
+
 
 
 

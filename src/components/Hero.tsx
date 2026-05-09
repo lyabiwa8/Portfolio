@@ -8,7 +8,7 @@ export function Hero() {
     <section id="accueil" className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/lya-portfolio/images/photos-presentation/mode-lifestyle.jpg"
+          src="/images/photos-presentation/mode-lifestyle.jpg"
           alt="Lya Biwa Background"
           fill
           className="object-cover opacity-20"
@@ -78,6 +78,7 @@ export function Hero() {
     </section>
   );
 }
+
 
 
 

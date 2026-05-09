@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Ensure trailing slashes for GitHub Pages compatibility
+  trailingSlash: true,
 };
 
 export default nextConfig;
