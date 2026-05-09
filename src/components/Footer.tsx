@@ -17,7 +17,7 @@ export function Footer() {
             <Link href="/"
               className="flex items-center gap-3 group mb-2"
             >
-              <div className="w-8 h-8 rounded-full bg-brown-900 flex items-center justify-center text-beige-50 font-display font-bold text-[10px] tracking-tighter transition-transform group-hover:scale-110 shadow-md">
+              <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-brown-900">
                 LB
               </div>
               <span 

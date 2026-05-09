@@ -177,9 +177,7 @@ export default function Home() {
               className="text-base md:text-lg leading-relaxed mb-8 max-w-md"
               style={{ color: "rgba(26,15,8,0.78)" }}
             >
-              Future étudiante en{" "}
-              <span style={{ color: "#120A04", fontWeight: 700 }}>Licence de Communication</span>,
-              spécialisée en événementiel. Je conçois des expériences mémorables et des stratégies qui marquent.
+              Future étudiante en licence de communication (spécialisation événementiel luxe, mode ou sport), je recherche une alternance d’un an à partir de septembre 2026 afin d’aider à concevoir et coordonner des événements, tout en optimisant leur visibilité et leur performance.
             </motion.p>
 
             <motion.div

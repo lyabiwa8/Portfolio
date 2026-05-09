@@ -5,10 +5,10 @@ import Image from "next/image";
 import { getAssetPath } from "@/utils/imageLoader";
 
 const photos = [
-  { id: 1, src: "/images/photographie/photo-1.png", alt: "Sunset" },
-  { id: 2, src: "/images/photographie/photo-2.png", alt: "Street" },
-  { id: 3, src: "/images/photographie/photo-3.png", alt: "Nature" },
-  { id: 4, src: "/images/photographie/photo-4.png", alt: "Architecture" },
+  { id: 1, src: "/images/photographie/Photo Jey Uso photographie par moi.jpg", alt: "Jey Uso" },
+  { id: 2, src: "/images/photographie/Photo John Cena photographie par moi.jpg", alt: "John Cena" },
+  { id: 3, src: "/images/photographie/Photo hôtel Égypte photographie par moi.jpg", alt: "Hôtel Égypte" },
+  { id: 4, src: "/images/photographie/Photo îles canaris photographie par moi.jpg", alt: "Îles Canaris" },
 ];
 
 export function Photography() {

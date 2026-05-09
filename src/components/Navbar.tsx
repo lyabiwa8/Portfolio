@@ -57,7 +57,7 @@ export function Navbar() {
           <Link href="/"
             className="flex items-center gap-3 group"
           >
-            <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-brown-900 flex items-center justify-center text-beige-50 font-display font-bold text-xs md:text-sm tracking-tighter transition-transform group-hover:scale-110 shadow-lg border border-white/20">
+            <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-brown-900">
               LB
             </div>
             <span 

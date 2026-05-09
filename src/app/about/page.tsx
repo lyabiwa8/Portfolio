@@ -145,14 +145,7 @@ export default function About() {
               style={{ color: C.muted }}
             >
               <p>
-                Future étudiante en{" "}
-                <span style={{ color: C.text, fontWeight: 700 }}>Licence de Communication</span>,
-                spécialisée en événementiel, luxe et mode.
-              </p>
-              <p>
-                Je recherche une{" "}
-                <span style={{ color: C.text, fontWeight: 700, textDecoration: "underline", textDecorationColor: C.accentLt }}>alternance d'un an</span>{" "}
-                à partir de <span style={{ color: C.accent, fontWeight: 700, fontStyle: "italic" }}>septembre 2026</span>.
+                Future étudiante en licence de communication (spécialisation événementiel luxe, mode ou sport), je recherche une alternance d’un an à partir de septembre 2026 afin d’aider à concevoir et coordonner des événements, tout en optimisant leur visibilité et leur performance.
               </p>
             </motion.div>
 
