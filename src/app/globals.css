@@ -49,7 +49,7 @@
 
   body {
     background-color: #E8D5B8;
-    color: #2D1B0E;
+    color: #1A0F08;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -57,7 +57,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    color: #1E1208;
+    color: #120A04;
   }
 
   ::selection {
@@ -110,9 +110,9 @@
   }
 
   /* Accent text */
-  .text-accent  { color: #A8703F; }
-  .text-muted   { color: rgba(45, 27, 14, 0.50); }
-  .text-primary { color: #1E1208; }
+  .text-accent  { color: #8B5530; }
+  .text-muted   { color: rgba(26,15,8,0.62); }
+  .text-primary { color: #120A04; }
 
   /* Image zoom */
   .img-zoom { overflow: hidden; }

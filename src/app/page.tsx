@@ -150,7 +150,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-[10px] font-semibold uppercase tracking-[0.15em]"
-              style={{ background: "rgba(168,112,63,0.10)", border: "1px solid rgba(168,112,63,0.22)", color: "#A8703F" }}
+              style={{ background: "rgba(139,85,48,0.12)", border: "1px solid rgba(139,85,48,0.30)", color: "#5C3010" }}
             >
               En recherche d'alternance
             </motion.div>
@@ -161,10 +161,10 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.08, duration: 0.7, ease: "easeOut" }}
               className="font-display font-bold leading-tight tracking-tight mb-5"
-              style={{ fontSize: "clamp(2.4rem, 4.5vw, 4rem)", color: "#1E1208" }}
+              style={{ fontSize: "clamp(2.4rem, 4.5vw, 4rem)", color: "#120A04" }}
             >
               CRÉER<br />
-              <em className="not-italic" style={{ color: "#A8703F" }}>L'IMPACT.</em>
+              <em className="not-italic" style={{ color: "#6B3E20" }}>L'IMPACT.</em>
             </motion.h2>
 
             <motion.p
@@ -173,10 +173,10 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.16, duration: 0.6 }}
               className="text-base md:text-lg leading-relaxed mb-8 max-w-md"
-              style={{ color: "rgba(45,27,14,0.62)" }}
+              style={{ color: "rgba(26,15,8,0.78)" }}
             >
               Future étudiante en{" "}
-              <span style={{ color: "#1E1208", fontWeight: 600 }}>Licence de Communication</span>,
+              <span style={{ color: "#120A04", fontWeight: 700 }}>Licence de Communication</span>,
               spécialisée en événementiel. Je conçois des expériences mémorables et des stratégies qui marquent.
             </motion.p>
 
@@ -205,13 +205,13 @@ export default function Home() {
               style={{ borderTop: "1px solid rgba(30,18,8,0.10)" }}
             >
               {[
-                { value: "BTS",   label: "Communication" },
-                { value: "Luxe",  label: "Spécialité" },
-                { value: "Sept.", label: "Dispo 2026" },
+                { value: "BTS",     label: "Communication" },
+                { value: "Event.",  label: "Spécialité" },
+                { value: "Sept.",   label: "Dispo 2026" },
               ].map((s) => (
                 <div key={s.label}>
-                  <p className="text-2xl md:text-3xl font-display font-bold" style={{ color: "#A8703F" }}>{s.value}</p>
-                  <p className="text-[10px] uppercase tracking-widest mt-0.5" style={{ color: "rgba(45,27,14,0.40)" }}>{s.label}</p>
+                  <p className="text-2xl md:text-3xl font-display font-bold" style={{ color: "#6B3E20" }}>{s.value}</p>
+                  <p className="text-[10px] uppercase tracking-widest mt-0.5" style={{ color: "rgba(26,15,8,0.62)" }}>{s.label}</p>
                 </div>
               ))}
             </motion.div>
