@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Music2, Linkedin } from "lucide-react";
+import { Mail, Send, Music2, Linkedin } from "lucide-react";
 
 export function Contact() {
   const [formState, setFormState] = useState<{
@@ -37,51 +37,29 @@ export function Contact() {
           <h3 className="text-4xl md:text-5xl font-display font-bold mb-8 text-[#F8FAFC]">Travaillons ensemble</h3>
           <p className="text-[#E2E8F0]/70 text-lg mb-12 max-w-md">
             Vous avez un projet de communication ou vous souhaitez simplement échanger ? 
-            N'hésitez pas à me contacter via le formulaire ou mes coordonnées directes.
+            N'hésitez pas à m'envoyer un mail.
           </p>
 
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-[#111827] rounded-full text-[#9F1239] border border-white/5">
-                <Mail size={24} />
+              <div className="p-4 bg-[#111827] rounded-2xl text-[#9F1239] border border-white/5 shadow-xl">
+                <Mail size={28} />
               </div>
               <div>
-                <span className="block text-sm text-[#E2E8F0]/40 uppercase tracking-wide">Email</span>
-                <a href="mailto:lyabiwa8@gmail.com" className="text-xl font-medium hover:text-[#9F1239] transition-colors">
+                <span className="block text-sm text-[#E2E8F0]/40 uppercase tracking-widest mb-1">Email Officiel</span>
+                <a href="mailto:lyabiwa8@gmail.com" className="text-2xl md:text-3xl font-display font-bold hover:text-[#9F1239] transition-colors">
                   lyabiwa8@gmail.com
                 </a>
               </div>
             </div>
-
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-[#111827] rounded-full text-[#9F1239] border border-white/5">
-                <Phone size={24} />
-              </div>
-              <div>
-                <span className="block text-sm text-[#E2E8F0]/40 uppercase tracking-wide">Téléphone</span>
-                <a href="tel:0752481056" className="text-xl font-medium hover:text-[#9F1239] transition-colors">
-                  07 52 48 10 56
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-[#111827] rounded-full text-[#9F1239] border border-white/5">
-                <MapPin size={24} />
-              </div>
-              <div>
-                <span className="block text-sm text-[#E2E8F0]/40 uppercase tracking-wide">Localisation</span>
-                <span className="text-xl font-medium">Île-de-France, France</span>
-              </div>
-            </div>
           </div>
 
-          <div className="flex gap-4 mt-12">
-            <a href="https://www.tiktok.com/@atnightimbatman" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#111827] rounded-full hover:bg-[#9F1239] transition-all border border-white/5 group">
-              <Music2 size={20} className="group-hover:text-white" />
+          <div className="flex gap-4 mt-16">
+            <a href="https://www.tiktok.com/@atnightimbatman" target="_blank" rel="noopener noreferrer" className="p-4 bg-[#111827] rounded-2xl hover:bg-[#9F1239] transition-all border border-white/5 group shadow-lg">
+              <Music2 size={24} className="group-hover:text-white" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#111827] rounded-full hover:bg-[#9F1239] transition-all border border-white/5 group">
-              <Linkedin size={20} className="group-hover:text-white" />
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-4 bg-[#111827] rounded-2xl hover:bg-[#9F1239] transition-all border border-white/5 group shadow-lg">
+              <Linkedin size={24} className="group-hover:text-white" />
             </a>
           </div>
         </div>
@@ -90,25 +68,27 @@ export function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-[#111827] p-8 md:p-12 rounded-3xl border border-white/5 shadow-2xl"
+          className="bg-[#111827] p-8 md:p-12 rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden"
         >
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#9F1239]/5 blur-3xl -mr-16 -mt-16" />
+          
           {formState.submitted ? (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-12">
               <div className="w-16 h-16 bg-[#9F1239] rounded-full flex items-center justify-center text-white mb-4">
                 <Send size={32} />
               </div>
               <h3 className="text-2xl font-bold">Message envoyé !</h3>
-              <p className="text-[#E2E8F0]/60">Merci Lya vous répondra dans les plus brefs délais.</p>
+              <p className="text-[#E2E8F0]/60">Merci, Lya vous répondra dans les plus brefs délais.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#E2E8F0]/60">Nom complet</label>
                   <input
                     required
                     type="text"
-                    className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
+                    className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors"
                     placeholder="Jean Dupont"
                   />
                 </div>
@@ -117,7 +97,7 @@ export function Contact() {
                   <input
                     required
                     type="email"
-                    className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
+                    className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors"
                     placeholder="jean@exemple.com"
                   />
                 </div>
@@ -127,7 +107,7 @@ export function Contact() {
                 <input
                   required
                   type="text"
-                  className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors"
+                  className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors"
                   placeholder="Collaboration..."
                 />
               </div>
@@ -136,13 +116,13 @@ export function Contact() {
                 <textarea
                   required
                   rows={4}
-                  className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-[#9F1239] transition-colors resize-none"
+                  className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors resize-none"
                   placeholder="Dites-moi tout !"
                 />
               </div>
               <button 
                 disabled={formState.submitting}
-                className="w-full py-4 bg-[#9F1239] text-white rounded-xl font-bold hover:bg-[#BE123C] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-[#9F1239]/20"
+                className="w-full py-4 bg-[#9F1239] text-white rounded-xl font-bold hover:bg-[#BE123C] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-[#9F1239]/20"
               >
                 {formState.submitting ? "Envoi en cours..." : "Envoyer"} <Send size={20} />
               </button>
