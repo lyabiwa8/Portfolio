@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Play, FileText, Camera } from "lucide-react";
 import Image from "next/image";
-import imageLoader, { getAssetPath } from "@/utils/imageLoader";
+import { getAssetPath } from "@/utils/imageLoader";
 
 const projects = [
   {
@@ -105,8 +105,7 @@ export function Portfolio() {
               className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-brown-100 shadow-xl"
             >
               <Image
-                loader={imageLoader}
-                src={project.thumbnail}
+                src={getAssetPath(project.thumbnail)}
                 alt={project.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100"

@@ -64,8 +64,7 @@ export function Navbar() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             {links.map((l) => {
-              const hrefWithBase = l.href === "/" ? basePath + "/" : basePath + l.href + "/";
-              const active = pathname === hrefWithBase || pathname === hrefWithBase.slice(0, -1);
+              const active = pathname === l.href || (l.href !== "/" && pathname === l.href + "/");
               return (
                 <Link
                   key={l.href}

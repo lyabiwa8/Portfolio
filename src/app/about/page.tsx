@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Download, GraduationCap, Briefcase, MapPin, Globe, Mail } from "lucide-react";
-import imageLoader, { getAssetPath } from "@/utils/imageLoader";
+import { getAssetPath } from "@/utils/imageLoader";
 
 const education = [
   {
@@ -91,8 +91,7 @@ export default function About() {
               style={{ boxShadow: "0 24px 64px -12px rgba(26,15,8,0.25), 0 0 0 1px rgba(107,62,32,0.14)" }}
             >
               <Image
-                loader={imageLoader}
-                src="/images/photos-presentation/bio-photo.jpg"
+                src={getAssetPath("/images/photos-presentation/bio-photo.jpg")}
                 alt="Lya Biwa" fill sizes="320px"
                 className="object-cover object-top" priority
               />

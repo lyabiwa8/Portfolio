@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { PageWrapper } from "@/components/PageWrapper";
 import { ArrowRight, Play, Camera, FileText, Music, Film, Dumbbell, Globe } from "lucide-react";
-import imageLoader from "@/utils/imageLoader";
+import { getAssetPath } from "@/utils/imageLoader";
 
 /* ── Gallery photos ── */
 const gallery = [
@@ -46,8 +46,7 @@ export default function Home() {
           className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-warm-900/15"
         >
           <Image
-            loader={imageLoader}
-            src="/images/photos-presentation/photo-runway-mode.jpg"
+            src={getAssetPath("/images/photos-presentation/photo-runway-mode.jpg")}
             alt="Lya Biwa" fill priority
             className="object-cover object-center"
           />
@@ -120,8 +119,7 @@ export default function Home() {
               style={{ boxShadow: "0 24px 64px -12px rgba(30,18,8,0.25), 0 0 0 1px rgba(168,112,63,0.12)" }}
             >
               <Image
-                loader={imageLoader}
-                src="/images/photos-presentation/bio-photo.jpg"
+                src={getAssetPath("/images/photos-presentation/bio-photo.jpg")}
                 alt="Lya Biwa" fill sizes="330px"
                 className="object-cover object-top"
               />
@@ -259,7 +257,7 @@ export default function Home() {
                 }`}
                 style={{ boxShadow: "0 4px 20px -4px rgba(30,18,8,0.18)" }}
               >
-                <Image loader={imageLoader} src={p.src} alt={p.label} fill className="object-cover" />
+                <Image src={getAssetPath(p.src)} alt={p.label} fill className="object-cover" />
                 <div
                   className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-3"
                   style={{ background: "linear-gradient(to top, rgba(30,18,8,0.55) 0%, transparent 60%)" }}
@@ -312,7 +310,7 @@ export default function Home() {
             >
               {/* Hover photo */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-25 transition-opacity duration-700">
-                <Image loader={imageLoader} src={c.img} alt={c.title} fill className="object-cover" />
+                <Image src={getAssetPath(c.img)} alt={c.title} fill className="object-cover" />
               </div>
               <div className="relative z-10 p-6 md:p-7">
                 <div
@@ -361,7 +359,7 @@ export default function Home() {
               className={`img-zoom relative rounded-xl md:rounded-2xl overflow-hidden ${h.wide ? "col-span-2 md:col-span-1 row-span-2" : ""}`}
               style={{ boxShadow: "0 4px 20px -4px rgba(30,18,8,0.15)" }}
             >
-              <Image loader={imageLoader} src={h.img} alt={h.title} fill className="object-cover" />
+              <Image src={getAssetPath(h.img)} alt={h.title} fill className="object-cover" />
               <div
                 className="absolute inset-0"
                 style={{ background: "linear-gradient(to top, rgba(30,18,8,0.72) 0%, rgba(30,18,8,0.05) 55%, transparent 100%)" }}
@@ -389,8 +387,7 @@ export default function Home() {
             style={{ minHeight: "300px" }}
           >
             <Image
-              loader={imageLoader}
-              src="/images/photos-presentation/photo-mer.jpg"
+              src={getAssetPath("/images/photos-presentation/photo-mer.jpg")}
               alt="La mer" fill
               className="object-cover brightness-[0.28]"
             />

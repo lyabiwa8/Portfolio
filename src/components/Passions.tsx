@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import imageLoader from "@/utils/imageLoader";
+import { getAssetPath } from "@/utils/imageLoader";
+import { cn } from "@/lib/utils";
 
 const passions = [
   {
@@ -60,8 +61,7 @@ export function Passions() {
               )}
             >
               <Image
-                loader={imageLoader}
-                src={passion.image}
+                src={getAssetPath(passion.image)}
                 alt={passion.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"

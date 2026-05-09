@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Play, FileText, ImageIcon, ExternalLink } from "lucide-react";
 import { useState } from "react";
-import imageLoader, { getAssetPath } from "@/utils/imageLoader";
+import { getAssetPath } from "@/utils/imageLoader";
 
 const categories = ["Tous", "Vidéo", "Design", "Rédaction"];
 
@@ -117,8 +117,7 @@ export default function Projects() {
               className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-brown-50"
             >
               <Image
-                loader={imageLoader}
-                src={project.thumb}
+                src={getAssetPath(project.thumb)}
                 alt={project.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
