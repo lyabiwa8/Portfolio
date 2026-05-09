@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Download, GraduationCap, Briefcase, MapPin, Globe, Mail } from "lucide-react";
 import { getAssetPath } from "@/utils/imageLoader";
@@ -51,24 +50,14 @@ const experience = [
   },
 ];
 
-const skills = ["Canva", "Capcut", "Figma", "Google Workspace", "Microsoft 365", "ChatGPT", "Réseaux Sociaux", "Adobe Suite"];
-
-const languages = [
-  { lang: "Français", level: "Maternelle", pct: 100 },
-  { lang: "Anglais",  level: "C1",         pct: 82 },
-  { lang: "Japonais", level: "A1",         pct: 18 },
-  { lang: "Allemand", level: "A1",         pct: 18 },
-];
-
-/* Shared colors */
 const C = {
-  bg:       "#E8D5B8",
-  text:     "#120A04",
-  muted:    "rgba(26,15,8,0.60)",
-  accent:   "#6B3E20",
-  accentLt: "#8B5530",
-  border:   "rgba(26,15,8,0.12)",
-  card:     "rgba(255,248,236,0.55)",
+  bg:       "#0F172A",
+  text:     "#F8FAFC",
+  muted:    "rgba(226,232,240,0.60)",
+  accent:   "#9F1239",
+  accentLt: "#BE123C",
+  border:   "rgba(255,255,255,0.08)",
+  card:     "rgba(17,24,39,0.7)",
 };
 
 export default function About() {
@@ -87,8 +76,8 @@ export default function About() {
             className="relative w-full max-w-[240px] sm:max-w-[290px] lg:max-w-[320px] mx-auto lg:mx-0 flex-shrink-0"
           >
             <div
-              className="aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden img-zoom"
-              style={{ boxShadow: "0 24px 64px -12px rgba(26,15,8,0.25), 0 0 0 1px rgba(107,62,32,0.14)" }}
+              className="aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden img-zoom shadow-2xl"
+              style={{ boxShadow: "0 24px 64px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)" }}
             >
               <Image
                 src={getAssetPath("/images/photos-presentation/bio-photo.jpg")}
@@ -99,16 +88,14 @@ export default function About() {
             <motion.div
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-3 -right-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl rotate-2"
-              style={{ background: C.accent, color: "#F7EDD5" }}
+              className="absolute -bottom-3 -right-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl rotate-2 bg-[#9F1239] text-white shadow-lg"
             >
               Événementiel
             </motion.div>
             <motion.div
               animate={{ y: [0, 5, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -top-3 -left-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl -rotate-2"
-              style={{ background: C.card, border: `1px solid ${C.border}`, backdropFilter: "blur(8px)", color: C.accent }}
+              className="absolute -top-3 -left-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl -rotate-2 bg-[#111827]/80 backdrop-blur-md border border-white/10 text-[#9F1239]"
             >
               BTS Com
             </motion.div>
@@ -120,8 +107,7 @@ export default function About() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-[10px] font-semibold uppercase tracking-[0.15em]"
-              style={{ background: "rgba(107,62,32,0.10)", border: "1px solid rgba(107,62,32,0.22)", color: C.accent }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-[10px] font-semibold uppercase tracking-[0.15em] bg-[#9F1239]/10 border border-[#9F1239]/30 text-[#9F1239]"
             >
               En recherche d'alternance
             </motion.div>
@@ -134,7 +120,7 @@ export default function About() {
               style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)", color: C.text }}
             >
               Étudiante en{" "}
-              <em className="not-italic" style={{ color: C.accentLt }}>Communication.</em>
+              <em className="not-italic text-[#9F1239]">Communication.</em>
             </motion.h1>
 
             <motion.div
@@ -163,8 +149,7 @@ export default function About() {
               ].map((p) => (
                 <span
                   key={p.text}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full"
-                  style={{ background: C.card, border: `1px solid ${C.border}`, color: C.muted, backdropFilter: "blur(8px)" }}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#E2E8F0]/70 backdrop-blur-md"
                 >
                   {p.icon}{p.text}
                 </span>
@@ -177,7 +162,7 @@ export default function About() {
               transition={{ delay: 0.38 }}
               href={getAssetPath("/cv/cv_lya_alternance.pdf")}
               download
-              className="inline-flex items-center gap-2.5 btn-primary text-sm font-bold px-8 py-4 rounded-full"
+              className="inline-flex items-center gap-2.5 btn-primary text-sm font-bold px-8 py-4 rounded-full shadow-lg shadow-[#9F1239]/20"
             >
               Télécharger mon CV <Download size={15} />
             </motion.a>
@@ -192,17 +177,15 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-2xl md:rounded-3xl p-6 md:p-8"
-            style={{ background: C.card, backdropFilter: "blur(12px)", border: `1px solid ${C.border}` }}
+            className="rounded-2xl md:rounded-3xl p-6 md:p-8 bg-[#111827]/70 backdrop-blur-xl border border-white/5 shadow-2xl"
           >
             <div className="flex items-center gap-3 mb-7">
               <div
-                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ background: "rgba(107,62,32,0.12)", border: "1px solid rgba(107,62,32,0.22)", color: C.accent }}
+                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-[#9F1239]/10 border border-[#9F1239]/30 text-[#9F1239]"
               >
                 <GraduationCap size={17} />
               </div>
-              <h3 className="text-lg md:text-xl font-display font-bold" style={{ color: C.text }}>Formation</h3>
+              <h3 className="text-lg md:text-xl font-display font-bold text-white">Formation</h3>
             </div>
 
             <div className="space-y-7">
@@ -216,15 +199,14 @@ export default function About() {
                   className="pl-11 relative"
                 >
                   <div
-                    className="absolute left-0 top-0.5 w-9 h-9 rounded-full flex items-center justify-center z-10"
-                    style={{ background: "rgba(107,62,32,0.10)", border: "1px solid rgba(107,62,32,0.18)", color: C.accentLt }}
+                    className="absolute left-0 top-0.5 w-9 h-9 rounded-full flex items-center justify-center z-10 bg-white/5 border border-white/10 text-[#9F1239]"
                   >
                     {item.icon}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-0.5" style={{ color: C.accent }}>{item.year}</span>
-                  <h4 className="text-base font-display font-bold mb-0.5" style={{ color: C.text }}>{item.title}</h4>
-                  <p className="text-xs font-semibold mb-1.5" style={{ color: C.muted }}>{item.institution}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(26,15,8,0.55)" }}>{item.desc}</p>
+                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-0.5 text-[#9F1239]">{item.year}</span>
+                  <h4 className="text-base font-display font-bold mb-0.5 text-white">{item.title}</h4>
+                  <p className="text-xs font-semibold mb-1.5 text-[#E2E8F0]/40">{item.institution}</p>
+                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -236,17 +218,15 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="rounded-2xl md:rounded-3xl p-6 md:p-8"
-            style={{ background: C.card, backdropFilter: "blur(12px)", border: `1px solid ${C.border}` }}
+            className="rounded-2xl md:rounded-3xl p-6 md:p-8 bg-[#111827]/70 backdrop-blur-xl border border-white/5 shadow-2xl"
           >
             <div className="flex items-center gap-3 mb-7">
               <div
-                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ background: "rgba(107,62,32,0.12)", border: "1px solid rgba(107,62,32,0.22)", color: C.accent }}
+                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-[#9F1239]/10 border border-[#9F1239]/30 text-[#9F1239]"
               >
                 <Briefcase size={17} />
               </div>
-              <h3 className="text-lg md:text-xl font-display font-bold" style={{ color: C.text }}>Expérience</h3>
+              <h3 className="text-lg md:text-xl font-display font-bold text-white">Expérience</h3>
             </div>
 
             <div className="space-y-7">
@@ -260,81 +240,22 @@ export default function About() {
                   className="pl-11 relative"
                 >
                   <div
-                    className="absolute left-0 top-0.5 w-9 h-9 rounded-full flex items-center justify-center z-10"
-                    style={{ background: "rgba(107,62,32,0.10)", border: "1px solid rgba(107,62,32,0.18)", color: C.accentLt }}
+                    className="absolute left-0 top-0.5 w-9 h-9 rounded-full flex items-center justify-center z-10 bg-white/5 border border-white/10 text-[#9F1239]"
                   >
                     {item.icon}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-0.5" style={{ color: C.accent }}>{item.year}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-0.5 text-[#9F1239]">{item.year}</span>
                   <div className="flex items-center gap-2 mb-0.5">
-                    <h4 className="text-base font-display font-bold" style={{ color: C.text }}>{item.title}</h4>
+                    <h4 className="text-base font-display font-bold text-white">{item.title}</h4>
                     {item.sub && (
-                      <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full" style={{ background: "rgba(107,62,32,0.12)", color: C.accent }}>
+                      <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[#9F1239]/10 text-[#9F1239]">
                         {item.sub}
                       </span>
                     )}
                   </div>
-                  <p className="text-xs font-semibold mb-1.5" style={{ color: C.muted }}>{item.institution}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(26,15,8,0.55)" }}>{item.desc}</p>
+                  <p className="text-xs font-semibold mb-1.5 text-[#E2E8F0]/40">{item.institution}</p>
+                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60">{item.desc}</p>
                 </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* ═══ SKILLS + LANGUAGES ═══ */}
-        <div className="grid md:grid-cols-2 gap-4 md:gap-5">
-          {/* Outils */}
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="rounded-2xl md:rounded-3xl p-6 md:p-8"
-            style={{ background: C.card, backdropFilter: "blur(12px)", border: `1px solid ${C.border}` }}
-          >
-            <h3 className="text-lg md:text-xl font-display font-bold mb-5" style={{ color: C.text }}>Outils & Logiciels</h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((s) => (
-                <span
-                  key={s}
-                  className="text-xs font-semibold px-3.5 py-1.5 rounded-full"
-                  style={{ background: "rgba(107,62,32,0.10)", border: "1px solid rgba(107,62,32,0.18)", color: C.accent }}
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Langues */}
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="rounded-2xl md:rounded-3xl p-6 md:p-8"
-            style={{ background: C.card, backdropFilter: "blur(12px)", border: `1px solid ${C.border}` }}
-          >
-            <h3 className="text-lg md:text-xl font-display font-bold mb-5" style={{ color: C.text }}>Langues</h3>
-            <div className="space-y-4">
-              {languages.map((l) => (
-                <div key={l.lang}>
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="text-sm font-semibold" style={{ color: C.text }}>{l.lang}</span>
-                    <span className="text-xs font-bold" style={{ color: C.accentLt }}>{l.level}</span>
-                  </div>
-                  <div className="h-1 rounded-full w-full" style={{ background: "rgba(26,15,8,0.10)" }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${l.pct}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-                      className="h-full rounded-full"
-                      style={{ background: C.accent }}
-                    />
-                  </div>
-                </div>
               ))}
             </div>
           </motion.div>
@@ -344,9 +265,3 @@ export default function About() {
     </PageWrapper>
   );
 }
-
-
-
-
-
-

@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer
       className="relative z-10 mt-4"
-      style={{ borderTop: "1px solid rgba(30,18,8,0.09)", background: "rgba(247,241,232,0.60)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+      style={{ borderTop: "1px solid rgba(255,255,255,0.06)", background: "rgba(15,23,42,0.85)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
     >
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-12">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
@@ -17,17 +17,17 @@ export function Footer() {
             <Link href="/"
               className="flex items-center gap-3 group mb-2"
             >
-              <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-brown-900">
+              <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-[#9F1239]">
                 LB
               </div>
               <span 
-                className="font-display text-xl font-bold tracking-tight transition-colors hover:text-accent"
-                style={{ color: "#1E1208" }}
+                className="font-display text-xl font-bold tracking-tight transition-colors hover:text-[#9F1239]"
+                style={{ color: "#F8FAFC" }}
               >
                 LYA BIWA
               </span>
             </Link>
-            <p className="text-[11px] mt-0.5 font-medium tracking-wide" style={{ color: "rgba(45,27,14,0.45)" }}>
+            <p className="text-[11px] mt-0.5 font-medium tracking-wide" style={{ color: "rgba(226,232,240,0.45)" }}>
               Communication · Événementiel · Création
             </p>
           </div>
@@ -66,7 +66,7 @@ export function Footer() {
           style={{ borderTop: "1px solid rgba(30,18,8,0.07)", paddingTop: "1.5rem" }}
         >
           <span className="text-[11px] font-medium tracking-wider uppercase"
-            style={{ color: "rgba(45,27,14,0.35)" }}
+            style={{ color: "rgba(226,232,240,0.35)" }}
           >
             © {new Date().getFullYear()} Lya Biwa — Tous droits réservés.
           </span>
@@ -81,9 +81,9 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center rounded-full transition-all"
-                style={{ border: "1px solid rgba(30,18,8,0.14)", color: "rgba(45,27,14,0.45)" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#A8703F"; (e.currentTarget as HTMLElement).style.color = "white"; (e.currentTarget as HTMLElement).style.borderColor = "#A8703F"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = ""; (e.currentTarget as HTMLElement).style.color = "rgba(45,27,14,0.45)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(30,18,8,0.14)"; }}
+                style={{ border: "1px solid rgba(255,255,255,0.14)", color: "rgba(226,232,240,0.45)" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#9F1239"; (e.currentTarget as HTMLElement).style.color = "white"; (e.currentTarget as HTMLElement).style.borderColor = "#9F1239"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = ""; (e.currentTarget as HTMLElement).style.color = "rgba(226,232,240,0.45)"; (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.14)"; }}
               >
                 {s.icon}
               </a>

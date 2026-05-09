@@ -40,7 +40,7 @@ export function Navbar() {
         style={{ background: "rgba(168,112,63,0.10)" }}>
         <motion.div
           className="h-full"
-          style={{ width: `${progress}%`, background: "#A8703F" }}
+          style={{ width: `${progress}%`, background: "#9F1239" }}
           transition={{ duration: 0.1 }}
         />
       </div>
@@ -48,7 +48,7 @@ export function Navbar() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={scrolled
-          ? { background: "rgba(237,217,190,0.88)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(30,18,8,0.10)", boxShadow: "0 2px 16px -2px rgba(30,18,8,0.10)" }
+          ? { background: "rgba(15,23,42,0.88)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 2px 16px -2px rgba(0,0,0,0.30)" }
           : { background: "transparent" }
         }
       >
@@ -57,12 +57,12 @@ export function Navbar() {
           <Link href="/"
             className="flex items-center gap-3 group"
           >
-            <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-brown-900">
+            <div className="font-display font-bold text-lg md:text-xl tracking-tighter text-[#9F1239]">
               LB
             </div>
             <span 
               className="font-display font-bold text-lg md:text-xl tracking-tight transition-colors"
-              style={{ color: scrolled ? "#1E1208" : "white" }}
+              style={{ color: scrolled ? "#F8FAFC" : "#F8FAFC" }}
             >
               LYA BIWA
             </span>
