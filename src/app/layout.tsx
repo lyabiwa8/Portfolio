@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Lya Biwa | Portfolio Communication",
-  description: "Portfolio de Lya Biwa, étudiante en communication, passionnée par la mode et la création visuelle.",
-  keywords: ["Lya Biwa", "Portfolio", "Communication", "Mode", "Création", "BTS Communication"],
+  description: "Portfolio professionnel de Lya Biwa, étudiante en communication. Créativité, stratégie et design.",
 };
 
 export default function RootLayout({
@@ -25,10 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body
-        className={`${inter.variable} ${outfit.variable} antialiased`}
-      >
-        {children}
+      <body className="antialiased selection:bg-accent/30">
+        <Navbar />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
