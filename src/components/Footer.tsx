@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Mail, Linkedin } from "lucide-react";
 import { getAssetPath } from "@/utils/imageLoader";
 
 export function Footer() {
