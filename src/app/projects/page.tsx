@@ -11,12 +11,20 @@ const categories = ["Tous", "Vidéo", "Design", "Rédaction"];
 
 const projects = [
   {
+    title: "Ogilvy / Candy'Up",
+    category: "Vidéo",
+    type: "video",
+    src: "/images/creations/projet-ogilvy.mov",
+    thumb: "/images/photos-presentation/cinema-life.jpg",
+    desc: "Campagne digitale pour Ogilvy Paris. Storytelling visuel et montage dynamique."
+  },
+  {
     title: "Article Touristy",
     category: "Rédaction",
     type: "pdf",
     src: "/images/creations/article-touristy.pdf",
     thumb: "/images/photos-presentation/vogue-lifestyle.jpg",
-    desc: "Rédaction d'un article de voyage pour le magazine Touristy."
+    desc: "Rédaction d'un article de voyage premium pour le magazine Touristy."
   },
   {
     title: "Starz Communication",
@@ -24,7 +32,15 @@ const projects = [
     type: "pdf",
     src: "/images/creations/starz.pdf",
     thumb: "/images/creations/event-affiche-perso.png",
-    desc: "Identité visuelle et plan de communication pour le projet Starz."
+    desc: "Dossier complet de stratégie de communication et identité visuelle pour Starz."
+  },
+  {
+    title: "TikTok Edit Schiaparelli",
+    category: "Vidéo",
+    type: "video",
+    src: "/images/creations/edit-schiaparelli.mp4",
+    thumb: "/images/photos-presentation/photo-runway-mode.jpg",
+    desc: "Montage court format (Short/Reel) axé sur la haute couture Schiaparelli."
   },
   {
     title: "Newsletter Suisse Normande",
@@ -32,39 +48,63 @@ const projects = [
     type: "pdf",
     src: "/images/creations/newsletter-suisse-normande.pdf",
     thumb: "/images/photos-presentation/photo-mode-musee.jpg",
-    desc: "Conception et rédaction d'une newsletter régionale."
+    desc: "Mise en page et rédaction de la newsletter culturelle Suisse Normande."
   },
   {
-    title: "Affiche Événementielle",
+    title: "Affiche Événementielle RS",
     category: "Design",
     type: "image",
     src: "/images/creations/event-affiche-rs.png",
     thumb: "/images/creations/event-affiche-rs.png",
-    desc: "Création graphique pour les réseaux sociaux."
+    desc: "Conception graphique d'une affiche pour les réseaux sociaux."
   },
   {
-    title: "Montage Vidéo ISCOM",
+    title: "Édit Batman Concept",
     category: "Vidéo",
     type: "video",
-    src: "/images/creations/edit-schiaparelli.mp4",
-    thumb: "/images/photos-presentation/mode-lifestyle.jpg",
-    desc: "Vidéo promotionnelle réalisée pour un projet d'école."
+    src: "/images/creations/edit-batman-jeu.mov",
+    thumb: "/images/photos-presentation/goku.jpg",
+    desc: "Motion design et montage autour de l'univers de Batman."
   },
   {
-    title: "Scrapbook Mode",
-    category: "Design",
-    type: "image",
-    src: "/images/creations/scrapbook-mode.jpg",
-    thumb: "/images/creations/scrapbook-mode.jpg",
-    desc: "Travail sur la typographie et la composition mode."
+    title: "Faux Article Mode",
+    category: "Rédaction",
+    type: "pdf",
+    src: "/images/creations/faux-article.pdf",
+    thumb: "/images/photos-presentation/photo-runway-mode-2.jpg",
+    desc: "Exercice de rédaction journalistique et mise en page éditoriale."
   },
   {
-    title: "Invitation Event",
+    title: "Invitation Événement",
     category: "Design",
     type: "image",
     src: "/images/creations/invitation-event.png",
     thumb: "/images/creations/invitation-event.png",
-    desc: "Design d'invitation pour un événement privé."
+    desc: "Design minimaliste et élégant pour une invitation événementielle."
+  },
+  {
+    title: "Edit VS / Mode",
+    category: "Vidéo",
+    type: "video",
+    src: "/images/creations/edit-vs.mov",
+    thumb: "/images/photos-presentation/vogue-lifestyle.jpg",
+    desc: "Comparaison visuelle et montage rythmé sur les tendances mode."
+  },
+  {
+    title: "Scrapbook Créatif",
+    category: "Design",
+    type: "image",
+    src: "/images/creations/scrapbook-mode.jpg",
+    thumb: "/images/creations/scrapbook-mode.jpg",
+    desc: "Composition artistique type scrapbook mêlant photos et typographies."
+  },
+  {
+    title: "Édit YSL Heritage",
+    category: "Vidéo",
+    type: "video",
+    src: "/images/creations/edit-ysl.mp4",
+    thumb: "/images/photos-presentation/acting-passion.jpg",
+    desc: "Montage hommage à l'univers esthétique d'Yves Saint Laurent."
   }
 ];
 
