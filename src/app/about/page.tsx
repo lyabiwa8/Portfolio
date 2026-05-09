@@ -49,14 +49,14 @@ const experience = [
 export default function About() {
   return (
     <PageWrapper>
-      <div className="max-w-7xl mx-auto px-6 pt-32">
+      <div className="max-w-7xl mx-auto px-6 pt-24 md:pt-32">
         {/* Header Section */}
-        <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center mb-20 md:mb-32">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white/60 rotate-[-2deg]"
+            className="relative aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-[8px] md:border-[12px] border-white/60 rotate-[-2deg] max-w-[400px] mx-auto lg:max-w-none"
           >
             <Image
               src="/images/photos-presentation/bio-photo.jpg"
@@ -71,16 +71,16 @@ export default function About() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 rounded-full mb-8"
+              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 rounded-full mb-6 md:mb-8"
             >
-              <span className="text-xs font-bold text-accent uppercase tracking-widest">En recherche d'alternance</span>
+              <span className="text-[10px] md:text-xs font-bold text-accent uppercase tracking-widest">En recherche d'alternance</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-display font-bold text-brown-900 mb-10 leading-tight tracking-tighter"
+              className="text-4xl md:text-7xl font-display font-bold text-brown-900 mb-6 md:mb-10 leading-tight tracking-tighter"
             >
               Étudiante en <span className="text-accent italic">Communication.</span>
             </motion.h1>
@@ -90,16 +90,13 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="space-y-8 text-xl text-brown-700 leading-relaxed font-medium"
+              className="space-y-6 md:space-y-8 text-lg md:text-xl text-brown-700 leading-relaxed font-medium"
             >
               <p>
                 Future étudiante en <span className="text-brown-900 font-bold">Licence de Communication</span>, je me passionne pour l'événementiel, le luxe et la mode.
               </p>
               <p>
-                Je suis actuellement à la recherche d'une <span className="text-brown-900 font-bold underline decoration-accent/30 decoration-4">alternance d'un an</span> à partir de <span className="text-accent italic font-bold">septembre 2026</span> pour mettre mes compétences en stratégie et création au service de projets ambitieux.
-              </p>
-              <p className="text-base font-normal text-brown-500">
-                Mon parcours, mêlant rigueur opérationnelle et créativité visuelle, m'a permis de développer une polyvalence que je souhaite aujourd'hui mettre à profit dans le secteur de l'événementiel.
+                Je suis actuellement à la recherche d'une <span className="text-brown-900 font-bold underline decoration-accent/30 decoration-4">alternance d'un an</span> à partir de <span className="text-accent italic font-bold">septembre 2026</span>.
               </p>
             </motion.div>
             
@@ -108,7 +105,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="mt-12 flex flex-wrap gap-6"
+              className="mt-10 md:mt-12 flex flex-wrap gap-4 md:gap-6"
             >
               <a
                 href="/cv/cv-lya.pdf"

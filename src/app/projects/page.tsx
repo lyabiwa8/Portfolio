@@ -75,22 +75,22 @@ export default function Projects() {
   return (
     <PageWrapper>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20 bg-beige-100 py-20 rounded-[3rem] border border-brown-100">
+        <div className="text-center mb-16 md:mb-20 bg-beige-100 py-16 md:py-20 rounded-[2rem] md:rounded-[3rem] border border-brown-100">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-7xl md:text-9xl font-display font-bold text-brown-900 mb-10 tracking-tighter"
+            className="text-5xl md:text-9xl font-display font-bold text-brown-900 mb-8 md:mb-10 tracking-tighter"
           >
             PROJETS
           </motion.h1>
           
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 px-4">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={cn(
-                  "px-8 py-3 rounded-full text-xs font-bold transition-all border uppercase tracking-widest",
+                  "px-6 md:px-8 py-2 md:py-3 rounded-full text-[10px] md:text-xs font-bold transition-all border uppercase tracking-widest",
                   filter === cat 
                     ? "bg-brown-900 text-white border-brown-900 shadow-lg" 
                     : "bg-white text-brown-600 border-brown-200 hover:border-accent hover:text-accent"

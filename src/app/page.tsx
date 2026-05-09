@@ -15,7 +15,7 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative w-full max-w-6xl h-[60vh] rounded-[3rem] overflow-hidden mb-12 shadow-2xl"
+          className="relative w-full max-w-6xl h-[50vh] md:h-[60vh] rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-8 md:mb-12 shadow-2xl"
         >
           <Image
             src="/images/photos-presentation/mode-lifestyle.jpg"
@@ -33,7 +33,7 @@ export default function Home() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="overflow-hidden"
             >
-              <h1 className="text-6xl md:text-9xl font-display font-bold tracking-tighter mb-4">
+              <h1 className="text-4xl md:text-9xl font-display font-bold tracking-tighter mb-4">
                 LYA BIWA
               </h1>
             </motion.div>
@@ -41,7 +41,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="text-xl md:text-2xl font-light italic opacity-90"
+              className="text-lg md:text-2xl font-light italic opacity-90"
             >
               "I believe, I can fly"
             </motion.p>
@@ -50,28 +50,28 @@ export default function Home() {
       </section>
 
       <section className="px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32">
+        <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-24 mb-20 md:mb-32">
           <div className="flex-1 order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 rounded-full mb-8"
+              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 rounded-full mb-6 md:mb-8"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
               </span>
-              <span className="text-xs font-bold text-accent uppercase tracking-widest">Recherche Alternance — Sept. 2026</span>
+              <span className="text-[10px] md:text-xs font-bold text-accent uppercase tracking-widest">Recherche Alternance — Sept. 2026</span>
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-7xl md:text-9xl font-display font-bold text-brown-900 leading-[0.85] tracking-tighter mb-12"
+              className="text-5xl md:text-9xl font-display font-bold text-brown-900 leading-[0.85] tracking-tighter mb-8 md:mb-12"
             >
               CRÉER <br/>
-              <span className="text-accent italic ml-12 lg:ml-24">L'IMPACT.</span>
+              <span className="text-accent italic ml-6 md:ml-24">L'IMPACT.</span>
             </motion.h1>
             
             <motion.div
@@ -104,9 +104,9 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 order-1 lg:order-2 relative"
+            className="flex-1 order-1 lg:order-2 relative w-full max-w-[400px] lg:max-w-none mx-auto"
           >
-            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden relative shadow-2xl border-[12px] border-white/60">
+            <div className="aspect-[4/5] rounded-[2rem] md:rounded-[3rem] overflow-hidden relative shadow-2xl border-[8px] md:border-[12px] border-white/60">
               <Image 
                 src="/images/photos-presentation/mode-lifestyle.jpg"
                 alt="Lya Biwa Editorial"
@@ -116,11 +116,11 @@ export default function Home() {
               />
             </div>
             {/* Decorative stickers */}
-            <div className="absolute -bottom-8 -left-8 bg-accent text-white p-6 rounded-2xl shadow-xl rotate-6 hidden md:block">
-              <p className="text-xs font-bold uppercase tracking-widest">Communication</p>
+            <div className="absolute -bottom-4 md:-bottom-8 -left-4 md:-left-8 bg-accent text-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-xl rotate-6">
+              <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest">Communication</p>
             </div>
-            <div className="absolute -top-8 -right-8 bg-brown-900 text-white p-6 rounded-2xl shadow-xl -rotate-3 hidden md:block">
-              <p className="text-xs font-bold uppercase tracking-widest">Design Visuel</p>
+            <div className="absolute -top-4 md:-top-8 -right-4 md:-right-8 bg-brown-900 text-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-xl -rotate-3">
+              <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest">Design Visuel</p>
             </div>
           </motion.div>
         </div>
@@ -139,7 +139,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-10">
             {[
               { 
                 title: "Vidéo & Motion", 
@@ -166,13 +166,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={cn("p-12 rounded-[3rem] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group", cat.color)}
+                className={cn("p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group", cat.color)}
               >
-                <div className="text-accent mb-8 group-hover:scale-110 transition-transform duration-500">
+                <div className="text-accent mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500">
                   {cat.icon}
                 </div>
-                <h4 className="text-2xl font-display font-bold text-brown-900 mb-6">{cat.title}</h4>
-                <p className="text-brown-700 leading-relaxed text-base">{cat.desc}</p>
+                <h4 className="text-xl md:text-2xl font-display font-bold text-brown-900 mb-4 md:mb-6">{cat.title}</h4>
+                <p className="text-brown-700 leading-relaxed text-sm md:text-base">{cat.desc}</p>
               </motion.div>
             ))}
           </div>

@@ -31,10 +31,10 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-6"
+      className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-4 md:py-6"
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center bg-white/60 backdrop-blur-xl border border-white/40 px-8 py-4 rounded-full shadow-2xl shadow-brown-900/5">
-        <Link href="/" className="text-2xl font-display font-bold text-brown-900 tracking-tighter">
+      <div className="max-w-7xl mx-auto flex justify-between items-center bg-white/60 backdrop-blur-xl border border-white/40 px-6 md:px-8 py-3 md:py-4 rounded-full shadow-2xl shadow-brown-900/5">
+        <Link href="/" className="text-xl md:text-2xl font-display font-bold text-brown-900 tracking-tighter">
           LYA BIWA
         </Link>
 
