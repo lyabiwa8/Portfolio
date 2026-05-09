@@ -15,7 +15,7 @@ const projects = [
     category: "Vidéo",
     type: "video",
     src: "/images/creations/projet-ogilvy.mov",
-    thumb: "/images/photos-presentation/cinema-life.jpg",
+    thumb: "/images/creations/ogilvy-thumb.png",
     desc: "Campagne digitale pour Ogilvy Paris. Storytelling visuel et montage dynamique."
   },
   {
@@ -23,7 +23,7 @@ const projects = [
     category: "Rédaction",
     type: "pdf",
     src: "/images/creations/article-touristy.pdf",
-    thumb: "/images/photos-presentation/vogue-lifestyle.jpg",
+    thumb: "/images/creations/touristy-thumb.png",
     desc: "Rédaction d'un article de voyage premium pour le magazine Touristy."
   },
   {
@@ -47,7 +47,7 @@ const projects = [
     category: "Rédaction",
     type: "pdf",
     src: "/images/creations/newsletter-suisse-normande.pdf",
-    thumb: "/images/photos-presentation/photo-mode-musee.jpg",
+    thumb: "/images/creations/newsletter-thumb.png",
     desc: "Mise en page et rédaction de la newsletter culturelle Suisse Normande."
   },
   {
@@ -63,7 +63,7 @@ const projects = [
     category: "Vidéo",
     type: "video",
     src: "/images/creations/edit-batman-jeu.mov",
-    thumb: "/images/photos-presentation/goku.jpg",
+    thumb: "/images/creations/batman-thumb.png",
     desc: "Motion design et montage autour de l'univers de Batman."
   },
   {
@@ -71,7 +71,7 @@ const projects = [
     category: "Rédaction",
     type: "pdf",
     src: "/images/creations/faux-article.pdf",
-    thumb: "/images/photos-presentation/photo-runway-mode-2.jpg",
+    thumb: "/images/creations/faux-article-thumb.png",
     desc: "Exercice de rédaction journalistique et mise en page éditoriale."
   },
   {
@@ -103,7 +103,7 @@ const projects = [
     category: "Vidéo",
     type: "video",
     src: "/images/creations/edit-ysl.mp4",
-    thumb: "/images/photos-presentation/acting-passion.jpg",
+    thumb: "/images/photos-presentation/photo-runway-mode-2.jpg",
     desc: "Montage hommage à l'univers esthétique d'Yves Saint Laurent."
   }
 ];
