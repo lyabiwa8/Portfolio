@@ -38,7 +38,8 @@ export default function Home() {
     <PageWrapper>
 
       {/* ════════════ HERO ════════════ */}
-      <section ref={heroRef} className="relative pt-20 md:pt-24 px-3 md:px-5">
+      <section ref={heroRef} className="relative pt-20 md:pt-24 px-6 md:px-12 lg:px-20">
+        <div className="max-w-5xl mx-auto">
         <motion.div
           style={{ scale: heroScale, height: "clamp(220px, 38vh, 400px)" }}
           className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-warm-900/15"
@@ -97,6 +98,7 @@ export default function Home() {
             </motion.p>
           </motion.div>
         </motion.div>
+        </div>
       </section>
 
       {/* ════════════ BIO ════════════ */}

@@ -98,7 +98,7 @@ export function ModernBackground() {
   return (
     <div
       className="fixed inset-0 -z-10 overflow-hidden"
-      style={{ background: "linear-gradient(150deg, #FBF6EE 0%, #F7F1E8 45%, #F3EBE0 100%)" }}
+      style={{ background: "linear-gradient(150deg, #F0DCBD 0%, #E8D5B8 45%, #DFC9A8 100%)" }}
     >
       {/* Warm blobs */}
       {blobs.map((b, i) => (

@@ -47,7 +47,7 @@ export function Navbar() {
       <header
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={scrolled
-          ? { background: "rgba(247,241,232,0.88)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(30,18,8,0.08)", boxShadow: "0 2px 16px -2px rgba(30,18,8,0.08)" }
+          ? { background: "rgba(237,217,190,0.88)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(30,18,8,0.10)", boxShadow: "0 2px 16px -2px rgba(30,18,8,0.10)" }
           : { background: "transparent" }
         }
       >
