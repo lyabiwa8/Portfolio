@@ -78,12 +78,6 @@ export function Passions() {
   );
 }
 
-// Importing cn here as well to ensure it works if moved
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
 
 
 
