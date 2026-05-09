@@ -47,7 +47,9 @@ export default function Home() {
             </motion.p>
           </div>
         </motion.div>
+      </section>
 
+      <section className="px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32">
           <div className="flex-1 order-2 lg:order-1">
             <motion.h1 
@@ -109,6 +111,7 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
+      </section>
 
       {/* Categories Preview */}
       <section className="bg-beige-100 py-32 px-6">
