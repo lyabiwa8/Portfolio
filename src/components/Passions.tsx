@@ -7,31 +7,31 @@ const passions = [
   {
     title: "Gymnastique",
     description: "Praticienne et coach, une discipline qui m'apprend la rigueur et le dépassement de soi.",
-    image: "/images/photos-presentation/gymnastique-life.jpg",
+    image: "/lya-portfolio/images/photos-presentation/gymnastique-life.jpg",
     size: "col-span-2 row-span-2",
   },
   {
     title: "Mode & Lifestyle",
     description: "L'art de s'exprimer sans parler.",
-    image: "/images/photos-presentation/mode-lifestyle.jpg",
+    image: "/lya-portfolio/images/photos-presentation/mode-lifestyle.jpg",
     size: "col-span-1 row-span-1",
   },
   {
     title: "Cinéma",
     description: "Une source d'inspiration inépuisable pour mes montages.",
-    image: "/images/photos-presentation/cinema-life-2.jpg",
+    image: "/lya-portfolio/images/photos-presentation/cinema-life-2.jpg",
     size: "col-span-1 row-span-1",
   },
   {
     title: "Manga & Culture Japonaise",
     description: "Passionnée par l'esthétique et les récits du Japon.",
-    image: "/images/photos-presentation/goku.jpg",
+    image: "/lya-portfolio/images/photos-presentation/goku.jpg",
     size: "col-span-1 row-span-2",
   },
   {
     title: "Musique",
     description: "La bande sonore de ma créativité.",
-    image: "/images/photos-presentation/music-life.jpg",
+    image: "/lya-portfolio/images/photos-presentation/music-life.jpg",
     size: "col-span-1 row-span-1",
   },
 ];
@@ -82,6 +82,7 @@ import { twMerge } from "tailwind-merge"
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
 
 
 

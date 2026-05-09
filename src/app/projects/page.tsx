@@ -13,56 +13,56 @@ const projects = [
     title: "Article Touristy",
     category: "Rédaction",
     type: "pdf",
-    src: "/images/creations/article-touristy.pdf",
-    thumb: "/images/photos-presentation/vogue-lifestyle.jpg",
+    src: "/lya-portfolio/images/creations/article-touristy.pdf",
+    thumb: "/lya-portfolio/images/photos-presentation/vogue-lifestyle.jpg",
     desc: "Rédaction d'un article de voyage pour le magazine Touristy."
   },
   {
     title: "Starz Communication",
     category: "Design",
     type: "pdf",
-    src: "/images/creations/starz.pdf",
-    thumb: "/images/creations/event-affiche-perso.png",
+    src: "/lya-portfolio/images/creations/starz.pdf",
+    thumb: "/lya-portfolio/images/creations/event-affiche-perso.png",
     desc: "Identité visuelle et plan de communication pour le projet Starz."
   },
   {
     title: "Newsletter Suisse Normande",
     category: "Rédaction",
     type: "pdf",
-    src: "/images/creations/newsletter-suisse-normande.pdf",
-    thumb: "/images/photos-presentation/photo-mode-musee.jpg",
+    src: "/lya-portfolio/images/creations/newsletter-suisse-normande.pdf",
+    thumb: "/lya-portfolio/images/photos-presentation/photo-mode-musee.jpg",
     desc: "Conception et rédaction d'une newsletter régionale."
   },
   {
     title: "Affiche Événementielle",
     category: "Design",
     type: "image",
-    src: "/images/creations/event-affiche-rs.png",
-    thumb: "/images/creations/event-affiche-rs.png",
+    src: "/lya-portfolio/images/creations/event-affiche-rs.png",
+    thumb: "/lya-portfolio/images/creations/event-affiche-rs.png",
     desc: "Création graphique pour les réseaux sociaux."
   },
   {
     title: "Montage Vidéo ISCOM",
     category: "Vidéo",
     type: "video",
-    src: "/images/creations/edit-schiaparelli.mp4",
-    thumb: "/images/photos-presentation/mode-lifestyle.jpg",
+    src: "/lya-portfolio/images/creations/edit-schiaparelli.mp4",
+    thumb: "/lya-portfolio/images/photos-presentation/mode-lifestyle.jpg",
     desc: "Vidéo promotionnelle réalisée pour un projet d'école."
   },
   {
     title: "Scrapbook Mode",
     category: "Design",
     type: "image",
-    src: "/images/creations/scrapbook-mode.jpg",
-    thumb: "/images/creations/scrapbook-mode.jpg",
+    src: "/lya-portfolio/images/creations/scrapbook-mode.jpg",
+    thumb: "/lya-portfolio/images/creations/scrapbook-mode.jpg",
     desc: "Travail sur la typographie et la composition mode."
   },
   {
     title: "Invitation Event",
     category: "Design",
     type: "image",
-    src: "/images/creations/invitation-event.png",
-    thumb: "/images/creations/invitation-event.png",
+    src: "/lya-portfolio/images/creations/invitation-event.png",
+    thumb: "/lya-portfolio/images/creations/invitation-event.png",
     desc: "Design d'invitation pour un événement privé."
   }
 ];
@@ -158,6 +158,7 @@ export default function Projects() {
 function cn(...inputs: any[]) {
   return inputs.filter(Boolean).join(" ");
 }
+
 
 
 
