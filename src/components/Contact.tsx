@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Music2, Linkedin } from "lucide-react";
 
 export function Contact() {
   const [formState, setFormState] = useState<{
@@ -77,8 +77,8 @@ export function Contact() {
           </div>
 
           <div className="flex gap-4 mt-12">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-accent transition-all">
-              <Instagram size={20} />
+            <a href="https://www.tiktok.com/@atnightimbatman" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-accent transition-all">
+              <Music2 size={20} />
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full hover:bg-accent transition-all">
               <Linkedin size={20} />

@@ -55,10 +55,17 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-[70px]">
           {/* Logo */}
           <Link href="/"
-            className="font-display font-bold text-lg md:text-xl tracking-tight transition-colors"
-            style={{ color: scrolled ? "#1E1208" : "white" }}
+            className="flex items-center gap-3 group"
           >
-            LYA BIWA
+            <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-brown-900 flex items-center justify-center text-beige-50 font-display font-bold text-xs md:text-sm tracking-tighter transition-transform group-hover:scale-110 shadow-lg border border-white/20">
+              LB
+            </div>
+            <span 
+              className="font-display font-bold text-lg md:text-xl tracking-tight transition-colors"
+              style={{ color: scrolled ? "#1E1208" : "white" }}
+            >
+              LYA BIWA
+            </span>
           </Link>
 
           {/* Desktop nav */}

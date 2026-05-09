@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Instagram, Linkedin } from "lucide-react";
+import { Mail, Music2, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -15,10 +15,17 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link href="/"
-              className="font-display text-xl font-bold tracking-tight transition-colors hover:text-accent"
-              style={{ color: "#1E1208" }}
+              className="flex items-center gap-3 group mb-2"
             >
-              LYA BIWA
+              <div className="w-8 h-8 rounded-full bg-brown-900 flex items-center justify-center text-beige-50 font-display font-bold text-[10px] tracking-tighter transition-transform group-hover:scale-110 shadow-md">
+                LB
+              </div>
+              <span 
+                className="font-display text-xl font-bold tracking-tight transition-colors hover:text-accent"
+                style={{ color: "#1E1208" }}
+              >
+                LYA BIWA
+              </span>
             </Link>
             <p className="text-[11px] mt-0.5 font-medium tracking-wide" style={{ color: "rgba(45,27,14,0.45)" }}>
               Communication · Événementiel · Création
@@ -65,13 +72,14 @@ export function Footer() {
           </span>
           <div className="flex items-center gap-2.5">
             {[
-              { icon: <Instagram size={13} />, label: "Instagram" },
-              { icon: <Linkedin  size={13} />, label: "LinkedIn" },
+              { icon: <Music2 size={13} />, label: "TikTok", href: "https://www.tiktok.com/@atnightimbatman" },
+              { icon: <Linkedin  size={13} />, label: "LinkedIn", href: "#" },
             ].map((s) => (
               <a
                 key={s.label}
-                href="#"
-                aria-label={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center rounded-full transition-all"
                 style={{ border: "1px solid rgba(30,18,8,0.14)", color: "rgba(45,27,14,0.45)" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#A8703F"; (e.currentTarget as HTMLElement).style.color = "white"; (e.currentTarget as HTMLElement).style.borderColor = "#A8703F"; }}

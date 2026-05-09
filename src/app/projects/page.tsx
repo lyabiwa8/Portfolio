@@ -15,7 +15,7 @@ const projects = [
     category: "Vidéo",
     type: "video",
     src: "/images/creations/projet-ogilvy.mov",
-    thumb: "/images/creations/ogilvy-thumb.png",
+    thumb: "/images/logos/ogilvy-logo-agence.jpg",
     desc: "Campagne digitale pour Ogilvy Paris. Storytelling visuel et montage dynamique."
   },
   {

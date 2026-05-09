@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { PageWrapper } from "@/components/PageWrapper";
 import { ArrowRight, Play, Camera, FileText, Music, Film, Dumbbell, Globe } from "lucide-react";
 import { getAssetPath } from "@/utils/imageLoader";
+import { Photography } from "@/components/Photography";
 
 /* ── Gallery photos ── */
 const gallery = [
@@ -374,6 +375,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+      
+      {/* ════════════ PHOTOGRAPHY ════════════ */}
+      <Photography />
 
       {/* ════════════ QUOTE (dark terracotta band) ════════════ */}
       <section className="px-4 md:px-6 pb-16 md:pb-24">

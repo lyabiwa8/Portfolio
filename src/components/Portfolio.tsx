@@ -10,7 +10,7 @@ const projects = [
     title: "Ogilvy / Candy'Up",
     category: "Vidéo & Campagne",
     type: "video",
-    thumbnail: "/images/creations/ogilvy-thumb.png",
+    thumbnail: "/images/logos/ogilvy-logo-agence.jpg",
     link: "/images/creations/projet-ogilvy.mov",
     icon: <Play size={20} />,
   },
