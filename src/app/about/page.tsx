@@ -90,7 +90,7 @@ export default function About() {
               style={{ boxShadow: "0 24px 64px -12px rgba(26,15,8,0.25), 0 0 0 1px rgba(107,62,32,0.14)" }}
             >
               <Image
-                src="/images/photos-presentation/bio-photo.jpg"
+                src="/lya-portfolio/images/photos-presentation/bio-photo.jpg"
                 alt="Lya Biwa" fill sizes="320px"
                 className="object-cover object-top" priority
               />
@@ -181,7 +181,7 @@ export default function About() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.38 }}
-              href="/cv/cv-lya.pdf"
+              href="/lya-portfolio/cv/cv-lya.pdf"
               download
               className="inline-flex items-center gap-2.5 btn-primary text-sm font-bold px-8 py-4 rounded-full"
             >
@@ -350,3 +350,5 @@ export default function About() {
     </PageWrapper>
   );
 }
+
+
