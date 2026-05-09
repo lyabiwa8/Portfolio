@@ -24,7 +24,7 @@ const hobbies = [
   { title: "Cinéma",       icon: <Film     size={16} />, img: "/images/photos-presentation/cinema-life-2.jpg" },
   { title: "Musique",      icon: <Music    size={16} />, img: "/images/photos-presentation/what-music-represent-to-me.jpg" },
   { title: "Voyages",      icon: <Globe    size={16} />, img: "/images/photos-presentation/photo-plage.jpg" },
-  { title: "Mode & Luxe",  icon: <Camera   size={16} />, img: "/images/photos-presentation/mode-lifestyle.jpg" },
+  { title: "Événementiel", icon: <Camera   size={16} />, img: "/images/photos-presentation/mode-lifestyle.jpg" },
   { title: "Pop Culture",  icon: <Play     size={16} />, img: "/images/photos-presentation/dragon-ball.jpg" },
 ];
 
@@ -40,7 +40,7 @@ export default function Home() {
       {/* ════════════ HERO ════════════ */}
       <section ref={heroRef} className="relative pt-20 md:pt-24 px-3 md:px-5">
         <motion.div
-          style={{ scale: heroScale, height: "clamp(58vh, 80vh, 90vh)" }}
+          style={{ scale: heroScale, height: "clamp(50vh, 64vh, 72vh)" }}
           className="relative w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl shadow-warm-900/15"
         >
           <Image
@@ -81,7 +81,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.42, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="font-display font-bold text-white leading-none tracking-tight mb-3"
-              style={{ fontSize: "clamp(3rem, 9vw, 8.5rem)" }}
+              style={{ fontSize: "clamp(2.2rem, 5.5vw, 5.5rem)" }}
             >
               LYA BIWA
             </motion.h1>
