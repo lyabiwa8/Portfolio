@@ -3,38 +3,45 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { PageWrapper } from "@/components/PageWrapper";
-import { Download, Calendar, MapPin, GraduationCap, Briefcase } from "lucide-react";
+import { Download, GraduationCap, Briefcase } from "lucide-react";
 
 const education = [
   {
-    year: "2023 - Présent",
-    title: "Bachelor en Communication",
-    institution: "ISCOM Paris",
-    desc: "Spécialisation en stratégie de marque et création de contenu.",
+    year: "2024 — 2026",
+    title: "BTS Communication",
+    institution: "Lycée Jacques Brel, La Courneuve",
+    desc: "Apprentissage des fondamentaux de la communication, stratégie et création publicitaire.",
     icon: <GraduationCap size={20} />
   },
   {
-    year: "2022 - 2023",
-    title: "Baccalauréat STMG",
-    institution: "Lycée Polyvalent",
-    desc: "Mention Très Bien. Focus sur le marketing et la gestion.",
+    year: "2021 — 2024",
+    title: "Baccalauréat STMG (Mercatique)",
+    institution: "Lycée Jean Jacques Rousseau, Sarcelles",
+    desc: "Spécialisation marketing, analyse de marché et gestion commerciale.",
     icon: <GraduationCap size={20} />
   }
 ];
 
 const experience = [
   {
-    year: "2024 - Présent",
-    title: "Alternante Communication",
-    institution: "ALDA France",
-    desc: "Gestion des réseaux sociaux, création de visuels et organisation d'événements.",
+    year: "Mai 2025 — Juin 2025",
+    title: "Assistante Communication (Stage)",
+    institution: "Women's Forum, Publicis Groupe | Paris",
+    desc: "Analyse de la demande, élaboration de plans de com multicanaux et coordination opérationnelle.",
     icon: <Briefcase size={20} />
   },
   {
-    year: "2023",
-    title: "Stage Marketing Digital",
-    institution: "Agence Créative",
-    desc: "Assistance sur les campagnes Ads et rédaction de newsletters.",
+    year: "Sept. 2024 — Présent",
+    title: "Agent d'accueil et d'animation",
+    institution: "AASS Gym | Sarcelles",
+    desc: "Encadrement d'équipes, organisation d'événements internes et gestion de la relation client.",
+    icon: <Briefcase size={20} />
+  },
+  {
+    year: "Juil. 2025 — Août 2025",
+    title: "Serveuse",
+    institution: "Mister Garden, Anjou | Paris",
+    desc: "Gestion de l'accueil, du service et des encaissements complexes en période de flux.",
     icon: <Briefcase size={20} />
   }
 ];
@@ -42,14 +49,14 @@ const experience = [
 export default function About() {
   return (
     <PageWrapper>
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 pt-32">
         {/* Header Section */}
-        <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
+        <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl"
+            className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white/60 rotate-[-2deg]"
           >
             <Image
               src="/images/photos-presentation/bio-photo.jpg"
@@ -60,40 +67,39 @@ export default function About() {
           </motion.div>
           
           <div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 rounded-full mb-8"
+            >
+              <span className="text-xs font-bold text-accent uppercase tracking-widest">En recherche d'alternance</span>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-sm uppercase tracking-[0.3em] text-accent font-bold mb-6"
+              className="text-5xl md:text-7xl font-display font-bold text-brown-900 mb-10 leading-tight tracking-tighter"
             >
-              À PROPOS DE MOI
+              Étudiante en <span className="text-accent italic">Communication.</span>
             </motion.h1>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-5xl md:text-6xl font-display font-bold text-brown-900 mb-8 leading-tight"
-            >
-              Créative par nature, Stratège par passion.
-            </motion.h2>
+            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="space-y-6 text-lg text-brown-700 leading-relaxed"
+              className="space-y-8 text-xl text-brown-700 leading-relaxed font-medium"
             >
               <p>
-                Je m'appelle Lya, j'ai 20 ans et je suis actuellement étudiante en 
-                communication à l'ISCOM. Ma vision de la communication ? Un mélange 
-                subtil de psychologie, de design et de technologie.
+                Future étudiante en <span className="text-brown-900 font-bold">Licence de Communication</span>, je me passionne pour l'événementiel, le luxe et la mode.
               </p>
               <p>
-                Passionnée par l'image sous toutes ses formes, je m'efforce de donner 
-                une âme à chaque projet que je touche. Qu'il s'agisse de monter une 
-                vidéo percutante ou de concevoir une stratégie social media, mon 
-                objectif reste le même : raconter une histoire qui résonne.
+                Je suis actuellement à la recherche d'une <span className="text-brown-900 font-bold underline decoration-accent/30 decoration-4">alternance d'un an</span> à partir de <span className="text-accent italic font-bold">septembre 2026</span> pour mettre mes compétences en stratégie et création au service de projets ambitieux.
+              </p>
+              <p className="text-base font-normal text-brown-500">
+                Mon parcours, mêlant rigueur opérationnelle et créativité visuelle, m'a permis de développer une polyvalence que je souhaite aujourd'hui mettre à profit dans le secteur de l'événementiel.
               </p>
             </motion.div>
             
@@ -102,12 +108,12 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="mt-10"
+              className="mt-12 flex flex-wrap gap-6"
             >
               <a
                 href="/cv/cv-lya.pdf"
                 download
-                className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-full font-bold hover:bg-brown-900 transition-all shadow-lg hover:shadow-accent/20"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-brown-900 text-white rounded-full font-bold hover:bg-accent transition-all shadow-xl shadow-brown-900/10"
               >
                 Télécharger mon CV <Download size={20} />
               </a>
@@ -116,7 +122,7 @@ export default function About() {
         </div>
 
         {/* Parcours Section */}
-        <div className="bg-beige-100 -mx-6 px-6 py-32 mt-24 border-t border-brown-100">
+        <div className="bg-beige-100/60 backdrop-blur-md -mx-6 px-6 py-32 border-t border-brown-100">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
             <div>
               <h3 className="text-3xl font-display font-bold text-brown-900 mb-16 flex items-center gap-4">

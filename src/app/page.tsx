@@ -52,6 +52,19 @@ export default function Home() {
       <section className="px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32">
           <div className="flex-1 order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 px-4 py-2 rounded-full mb-8"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              </span>
+              <span className="text-xs font-bold text-accent uppercase tracking-widest">Recherche Alternance — Sept. 2026</span>
+            </motion.div>
+
             <motion.h1 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,7 +81,7 @@ export default function Home() {
               className="max-w-md"
             >
               <p className="text-xl md:text-2xl text-brown-700 leading-relaxed font-medium mb-10">
-                Lya Biwa — Étudiante en <span className="text-brown-900 font-bold underline decoration-accent/30 decoration-4">Communication</span> spécialisée dans le design visuel et la stratégie digitale.
+                Future étudiante en licence de <span className="text-brown-900 font-bold">Communication</span>. Actuellement en recherche d'une alternance en événementiel (Luxe, Mode ou Sport).
               </p>
               <div className="flex flex-wrap gap-6">
                 <Link 
