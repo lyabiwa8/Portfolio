@@ -1,186 +1,165 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navItems = [
-  { name: "Accueil", href: "/" },
-  { name: "À propos", href: "/about" },
-  { name: "Projets", href: "/projects" },
-  { name: "Contact", href: "/contact" },
+const links = [
+  { href: "/",        label: "Accueil" },
+  { href: "/about",   label: "À propos" },
+  { href: "/projects",label: "Projets" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [progress, setProgress]   = useState(0);
+  const [menuOpen, setMenuOpen]   = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
-      const scrollY = window.scrollY;
+      const s = window.scrollY;
+      setScrolled(s > 40);
       const total = document.body.scrollHeight - window.innerHeight;
-      setScrolled(scrollY > 20);
-      setProgress(total > 0 ? (scrollY / total) * 100 : 0);
+      setProgress(total > 0 ? (s / total) * 100 : 0);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Close menu on route change
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   return (
     <>
-      {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-[2px] z-[60]">
+      {/* Scroll progress bar */}
+      <div className="fixed top-0 left-0 right-0 z-[60] h-[2px]"
+        style={{ background: "rgba(168,112,63,0.10)" }}>
         <motion.div
-          className="h-full bg-gradient-to-r from-accent to-brown-400"
-          style={{ width: `${progress}%` }}
-          transition={{ ease: "linear" }}
+          className="h-full"
+          style={{ width: `${progress}%`, background: "#A8703F" }}
+          transition={{ duration: 0.1 }}
         />
       </div>
 
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
-        <div className="px-4 md:px-6 pt-4 md:pt-5">
-          <div
-            className={cn(
-              "max-w-7xl mx-auto pointer-events-auto flex justify-between items-center px-5 md:px-8 py-3 rounded-full transition-all duration-500",
-              scrolled
-                ? "bg-brown-900/90 backdrop-blur-2xl border border-white/10 shadow-2xl shadow-black/30"
-                : "bg-brown-900/60 backdrop-blur-xl border border-white/8 shadow-lg shadow-black/20"
-            )}
+      <header
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={scrolled
+          ? { background: "rgba(247,241,232,0.88)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(30,18,8,0.08)", boxShadow: "0 2px 16px -2px rgba(30,18,8,0.08)" }
+          : { background: "transparent" }
+        }
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-[70px]">
+          {/* Logo */}
+          <Link href="/"
+            className="font-display font-bold text-lg md:text-xl tracking-tight transition-colors"
+            style={{ color: scrolled ? "#1E1208" : "white" }}
           >
-            {/* Logo */}
-            <Link
-              href="/"
-              className="font-display font-bold text-beige-50 tracking-tighter text-lg md:text-xl transition-all duration-300 hover:text-accent"
-            >
-              LYA BIWA
-            </Link>
+            LYA BIWA
+          </Link>
 
-            {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8">
+            {links.map((l) => {
+              const active = pathname === l.href;
+              return (
                 <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "text-[13px] font-semibold tracking-wide transition-all duration-300 relative group py-1",
-                    pathname === item.href
-                      ? "text-accent"
-                      : "text-beige-100/70 hover:text-beige-50"
-                  )}
+                  key={l.href}
+                  href={l.href}
+                  className="text-sm font-medium relative transition-colors"
+                  style={{ color: scrolled ? (active ? "#A8703F" : "rgba(30,18,8,0.65)") : (active ? "white" : "rgba(255,255,255,0.75)") }}
                 >
-                  {item.name}
-                  <span
-                    className={cn(
-                      "absolute -bottom-0.5 left-0 h-[1.5px] bg-accent transition-all duration-300 group-hover:w-full",
-                      pathname === item.href ? "w-full" : "w-0"
-                    )}
-                  />
+                  {l.label}
+                  {active && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1 left-0 right-0 h-[1.5px] rounded-full"
+                      style={{ background: scrolled ? "#A8703F" : "white" }}
+                    />
+                  )}
                 </Link>
-              ))}
-
-              <Link
-                href="/contact"
-                className="ml-2 bg-accent text-white text-[12px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-full hover:brightness-110 transition-all duration-300 hover:scale-105"
-              >
-                Me contacter
-              </Link>
-            </div>
-
-            {/* Mobile Burger */}
-            <button
-              className="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-[5px] group"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Menu"
+              );
+            })}
+            <Link
+              href="/contact"
+              className="text-sm font-semibold px-5 py-2 rounded-full transition-all"
+              style={scrolled
+                ? { background: "#1E1208", color: "#F7F1E8" }
+                : { background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.35)", color: "white" }
+              }
             >
-              <span
-                className={cn(
-                  "block w-5 h-[1.5px] bg-beige-100 transition-all duration-300 origin-center",
-                  isMenuOpen && "rotate-45 translate-y-[6.5px]"
-                )}
+              Me contacter
+            </Link>
+          </nav>
+
+          {/* Mobile burger */}
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="md:hidden flex flex-col gap-[5px] p-2 -mr-2"
+            aria-label="Menu"
+          >
+            {[0, 1, 2].map((i) => (
+              <motion.span
+                key={i}
+                animate={menuOpen
+                  ? i === 0 ? { rotate: 45, y: 7 }
+                  : i === 1 ? { opacity: 0 }
+                  : { rotate: -45, y: -7 }
+                  : { rotate: 0, y: 0, opacity: 1 }
+                }
+                transition={{ duration: 0.25 }}
+                className="block h-[1.5px] w-5 origin-center"
+                style={{ background: scrolled ? "#1E1208" : "white" }}
               />
-              <span
-                className={cn(
-                  "block w-5 h-[1.5px] bg-beige-100 transition-all duration-300",
-                  isMenuOpen && "opacity-0 scale-x-0"
-                )}
-              />
-              <span
-                className={cn(
-                  "block w-5 h-[1.5px] bg-beige-100 transition-all duration-300 origin-center",
-                  isMenuOpen && "-rotate-45 -translate-y-[6.5px]"
-                )}
-              />
-            </button>
-          </div>
+            ))}
+          </button>
         </div>
-      </nav>
+      </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile menu overlay */}
       <AnimatePresence>
-        {isMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-brown-900/30 backdrop-blur-sm md:hidden"
-              onClick={() => setIsMenuOpen(false)}
-            />
-            <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="fixed top-20 left-4 right-4 z-50 md:hidden"
-            >
-              <div className="bg-brown-900/95 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 shadow-2xl shadow-black/40">
-                <div className="flex flex-col gap-6">
-                  {navItems.map((item, i) => (
-                    <motion.div
-                      key={item.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.06 }}
-                    >
-                      <Link
-                        href={item.href}
-                        className={cn(
-                          "block text-2xl font-display font-bold transition-colors",
-                          pathname === item.href
-                            ? "text-accent"
-                            : "text-beige-100 hover:text-accent"
-                        )}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    </motion.div>
-                  ))}
-                  <div className="pt-4 border-t border-white/10">
-                    <Link
-                      href="/contact"
-                      className="block w-full text-center bg-accent text-white font-bold py-3.5 rounded-full hover:brightness-110 transition-all"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Me contacter
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-x-0 top-0 z-40 pt-20 pb-8 px-6 md:hidden"
+            style={{ background: "rgba(247,241,232,0.97)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(30,18,8,0.08)" }}
+          >
+            <nav className="flex flex-col gap-2">
+              {links.map((l, i) => (
+                <motion.div
+                  key={l.href}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 }}
+                >
+                  <Link
+                    href={l.href}
+                    className="block py-3 text-xl font-display font-bold transition-colors"
+                    style={{ color: pathname === l.href ? "#A8703F" : "#1E1208", borderBottom: "1px solid rgba(30,18,8,0.06)" }}
+                  >
+                    {l.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="mt-4"
+              >
+                <Link href="/contact"
+                  className="block text-center btn-primary text-sm font-semibold px-6 py-3.5 rounded-full"
+                >
+                  Me contacter
+                </Link>
+              </motion.div>
+            </nav>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

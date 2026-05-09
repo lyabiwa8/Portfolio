@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-/* ── Warm particle net — perfectly matches the site palette ── */
-function ParticleNet() {
+/* ── Subtle warm particle net on light background ── */
+function LightParticleNet() {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -20,11 +20,10 @@ function ParticleNet() {
     resize();
     window.addEventListener("resize", resize, { passive: true });
 
-    // Gold color matching #C9975C
-    const R = 201, G = 151, B = 92;
-    const COUNT = 55;
-    const LINK  = 180;
-    const SPEED = 0.25;
+    // Terracotta / warm brown — very subtle on light bg
+    const COUNT = 45;
+    const LINK  = 160;
+    const SPEED = 0.22;
 
     type P = { x: number; y: number; vx: number; vy: number; r: number; pulse: number; pSpeed: number };
     const pts: P[] = Array.from({ length: COUNT }, () => ({
@@ -32,9 +31,9 @@ function ParticleNet() {
       y: Math.random() * canvas.height,
       vx: (Math.random() - 0.5) * SPEED,
       vy: (Math.random() - 0.5) * SPEED,
-      r: 1 + Math.random() * 1.8,
+      r: 1 + Math.random() * 1.4,
       pulse: Math.random() * Math.PI * 2,
-      pSpeed: 0.015 + Math.random() * 0.02,
+      pSpeed: 0.012 + Math.random() * 0.016,
     }));
 
     let raf: number;
@@ -42,35 +41,35 @@ function ParticleNet() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (const p of pts) {
-        p.x  = (p.x + p.vx + canvas.width)  % canvas.width;
-        p.y  = (p.y + p.vy + canvas.height) % canvas.height;
+        p.x = (p.x + p.vx + canvas.width)  % canvas.width;
+        p.y = (p.y + p.vy + canvas.height) % canvas.height;
         p.pulse += p.pSpeed;
       }
 
-      // Lines
+      // Lines — very subtle warm tone
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
-          const dx   = pts[i].x - pts[j].x;
-          const dy   = pts[i].y - pts[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < LINK) {
-            const a = (1 - dist / LINK) * 0.15;
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK) {
+            const a = (1 - d / LINK) * 0.10;
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(${R},${G},${B},${a})`;
-            ctx.lineWidth   = (1 - dist / LINK) * 1.5;
+            ctx.strokeStyle = `rgba(168, 112, 63, ${a})`;
+            ctx.lineWidth   = (1 - d / LINK) * 1.0;
             ctx.stroke();
           }
         }
       }
 
-      // Dots (pulsing)
+      // Dots
       for (const p of pts) {
-        const glow = 0.4 + 0.25 * Math.sin(p.pulse);
+        const glow = 0.18 + 0.12 * Math.sin(p.pulse);
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${R},${G},${B},${glow})`;
+        ctx.fillStyle = `rgba(168, 112, 63, ${glow})`;
         ctx.fill();
       }
 
@@ -84,31 +83,28 @@ function ParticleNet() {
     };
   }, []);
 
-  return <canvas ref={ref} className="absolute inset-0 w-full h-full" style={{ opacity: 0.9 }} />;
+  return <canvas ref={ref} className="absolute inset-0 w-full h-full" style={{ opacity: 0.7 }} />;
 }
 
-/* ── Blob definitions — gold palette matching the site accent ── */
+/* ── Warm blobs (very subtle on light bg) ── */
 const blobs = [
-  { top: "-20%", left: "-10%", w: "60%", h: "60%", color: "rgba(201,151,92,0.18)", dur: 24, dx: 70, dy: 40 },
-  { top:  "10%", right: "-5%", w: "40%", h: "45%", color: "rgba(232,201,122,0.10)", dur: 20, dx: -50, dy: 30 },
-  { bottom: "-20%", left: "5%", w: "70%", h: "55%", color: "rgba(168,112,64,0.12)", dur: 30, dx: -40, dy: -35 },
-  { top:  "40%", left: "35%",  w: "35%", h: "35%", color: "rgba(201,151,92,0.07)", dur: 17, dx: 35, dy: -50 },
+  { top: "-15%", left: "-8%",  w: "55%", h: "55%", color: "rgba(221, 198, 170, 0.45)", dur: 24, dx: 50, dy: 35 },
+  { top: "5%",  right: "-5%",  w: "40%", h: "42%", color: "rgba(237, 217, 190, 0.35)", dur: 20, dx: -45, dy: 28 },
+  { bottom: "-20%", left: "8%", w: "65%", h: "55%", color: "rgba(213, 185, 150, 0.30)", dur: 30, dx: -35, dy: -30 },
+  { top: "38%", left: "32%",   w: "32%", h: "32%", color: "rgba(201, 173, 135, 0.22)", dur: 17, dx: 30, dy: -40 },
 ];
 
 export function ModernBackground() {
   return (
     <div
       className="fixed inset-0 -z-10 overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(ellipse at 20% 10%, #231507 0%, #120804 50%, #0F0905 100%)",
-      }}
+      style={{ background: "linear-gradient(150deg, #FBF6EE 0%, #F7F1E8 45%, #F3EBE0 100%)" }}
     >
-      {/* Gradient blobs */}
+      {/* Warm blobs */}
       {blobs.map((b, i) => (
         <motion.div
           key={i}
-          animate={{ x: [0, b.dx, 0], y: [0, b.dy, 0], scale: [1, 1.1, 1] }}
+          animate={{ x: [0, b.dx, 0], y: [0, b.dy, 0], scale: [1, 1.08, 1] }}
           transition={{ duration: b.dur, repeat: Infinity, ease: "easeInOut", delay: i * 2 }}
           style={{
             position: "absolute",
@@ -116,52 +112,25 @@ export function ModernBackground() {
             left:   (b as any).left   ?? undefined,
             right:  (b as any).right  ?? undefined,
             bottom: (b as any).bottom ?? undefined,
-            width:  b.w,
-            height: b.h,
+            width: b.w, height: b.h,
             borderRadius: "100%",
             background: `radial-gradient(circle, ${b.color} 0%, transparent 70%)`,
-            filter: "blur(90px)",
+            filter: "blur(70px)",
             pointerEvents: "none",
           }}
         />
       ))}
 
-      {/* Canvas particle net */}
-      <ParticleNet />
-
-      {/* Subtle horizontal aurora — gold tone */}
-      <motion.div
-        animate={{ opacity: [0.05, 0.13, 0.05], y: [0, -15, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          left: 0, right: 0,
-          top: "42%",
-          height: "180px",
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(201,151,92,0.15) 25%, rgba(232,201,122,0.20) 50%, rgba(201,151,92,0.15) 75%, transparent 100%)",
-          filter: "blur(50px)",
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Vignette — darker edges */}
-      <div
-        style={{
-          position: "absolute", inset: 0,
-          background:
-            "radial-gradient(ellipse at center, transparent 40%, rgba(8,5,2,0.7) 100%)",
-          pointerEvents: "none",
-        }}
-      />
+      {/* Particle net */}
+      <LightParticleNet />
 
       {/* Fine grain */}
       <div
         style={{
           position: "absolute", inset: 0,
-          opacity: 0.04,
+          opacity: 0.025,
           backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')",
-          mixBlendMode: "overlay",
+          mixBlendMode: "multiply",
           pointerEvents: "none",
         }}
       />
