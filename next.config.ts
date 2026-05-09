@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["192.168.1.185", "localhost:3000"],
+  output: "export",
+  basePath: "/lya-portfolio",
+  assetPrefix: "/lya-portfolio/",
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
