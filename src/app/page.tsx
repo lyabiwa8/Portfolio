@@ -48,48 +48,67 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-display font-bold text-brown-900 mb-8 leading-tight"
-          >
-            Étudiante en Communication & Créative Multi-facettes
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-brown-700 leading-relaxed mb-10"
-          >
-            De la stratégie digitale à la création visuelle, j'accompagne les marques 
-            et les projets dans leur communication avec une vision fraîche et audacieuse.
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            <Link
-              href="/projects"
-              className="px-8 py-4 bg-brown-900 text-beige-50 rounded-full font-medium hover:bg-brown-800 transition-all flex items-center gap-2"
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32">
+          <div className="flex-1 order-2 lg:order-1">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-7xl md:text-9xl font-display font-bold text-brown-900 leading-[0.85] tracking-tighter mb-12"
             >
-              Voir mon Portfolio <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="/about"
-              className="px-8 py-4 border border-brown-900 text-brown-900 rounded-full font-medium hover:bg-brown-900 hover:text-beige-50 transition-all"
+              CRÉER <br/>
+              <span className="text-accent italic ml-12 lg:ml-24">L'IMPACT.</span>
+            </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="max-w-md"
             >
-              Mon Parcours
-            </Link>
+              <p className="text-xl md:text-2xl text-brown-700 leading-relaxed font-medium mb-10">
+                Lya Biwa — Étudiante en <span className="text-brown-900 font-bold underline decoration-accent/30 decoration-4">Communication</span> spécialisée dans le design visuel et la stratégie digitale.
+              </p>
+              <div className="flex flex-wrap gap-6">
+                <Link 
+                  href="/projects" 
+                  className="bg-brown-900 text-white px-10 py-5 rounded-full font-bold hover:bg-accent transition-all hover:scale-105 shadow-xl shadow-brown-900/10"
+                >
+                  Voir mes travaux
+                </Link>
+                <Link 
+                  href="/about" 
+                  className="bg-white/40 backdrop-blur-md border border-brown-200 text-brown-900 px-10 py-5 rounded-full font-bold hover:bg-brown-50 transition-all"
+                >
+                  Mon parcours
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex-1 order-1 lg:order-2 relative"
+          >
+            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden relative shadow-2xl border-[12px] border-white/60">
+              <Image 
+                src="/images/photos-presentation/mode-lifestyle.jpg"
+                alt="Lya Biwa Editorial"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+                priority
+              />
+            </div>
+            {/* Decorative stickers */}
+            <div className="absolute -bottom-8 -left-8 bg-accent text-white p-6 rounded-2xl shadow-xl rotate-6 hidden md:block">
+              <p className="text-xs font-bold uppercase tracking-widest">Communication</p>
+            </div>
+            <div className="absolute -top-8 -right-8 bg-brown-900 text-white p-6 rounded-2xl shadow-xl -rotate-3 hidden md:block">
+              <p className="text-xs font-bold uppercase tracking-widest">Design Visuel</p>
+            </div>
           </motion.div>
         </div>
-      </section>
 
       {/* Categories Preview */}
       <section className="bg-beige-100 py-32 px-6">
@@ -110,19 +129,19 @@ export default function Home() {
                 title: "Vidéo & Motion", 
                 icon: <Play size={32} />, 
                 desc: "Création de contenus dynamiques et montages percutants.",
-                color: "bg-white"
+                color: "bg-white/60 backdrop-blur-md border border-white/40"
               },
               { 
                 title: "Design Visuel", 
                 icon: <Camera size={32} />, 
                 desc: "Identité visuelle, photographie et direction artistique.",
-                color: "bg-beige-200"
+                color: "bg-beige-100/40 backdrop-blur-md border border-brown-100/20"
               },
               { 
                 title: "Stratégie Com", 
                 icon: <FileText size={32} />, 
                 desc: "Élaboration de plans de communication et rédaction.",
-                color: "bg-brown-100"
+                color: "bg-brown-100/40 backdrop-blur-md border border-brown-200/20"
               },
             ].map((cat, i) => (
               <motion.div
@@ -131,7 +150,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={cn("p-12 rounded-[3rem] transition-all duration-500 hover:shadow-2xl group", cat.color)}
+                className={cn("p-12 rounded-[3rem] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group", cat.color)}
               >
                 <div className="text-accent mb-8 group-hover:scale-110 transition-transform duration-500">
                   {cat.icon}

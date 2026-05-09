@@ -5,7 +5,7 @@ import { Instagram, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="py-24 px-6 border-t border-brown-100 bg-white">
+    <footer className="py-24 px-6 border-t border-brown-100 bg-transparent relative z-10">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-16 items-start">
         <div>
           <Link href="/" className="text-3xl font-display font-bold text-brown-900 tracking-tighter">
@@ -32,7 +32,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="bg-beige-50 p-10 rounded-[2rem]">
+        <div className="bg-white/40 backdrop-blur-md p-10 rounded-[2rem] border border-white/40">
           <h4 className="text-xl font-display font-bold text-brown-900 mb-4">Un projet ?</h4>
           <p className="text-brown-600 mb-8 text-sm leading-relaxed">
             N'hésitez pas à me contacter pour discuter de vos besoins en communication.
