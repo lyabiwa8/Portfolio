@@ -153,6 +153,24 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-40" />
             </motion.div>
 
+            {/* Availability Badge - MOBILE ONLY - Under Bio Photo */}
+            <div className="lg:hidden flex justify-center mt-6">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy"
+              >
+                <div className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
+                  <span className="relative rounded-full h-2 w-2 bg-[#BE123C]" />
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E2E8F0]">
+                  Disponibilité : Septembre 2026
+                </span>
+              </motion.div>
+            </div>
+
             {/* Right side: Text (Order 1 on Mobile, 2 on PC) */}
             <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
               <motion.div
