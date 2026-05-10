@@ -63,7 +63,7 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="text-xl md:text-6xl lg:text-7xl font-display font-black text-white leading-[1.1] tracking-tighter break-words"
+            className="text-3xl md:text-6xl lg:text-7xl font-display font-black text-white leading-[1.1] tracking-tighter break-words"
           >
             Expertise & <br /> Vision Stratégique
           </motion.h3>
