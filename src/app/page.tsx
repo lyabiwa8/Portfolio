@@ -149,43 +149,46 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             
-            {/* Left side: Image (Order 2 on Mobile, 1 on PC) */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="lg:col-span-5 order-2 lg:order-1 relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 w-full max-w-lg mx-auto lg:mx-0"
-            >
-              <Image
-                src={getAssetPath("/images/photos-presentation/bio-photo.jpg")}
-                alt="Bio Image"
-                fill
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-40" />
-            </motion.div>
-
-            {/* Availability Badge - MOBILE ONLY - Under Bio Photo */}
-            <div className="lg:hidden flex justify-center mt-6">
+            {/* Left side: Image + Badge Container (Order 2 on Mobile, 1 on PC) */}
+            <div className="lg:col-span-5 order-2 lg:order-1">
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy"
+                transition={{ duration: 1 }}
+                className="relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 w-full max-w-lg mx-auto lg:mx-0"
               >
-                <div className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
-                  <span className="relative rounded-full h-2 w-2 bg-[#BE123C]" />
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E2E8F0]">
-                  Disponibilité : Septembre 2026
-                </span>
+                <Image
+                  src={getAssetPath("/images/photos-presentation/bio-photo.jpg")}
+                  alt="Bio Image"
+                  fill
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-40" />
               </motion.div>
-            </div>
 
-            {/* Right side: Text (Order 1 on Mobile, 2 on PC) */}
-            <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
+              {/* Availability Badge - MOBILE ONLY - Directly under Portrait */}
+              <div className="lg:hidden flex justify-center mt-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy"
+                >
+                  <div className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
+                    <span className="relative rounded-full h-2 w-2 bg-[#BE123C]" />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E2E8F0]">
+                    Disponibilité : Septembre 2026
+                  </span>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right side: Text (Order 1 on Mobile, 2 on PC) */}
+          <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
