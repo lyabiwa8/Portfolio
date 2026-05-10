@@ -159,22 +159,22 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[400px] z-[130] bg-[#020617] border-l border-white/5 flex flex-col lg:hidden shadow-[-20px_0_60px_rgba(0,0,0,0.8)]"
+              className="fixed top-0 right-0 bottom-0 w-[75%] max-w-[320px] z-[130] bg-[#020617] border-l border-white/5 flex flex-col lg:hidden shadow-[-20px_0_60px_rgba(0,0,0,0.8)]"
             >
-              <div className="flex flex-col p-10 pt-32 gap-6 items-end overflow-y-auto flex-1 text-right">
+              <div className="flex flex-col p-10 pt-32 gap-6 items-center overflow-y-auto flex-1 text-center">
                 <p className="text-[#9F1239] font-black tracking-[0.3em] uppercase text-[10px] mb-4">Navigation</p>
                 {links.map((link, i) => (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.05 }}
                     className="w-full"
                   >
                     <Link
                       href={link.href}
                       className={`text-lg md:text-3xl font-display font-black uppercase tracking-tight block transition-all duration-300 ${
-                        pathname === link.href ? "text-[#9F1239] -translate-x-2" : "text-white hover:text-[#9F1239]"
+                        pathname === link.href ? "text-[#9F1239] scale-110" : "text-white hover:text-[#9F1239]"
                       }`}
                     >
                       {link.label}
