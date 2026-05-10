@@ -162,9 +162,9 @@ export default function Home() {
                   src={getAssetPath("/images/photos-presentation/bio-photo.jpg")}
                   alt="Bio Image"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center brightness-[1.15] contrast-[1.05]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-20" />
               </motion.div>
 
               {/* Availability Badge - MOBILE ONLY - Directly under Portrait */}
