@@ -45,7 +45,7 @@ function ParticleField() {
 function StarBackground() {
   return (
     <div className="absolute inset-0 w-full h-full opacity-30">
-      <Canvas camera={{ position: [0, 0, 1] }} alpha={true}>
+      <Canvas camera={{ position: [0, 0, 1] }} gl={{ alpha: true }}>
         {/* Transparent background for Canvas */}
         <Float speed={1.2} rotationIntensity={0.1} floatIntensity={0.3}>
           <Stars 
