@@ -26,7 +26,7 @@ export default function SkillsPage() {
         <Skills />
         
         {/* Additional details for the dedicated page */}
-        <section className="py-24 px-6 bg-[#0F172A]">
+        <section className="py-24 px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-8">
               Plus qu'un savoir-faire, <br /> un <span className="text-[#9F1239]">savoir-être.</span>
