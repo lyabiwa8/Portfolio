@@ -1,177 +1,200 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAssetPath } from "@/utils/imageLoader";
+import { Menu, X, ArrowRight, Instagram, Linkedin, Mail } from "lucide-react";
 
 const links = [
-  { href: "/",        label: "Accueil" },
-  { href: "/about",   label: "À propos" },
-  { href: "/skills",  label: "Compétences" },
-  { href: "/projects",label: "Projets" },
-  { href: "/contact", label: "Contact" },
+  { href: "/",           label: "Accueil" },
+  { href: "/about",       label: "À propos" },
+  { href: "/skills",      label: "Compétences" },
+  { href: "/projects",    label: "Projets" },
+  { href: "/contact",     label: "Contact" },
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled]   = useState(false);
-  const [progress, setProgress]   = useState(0);
-  const [menuOpen, setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      const s = window.scrollY;
-      setScrolled(s > 40);
-      const total = document.body.scrollHeight - window.innerHeight;
-      setProgress(total > 0 ? (s / total) * 100 : 0);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Scrolled state for background change
+      setScrolled(currentScrollY > 40);
+
+      // Visibility state for hide on scroll
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setVisible(false); // Scrolling down
+      } else {
+        setVisible(true); // Scrolling up
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
   // Close menu on route change
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <>
-      {/* Scroll progress bar */}
-      <div className="fixed top-0 left-0 right-0 z-[60] h-[2px]"
-        style={{ background: "rgba(255,255,255,0.05)" }}>
-        <motion.div
-          className="h-full"
-          style={{ width: `${progress}%`, background: "#9F1239" }}
-          transition={{ duration: 0.1 }}
-        />
-      </div>
-
-      <header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-        style={scrolled
-          ? { background: "rgba(15,23,42,0.85)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 4px 20px -4px rgba(0,0,0,0.4)" }
-          : { background: "transparent" }
-        }
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ease-[0.16,1,0.3,1] px-4 md:px-12 py-4 md:py-8 ${
+          visible ? "translate-y-0" : "-translate-y-full"
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-[70px]">
+        <div 
+          className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 rounded-[1.5rem] md:rounded-[2.5rem] px-4 py-2 md:px-10 md:py-5 ${
+            scrolled ? "bg-[#020617]/80 backdrop-blur-xl border border-white/5 shadow-2xl" : "bg-transparent border-transparent"
+          }`}
+        >
           {/* Logo */}
-          <Link href="/"
-            className="flex items-center gap-3 group"
-          >
-            <div className="relative w-8 h-8 md:w-10 md:h-10">
+          <Link href="/" className="flex items-center gap-2 md:gap-4 group relative z-[110]">
+            <div className="relative w-7 h-7 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
               <Image 
                 src={getAssetPath("/images/logos/logo lya final.png")} 
-                alt="Logo Lya Biwa" 
+                alt="Logo" 
                 fill 
                 className="object-contain"
                 priority
               />
             </div>
-            <span 
-              className="font-display font-bold text-lg md:text-xl tracking-tight transition-colors text-[#F8FAFC]"
-            >
-              LYA BIWA
-            </span>
+            <div className="flex flex-col">
+              <span className="font-display font-black text-sm md:text-2xl tracking-tight text-white leading-none">
+                LYA BIWA
+              </span>
+              <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-[#9F1239] font-black mt-0.5">Portfolio</span>
+            </div>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {links.map((l) => {
-              const active = pathname === l.href || (l.href !== "/" && pathname === l.href + "/");
-              return (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="text-sm font-medium relative transition-colors"
-                  style={{ color: active ? "#F8FAFC" : "rgba(226,232,240,0.6)" }}
-                >
-                  {l.label}
-                  {active && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 right-0 h-[1.5px] rounded-full bg-[#9F1239]"
-                    />
-                  )}
-                </Link>
-              );
-            })}
-            <Link
-              href="/contact"
-              className="text-sm font-semibold px-5 py-2 rounded-full transition-all bg-[#9F1239] text-white hover:bg-[#BE123C] shadow-lg shadow-[#9F1239]/20"
-            >
-              Me contacter
-            </Link>
-          </nav>
-
-          {/* Mobile burger */}
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden flex flex-col gap-[5px] p-2 -mr-2"
-            aria-label="Menu"
-          >
-            {[0, 1, 2].map((i) => (
-              <motion.span
-                key={i}
-                animate={menuOpen
-                  ? i === 0 ? { rotate: 45, y: 7 }
-                  : i === 1 ? { opacity: 0 }
-                  : { rotate: -45, y: -7 }
-                  : { rotate: 0, y: 0, opacity: 1 }
-                }
-                transition={{ duration: 0.25 }}
-                className="block h-[1.5px] w-5 origin-center bg-white"
-              />
-            ))}
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile menu overlay */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-x-0 top-0 z-40 pt-20 pb-10 px-6 md:hidden"
-            style={{ background: "rgba(15,23,42,0.98)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
-          >
-            <nav className="flex flex-col gap-2">
-              {links.map((l, i) => {
-                const active = pathname === l.href || (l.href !== "/" && pathname === l.href + "/");
-                return (
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-2">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="relative px-6 py-3 group overflow-hidden"
+              >
+                <span className={`relative z-10 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 ${
+                  pathname === link.href ? "text-white" : "text-[#E2E8F0]/40 group-hover:text-white"
+                }`}>
+                  {link.label}
+                </span>
+                {pathname === link.href && (
                   <motion.div
-                    key={l.href}
-                    initial={{ opacity: 0, x: -12 }}
+                    layoutId="nav-pill"
+                    className="absolute inset-0 bg-[#9F1239]/10 border border-[#9F1239]/20 rounded-full"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </Link>
+            ))}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-4">
+            <Link 
+              href="/contact" 
+              className="hidden md:flex items-center gap-2 bg-[#9F1239] hover:bg-[#BE123C] text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+            >
+              Collaborer <ArrowRight size={14} />
+            </Link>
+
+            {/* Mobile Toggle */}
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden relative z-[110] flex flex-col gap-1.5 p-2 group"
+              aria-label="Toggle Menu"
+            >
+              <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+              <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Sidebar Menu (Tharsanan Style) */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-[120] bg-[#020617]/60 backdrop-blur-md lg:hidden"
+            />
+            
+            {/* Sidebar */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[400px] z-[130] bg-[#020617] border-l border-white/5 flex flex-col lg:hidden shadow-[-20px_0_60px_rgba(0,0,0,0.8)]"
+            >
+              <div className="flex flex-col p-10 pt-32 gap-6 items-start overflow-y-auto flex-1">
+                <p className="text-[#9F1239] font-black tracking-[0.3em] uppercase text-[10px] mb-4">Navigation</p>
+                {links.map((link, i) => (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.06 }}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                    className="w-full"
                   >
                     <Link
-                      href={l.href}
-                      className="block py-4 text-2xl font-display font-bold transition-colors"
-                      style={{ color: active ? "#9F1239" : "#F8FAFC", borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+                      href={link.href}
+                      className={`text-3xl font-display font-black uppercase tracking-tighter block transition-all duration-300 ${
+                        pathname === link.href ? "text-[#9F1239] translate-x-2" : "text-white/40 hover:text-white"
+                      }`}
                     >
-                      {l.label}
+                      {link.label}
                     </Link>
                   </motion.div>
-                );
-              })}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="mt-6"
-              >
-                <Link href="/contact"
-                  className="block text-center bg-[#9F1239] text-white text-base font-semibold px-6 py-4 rounded-full shadow-xl shadow-[#9F1239]/20"
-                >
-                  Me contacter
-                </Link>
-              </motion.div>
-            </nav>
-          </motion.div>
+                ))}
+              </div>
+              
+              {/* Footer Part of Sidebar */}
+              <div className="p-10 bg-white/[0.02] border-t border-white/5">
+                <div className="flex items-center gap-6 mb-8">
+                  <a href="https://www.linkedin.com/in/lya-biwa-130832255/" target="_blank" className="text-white/40 hover:text-[#9F1239] transition-colors">
+                    <Linkedin size={22} />
+                  </a>
+                  <a href="mailto:lyabiwa8@gmail.com" className="text-white/40 hover:text-[#9F1239] transition-colors">
+                    <Mail size={22} />
+                  </a>
+                </div>
+                <p className="text-white/20 font-black tracking-[0.2em] uppercase text-[9px]">
+                  © 2026 LYA BIWA PORTFOLIO
+                </p>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

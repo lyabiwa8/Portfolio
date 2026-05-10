@@ -44,11 +44,11 @@ const languages = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 px-6 bg-[#111827]">
+    <section id="skills" className="py-20 md:py-32 px-6 bg-[#020617]">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="mb-20">
+        <div className="mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-display font-bold text-white leading-tight"
+            className="text-2xl md:text-7xl lg:text-[8rem] font-display font-black text-white leading-[1] tracking-tighter"
           >
             Expertise & <br /> Vision Stratégique
           </motion.h3>
@@ -82,7 +82,7 @@ export function Skills() {
               <div className="w-12 h-12 bg-[#9F1239]/10 rounded-2xl flex items-center justify-center text-[#9F1239] mb-6 group-hover:scale-110 transition-transform">
                 {exp.icon}
               </div>
-              <h4 className="text-xl font-display font-bold text-white mb-4 group-hover:text-[#9F1239] transition-colors">
+              <h4 className="text-xl font-display font-black text-white mb-3 group-hover:text-[#9F1239] transition-colors">
                 {exp.title}
               </h4>
               <p className="text-[#E2E8F0]/60 text-sm leading-relaxed">
@@ -96,7 +96,7 @@ export function Skills() {
           
           {/* Software Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-xl font-display font-bold mb-10 flex items-center gap-3 text-[#E2E8F0]">
+            <h4 className="text-xl font-display font-black mb-8 flex items-center gap-3 text-[#E2E8F0]">
               <span className="w-10 h-[1px] bg-[#9F1239]" /> Logiciels Maîtrisés
             </h4>
             <div className="grid sm:grid-cols-2 gap-5">
@@ -107,11 +107,11 @@ export function Skills() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-[#0F172A] p-6 rounded-2xl border border-white/5 group hover:border-[#9F1239]/40 transition-all shadow-xl"
+                  className="bg-[#0F172A] p-4 rounded-2xl border border-white/5 group hover:border-[#9F1239]/40 transition-all shadow-xl"
                 >
                   <div className="flex items-center gap-5 mb-5">
                     <div 
-                      className="w-14 h-14 rounded-xl flex items-center justify-center font-bold text-2xl shadow-2xl border transition-transform group-hover:rotate-3"
+                      className="w-11 h-11 rounded-xl flex items-center justify-center font-bold text-lg shadow-2xl border transition-transform group-hover:rotate-3"
                       style={{ 
                         backgroundColor: s.color, 
                         borderColor: s.accent + "30",
@@ -121,8 +121,8 @@ export function Skills() {
                       {s.code}
                     </div>
                     <div>
-                      <p className="font-bold text-white text-lg group-hover:text-[#9F1239] transition-colors">{s.name}</p>
-                      <p className="text-[10px] uppercase tracking-widest text-[#E2E8F0]/30 font-semibold">{s.desc}</p>
+                      <p className="font-black text-white text-lg group-hover:text-[#9F1239] transition-colors">{s.name}</p>
+                      <p className="text-[10px] uppercase tracking-widest text-[#E2E8F0]/30 font-black">{s.desc}</p>
                     </div>
                   </div>
                   <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">

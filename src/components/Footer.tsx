@@ -2,114 +2,111 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Linkedin } from "lucide-react";
+import { Mail, Linkedin, ArrowUpRight } from "lucide-react";
 import { getAssetPath } from "@/utils/imageLoader";
+import { motion } from "framer-motion";
 
 export function Footer() {
-  return (
-    <footer
-      className="relative z-10 mt-4"
-      style={{ 
-        borderTop: "1px solid rgba(255,255,255,0.06)", 
-        background: "rgba(15, 23, 42, 0.95)", // Explicit Navy
-        backdropFilter: "blur(20px)", 
-        WebkitBackdropFilter: "blur(20px)" 
-      }}
-    >
-      <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-12">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-          {/* Brand */}
-          <div>
-            <Link href="/"
-              className="flex items-center gap-3 group mb-2"
-            >
-              <div className="relative w-8 h-8 md:w-10 md:h-10">
+  return (
+    <footer className="relative mt-20 pt-20 pb-12 px-6 md:px-12 lg:px-24 bg-[#020617] border-t border-white/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-16 md:gap-24 mb-20">
+          
+          {/* Brand Info */}
+          <div className="lg:col-span-5">
+            <Link href="/" className="flex items-center gap-4 group mb-8">
+              <div className="relative w-10 h-10 md:w-12 md:h-12">
                 <Image 
                   src={getAssetPath("/images/logos/logo lya final.png")} 
-                  alt="Logo Lya Biwa" 
+                  alt="Logo" 
                   fill 
                   className="object-contain"
                 />
               </div>
-              <span 
-                className="font-display text-xl font-bold tracking-tight transition-colors hover:text-[#9F1239]"
-                style={{ color: "#F8FAFC" }}
-              >
-                LYA BIWA
-              </span>
+              <div>
+                <span className="font-display font-bold text-2xl md:text-3xl text-white tracking-tight">LYA BIWA</span>
+                <p className="text-[10px] uppercase tracking-[0.4em] text-[#9F1239] font-bold mt-1">Portfolio 2026</p>
+              </div>
             </Link>
-            <p className="text-[11px] mt-0.5 font-medium tracking-wide uppercase" style={{ color: "rgba(226,232,240,0.4)" }}>
-              Communication · Événementiel · Création
+            <p className="text-[#E2E8F0]/40 text-lg font-light leading-relaxed mb-10 max-w-sm">
+              Concevoir des événements immersifs et des stratégies de communication qui marquent l'identité des marques.
             </p>
-          </div>
-
-          {/* Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            {[
-              { label: "Accueil",     href: "/" },
-              { label: "À propos",    href: "/about" },
-              { label: "Compétences", href: "/skills" },
-              { label: "Projets",     href: "/projects" },
-              { label: "Contact",     href: "/contact" },
-            ].map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-sm font-medium transition-colors hover:text-[#9F1239]"
-                style={{ color: "rgba(226,232,240,0.5)" }}
+            <div className="flex gap-4">
+              <a 
+                href="https://www.linkedin.com/in/lya-biwa-130832255/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-white hover:bg-[#9F1239] hover:border-[#9F1239] transition-all duration-300"
               >
-                {item.label}
-              </Link>
-            ))}
+                <Linkedin size={20} />
+              </a>
+              <a 
+                href="mailto:lyabiwa8@gmail.com" 
+                className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-white hover:bg-[#9F1239] hover:border-[#9F1239] transition-all duration-300"
+              >
+                <Mail size={20} />
+              </a>
+            </div>
           </div>
 
-          {/* CTA */}
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] px-8 py-4 rounded-full transition-all shadow-2xl shadow-[#9F1239]/20"
-            style={{ 
-              backgroundColor: "#9F1239", 
-              color: "#FFFFFF",
-              border: "1px solid rgba(255,255,255,0.1)"
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#BE123C"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "#9F1239"; }}
-          >
-            <Mail size={14} />
-            Me contacter
-          </Link>
+          {/* Quick Links */}
+          <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12">
+            <div className="space-y-6">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9F1239]">Navigation</h4>
+              <ul className="space-y-4">
+                {["Accueil", "À propos", "Compétences", "Projets"].map((link) => (
+                  <li key={link}>
+                    <Link 
+                      href={link === "Accueil" ? "/" : `/${link.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`} 
+                      className="text-white/60 hover:text-white transition-colors text-sm font-medium inline-flex items-center gap-2 group"
+                    >
+                      {link} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="space-y-6">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9F1239]">Contact</h4>
+              <ul className="space-y-4">
+                <li>
+                  <a href="mailto:lyabiwa8@gmail.com" className="text-white/60 hover:text-white transition-colors text-sm font-medium">
+                    Email Officiel
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/lya-biwa-130832255/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors text-sm font-medium">
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="hidden md:block space-y-6">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9F1239]">Location</h4>
+              <p className="text-white/60 text-sm font-medium">Île-de-France, France</p>
+              <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mt-4 italic">Ouverte à la mobilité</p>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-6"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "2rem" }}
-        >
-          <span className="text-[10px] font-bold tracking-[0.2em] uppercase"
-            style={{ color: "rgba(226,232,240,0.3)" }}
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold">
+            © 2026 Lya Biwa — Tous droits réservés
+          </p>
+          <button 
+            onClick={scrollToTop}
+            className="group flex items-center gap-3 text-[10px] text-[#9F1239] uppercase tracking-[0.4em] font-bold hover:text-white transition-colors"
           >
-            © {new Date().getFullYear()} Lya Biwa — Tous droits réservés.
-          </span>
-
-          <div className="flex items-center gap-4">
-            <a
-              href="mailto:lyabiwa8@gmail.com"
-              className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors hover:text-[#9F1239]"
-              style={{ color: "rgba(226,232,240,0.5)" }}
-            >
-              <Mail size={14} /> Mail
-            </a>
-            <div className="w-[1px] h-3 bg-white/10" />
-            <a
-              href="https://www.linkedin.com/in/lya-biwa-130832255/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest transition-colors hover:text-[#9F1239]"
-              style={{ color: "rgba(226,232,240,0.5)" }}
-            >
-              <Linkedin size={14} /> LinkedIn
-            </a>
-          </div>
+            Back to Top
+            <div className="w-8 h-8 rounded-full border border-[#9F1239]/30 flex items-center justify-center group-hover:border-white transition-colors">
+              <ArrowUpRight size={14} className="-rotate-45" />
+            </div>
+          </button>
         </div>
       </div>
     </footer>

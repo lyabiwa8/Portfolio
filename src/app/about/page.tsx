@@ -51,13 +51,13 @@ const experience = [
 ];
 
 const C = {
-  bg:       "#0F172A",
+  bg:       "#020617",
   text:     "#F8FAFC",
   muted:    "rgba(226,232,240,0.60)",
   accent:   "#9F1239",
   accentLt: "#BE123C",
   border:   "rgba(255,255,255,0.08)",
-  card:     "rgba(17,24,39,0.7)",
+  card:     "#111827",
 };
 
 export default function About() {
@@ -95,7 +95,7 @@ export default function About() {
             <motion.div
               animate={{ y: [0, 5, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -top-3 -left-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl -rotate-2 bg-[#111827]/80 backdrop-blur-md border border-white/10 text-[#9F1239]"
+              className="absolute -top-3 -left-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl -rotate-2 bg-[#111827] backdrop-blur-md border border-white/10 text-[#9F1239]"
             >
               BTS Com
             </motion.div>

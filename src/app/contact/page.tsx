@@ -90,7 +90,7 @@ export default function Contact() {
                   required
                   type="text"
                   placeholder="Jean Dupont"
-                  className="w-full bg-[#0F172A] border border-white/5 rounded-2xl px-8 py-4.5 outline-none focus:border-[#9F1239] transition-colors text-white"
+                  className="w-full bg-[#020617] border border-white/5 rounded-2xl px-8 py-4.5 outline-none focus:border-[#9F1239] transition-colors text-white"
                 />
               </div>
 
@@ -100,7 +100,7 @@ export default function Contact() {
                   required
                   type="email"
                   placeholder="jean@exemple.com"
-                  className="w-full bg-[#0F172A] border border-white/5 rounded-2xl px-8 py-4.5 outline-none focus:border-[#9F1239] transition-colors text-white"
+                  className="w-full bg-[#020617] border border-white/5 rounded-2xl px-8 py-4.5 outline-none focus:border-[#9F1239] transition-colors text-white"
                 />
               </div>
 
