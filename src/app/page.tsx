@@ -270,7 +270,6 @@ export default function Home() {
       {/* ════════════ HOBBIES SECTION ════════════ */}
       <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 relative overflow-hidden">
         {/* Web Pattern Overlay */}
-        <WebOverlay />
         
         <div className="max-w-7xl mx-auto relative z-10">
           <SectionTitle subtitle="Inspirations" title={<>PASSIONS <span className="text-[#9F1239]">&</span> VIBES</>} alignment="center" />
@@ -314,7 +313,6 @@ export default function Home() {
       {/* ════════════ FINAL CTA QUOTE ════════════ */}
       <section className="py-12 md:py-32 px-6 relative">
         {/* Spider-Man descending on web */}
-        <ScrollSpider />
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
