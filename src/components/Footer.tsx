@@ -60,7 +60,7 @@ export function Footer() {
                   <li key={link}>
                     <Link 
                       href={link === "Accueil" ? "/" : `/${link.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`} 
-                      className="text-white/60 hover:text-white transition-colors text-sm font-medium inline-flex items-center gap-2 group"
+                      className="text-white/60 hover:text-[#9F1239] transition-colors text-sm font-medium inline-flex items-center gap-2 group"
                     >
                       {link} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
@@ -73,12 +73,12 @@ export function Footer() {
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#9F1239]">Contact</h4>
               <ul className="space-y-4">
                 <li>
-                  <a href="mailto:lyabiwa8@gmail.com" className="text-white/60 hover:text-white transition-colors text-sm font-medium">
+                  <a href="mailto:lyabiwa8@gmail.com" className="text-white/60 hover:text-[#9F1239] transition-colors text-sm font-medium">
                     Email Officiel
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/lya-biwa-130832255/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors text-sm font-medium">
+                  <a href="https://www.linkedin.com/in/lya-biwa-130832255/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#9F1239] transition-colors text-sm font-medium">
                     LinkedIn
                   </a>
                 </li>

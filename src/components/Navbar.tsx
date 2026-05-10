@@ -101,7 +101,7 @@ export function Navbar() {
                   className="relative px-6 py-3 group overflow-hidden"
                 >
                   <span className={`relative z-10 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 ${
-                    pathname === link.href ? "text-white" : "text-white/70 group-hover:text-white"
+                    pathname === link.href ? "text-[#9F1239]" : "text-white/70 group-hover:text-[#9F1239]"
                   }`}>
                     {link.label}
                   </span>
