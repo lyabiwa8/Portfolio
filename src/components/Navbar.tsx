@@ -101,11 +101,11 @@ export function Navbar() {
                   className="relative px-6 py-3 group overflow-hidden"
                 >
                   <span className={`relative z-10 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 ${
-                    pathname === link.href ? "text-[#9F1239]" : "text-white/70 group-hover:text-[#9F1239]"
+                    (pathname === link.href || pathname === `${link.href}/`) ? "text-[#9F1239]" : "text-white/70 group-hover:text-[#9F1239]"
                   }`}>
                     {link.label}
                   </span>
-                  {pathname === link.href && (
+                  {(pathname === link.href || pathname === `${link.href}/`) && (
                     <motion.div
                       layoutId="nav-pill"
                       className="absolute inset-0 bg-[#9F1239]/10 border border-[#9F1239]/20 rounded-full"
@@ -174,7 +174,7 @@ export function Navbar() {
                     <Link
                       href={link.href}
                       className={`text-base md:text-3xl font-display font-black uppercase tracking-tight block transition-all duration-300 ${
-                        pathname === link.href ? "text-[#9F1239] translate-x-2" : "text-white hover:text-[#9F1239]"
+                        (pathname === link.href || pathname === `${link.href}/`) ? "text-[#9F1239] translate-x-2" : "text-white hover:text-[#9F1239]"
                       }`}
                     >
                       {link.label}
