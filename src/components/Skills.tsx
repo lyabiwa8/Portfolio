@@ -39,7 +39,8 @@ const mainExpertise = [
 const languages = [
   { name: "Français", flag: "https://flagcdn.com/w80/fr.png", level: "Maternel", progress: 100 },
   { name: "Anglais", flag: "https://flagcdn.com/w80/gb.png", level: "B2 — Intermédiaire", progress: 75 },
-  { name: "Espagnol", flag: "https://flagcdn.com/w80/es.png", level: "A1 — Débutant", progress: 30 },
+  { name: "Espagnol", flag: "https://flagcdn.com/w80/es.png", level: "A2 — Élémentaire", progress: 45 },
+  { name: "Japonais", flag: "https://flagcdn.com/w80/jp.png", level: "A1 — Débutant", progress: 25 },
 ];
 
 export function Skills() {

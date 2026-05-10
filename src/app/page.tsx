@@ -189,7 +189,7 @@ export default function Home() {
                   {[
                     { label: "Formation", value: "BTS Com" },
                     { label: "Spécialité", value: "Event" },
-                    { label: "Langues", value: "Fr 🇫🇷 En 🇬🇧 Es 🇪🇸 Jp 🇯🇵" },
+                    { label: "Langues", value: "FR 🇫🇷 EN 🇬🇧 ES 🇪🇸 JP 🇯🇵" },
                     { label: "Dispo", value: "Alternance" },
                   ].map((stat, i) => (
                     <div key={i} className="space-y-0.5">
