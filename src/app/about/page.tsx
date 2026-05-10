@@ -99,24 +99,6 @@ export default function About() {
             >
               BTS Com
             </motion.div>
-
-            {/* Availability Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-6 flex justify-center lg:justify-start"
-            >
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy">
-                <div className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
-                  <span className="relative rounded-full h-2 w-2 bg-[#BE123C]" />
-                </div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E2E8F0]">
-                  Disponibilité : Septembre 2026
-                </span>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* Text */}
