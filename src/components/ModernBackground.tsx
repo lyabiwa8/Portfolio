@@ -77,9 +77,9 @@ function MeshBlob({ color, size, duration, delay, initialX, initialY }: any) {
   return (
     <motion.div
       animate={{ 
-        x: [initialX, initialX + 100, initialX - 50, initialX],
-        y: [initialY, initialY - 80, initialY + 40, initialY],
-        scale: [1, 1.2, 0.9, 1],
+        x: [initialX, initialX + 80, initialX - 40, initialX],
+        y: [initialY, initialY - 60, initialY + 30, initialY],
+        scale: [1, 1.1, 0.95, 1],
       }}
       transition={{ 
         duration, 
@@ -91,9 +91,9 @@ function MeshBlob({ color, size, duration, delay, initialX, initialY }: any) {
         background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
         width: size,
         height: size,
-        filter: "blur(100px)",
+        filter: "blur(160px)",
       }}
-      className="absolute rounded-full mix-blend-screen pointer-events-none opacity-40"
+      className="absolute rounded-full mix-blend-screen pointer-events-none opacity-25"
     />
   );
 }
@@ -107,43 +107,36 @@ export function ModernBackground() {
   }, []);
 
   // Parallax for the whole mesh system
-  const meshY = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const meshY = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
   if (!mounted) return <div className="fixed inset-0 -z-10 bg-[#020617]" />;
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617]">
-      {/* ─── Mesh Gradient Layers ─── */}
+      {/* ─── Mesh Gradient Layers (Dispersed & Soft) ─── */}
       <motion.div style={{ y: meshY }} className="absolute inset-0">
-        {/* Main Bordeaux Hub */}
-        <MeshBlob color="#9F1239" size="100vw" duration={25} delay={0} initialX="-20%" initialY="-20%" />
-        
-        {/* Vibrant Crimson Pulse */}
-        <MeshBlob color="#E11D48" size="80vw" duration={20} delay={2} initialX="40%" initialY="30%" />
-        
-        {/* Deep Rose Shadow */}
-        <MeshBlob color="#881337" size="90vw" duration={30} delay={5} initialX="-10%" initialY="50%" />
-        
-        {/* Subtle Accent */}
-        <MeshBlob color="#BE123C" size="60vw" duration={18} delay={1} initialX="20%" initialY="-10%" />
+        {/* Main Hubs - Pushed further to corners for better legibility */}
+        <MeshBlob color="#881337" size="110vw" duration={35} delay={0} initialX="-30%" initialY="-30%" />
+        <MeshBlob color="#9F1239" size="90vw" duration={28} delay={2} initialX="50%" initialY="40%" />
+        <MeshBlob color="#701a28" size="100vw" duration={40} delay={5} initialX="-20%" initialY="60%" />
+        <MeshBlob color="#4c0519" size="70vw" duration={22} delay={1} initialX="30%" initialY="-20%" />
       </motion.div>
 
       {/* ─── Premium Finishing Textures ─── */}
       
-      {/* Heavy Cinematic Grain (The "Framer" Secret) */}
+      {/* Cinematic Grain */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.25] mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-overlay"
         style={{
           backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')",
-          filter: "contrast(150%) brightness(100%)",
         }}
       />
 
-      {/* Dark Vignette for Depth & Readability */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.9)_100%)]" />
+      {/* Deep Vignette - Stronger in center for content focus */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.95)_100%)]" />
       
-      {/* Subliminal Scanlines for Technical Feel */}
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] z-20 opacity-20" />
+      {/* Technical Scanlines */}
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] z-20 opacity-15" />
     </div>
   );
 }
