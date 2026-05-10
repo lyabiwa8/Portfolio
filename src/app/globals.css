@@ -9,7 +9,7 @@
   --color-navy-950: #020617; /* Deep Background */
   --color-navy-900: #0F172A; /* Main Background */
   --color-black-soft: #111827; /* Cards / Elements */
-  --color-pearl-500: #E2E8F0; /* Main Text */
+  --color-pearl-500: #FFFFFF; /* Pure White Text */
   --color-burgundy-600: #9F1239; /* Accent Main */
   --color-burgundy-500: #BE123C; /* Accent Light */
 }
@@ -23,7 +23,7 @@
 
   body {
     background-color: #020617;
-    color: #E2E8F0;
+    color: #FFFFFF;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

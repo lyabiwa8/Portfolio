@@ -37,7 +37,7 @@ function SectionTitle({ subtitle, title, alignment = "left" }: { subtitle: strin
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-3xl md:text-7xl lg:text-9xl font-display font-black text-white leading-[0.9] tracking-tighter"
+        className="text-2xl md:text-7xl lg:text-9xl font-display font-black text-white leading-[1] tracking-tighter"
       >
         {title}
       </motion.h3>
@@ -77,7 +77,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="text-5xl md:text-8xl lg:text-[10rem] font-display font-black text-white leading-[0.9] tracking-tighter mb-8"
+              className="text-4xl md:text-8xl lg:text-[10rem] font-display font-black text-white leading-[0.9] tracking-tighter mb-6"
             >
               LYA <br />
               <span className="text-[#9F1239] italic-display">BIWA.</span>
@@ -87,7 +87,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base md:text-2xl text-[#E2E8F0]/40 max-w-xl mx-auto lg:mx-0 mb-10 font-medium leading-relaxed"
+              className="text-sm md:text-2xl text-white/40 max-w-xl mx-auto lg:mx-0 mb-8 font-medium leading-relaxed"
             >
               Future stratège en communication spécialisée dans l'événementiel de luxe, de mode et de sport.
             </motion.p>
@@ -171,7 +171,7 @@ export default function Home() {
                   <span className="text-[#9F1239] italic-display">au service de l'exception."</span>
                 </h2>
                 
-                <p className="text-base md:text-2xl text-[#E2E8F0]/60 font-medium leading-relaxed mb-8 max-w-2xl">
+                <p className="text-sm md:text-2xl text-white/60 font-medium leading-relaxed mb-6 max-w-2xl">
                   Actuellement en BTS Communication, je me projette vers une licence spécialisée pour affiner mon expertise dans les secteurs du luxe, de la mode et du sport. Mon parcours est guidé par une curiosité insatiable et une volonté de repousser les limites de la communication traditionnelle.
                 </p>
 

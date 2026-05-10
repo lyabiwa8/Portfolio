@@ -85,7 +85,7 @@ export function Skills() {
               <h4 className="text-xl font-display font-black text-white mb-3 group-hover:text-[#9F1239] transition-colors">
                 {exp.title}
               </h4>
-              <p className="text-[#E2E8F0]/60 text-sm leading-relaxed">
+              <p className="text-white/60 text-xs leading-relaxed">
                 {exp.desc}
               </p>
             </motion.div>
@@ -96,7 +96,7 @@ export function Skills() {
           
           {/* Software Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-xl font-display font-black mb-8 flex items-center gap-3 text-[#E2E8F0]">
+            <h4 className="text-xl font-display font-black mb-8 flex items-center gap-3 text-white">
               <span className="w-10 h-[1px] bg-[#9F1239]" /> Logiciels Maîtrisés
             </h4>
             <div className="grid sm:grid-cols-2 gap-5">
@@ -122,7 +122,7 @@ export function Skills() {
                     </div>
                     <div>
                       <p className="font-black text-white text-lg group-hover:text-[#9F1239] transition-colors">{s.name}</p>
-                      <p className="text-[10px] uppercase tracking-widest text-[#E2E8F0]/30 font-black">{s.desc}</p>
+                      <p className="text-[8px] md:text-[10px] uppercase tracking-widest text-white/30 font-black">{s.desc}</p>
                     </div>
                   </div>
                   <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
