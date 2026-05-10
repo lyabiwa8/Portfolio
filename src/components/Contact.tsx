@@ -30,12 +30,12 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-[#0F172A] text-[#E2E8F0]">
+    <section id="contact" className="py-24 px-6 bg-transparent relative z-10 text-white">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
         <div>
           <h2 className="text-sm uppercase tracking-widest text-[#9F1239] font-semibold mb-4">Contact</h2>
-          <h3 className="text-4xl md:text-5xl font-display font-bold mb-8 text-[#F8FAFC]">Travaillons ensemble</h3>
-          <p className="text-[#E2E8F0]/70 text-lg mb-12 max-w-md">
+          <h3 className="text-4xl md:text-5xl font-display font-bold mb-8 text-white">Travaillons ensemble</h3>
+          <p className="text-white/70 text-lg mb-12 max-w-md">
             Vous avez un projet de communication ou vous souhaitez simplement échanger ? 
             N'hésitez pas à m'envoyer un mail.
           </p>
@@ -46,7 +46,7 @@ export function Contact() {
                 <Mail size={28} />
               </div>
               <div>
-                <span className="block text-sm text-[#E2E8F0]/40 uppercase tracking-widest mb-1">Email Officiel</span>
+                <span className="block text-sm text-white/40 uppercase tracking-widest mb-1">Email Officiel</span>
                 <a href="mailto:lyabiwa8@gmail.com" className="text-2xl md:text-3xl font-display font-bold hover:text-[#9F1239] transition-colors">
                   lyabiwa8@gmail.com
                 </a>
@@ -82,7 +82,7 @@ export function Contact() {
                 <Send size={32} />
               </div>
               <h3 className="text-2xl font-bold">Message envoyé !</h3>
-              <p className="text-[#E2E8F0]/60">Merci, Lya vous répondra dans les plus brefs délais.</p>
+              <p className="text-white/60">Merci, Lya vous répondra dans les plus brefs délais.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">

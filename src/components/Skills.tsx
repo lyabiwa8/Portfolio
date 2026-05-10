@@ -45,7 +45,7 @@ const languages = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-20 md:py-32 px-6 bg-[#020617]">
+    <section id="skills" className="py-20 md:py-32 px-6 bg-transparent relative z-10">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
