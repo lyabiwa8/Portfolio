@@ -189,12 +189,12 @@ export default function Home() {
                   {[
                     { label: "Formation", value: "BTS Com" },
                     { label: "Spécialité", value: "Event" },
-                    { label: "Langues", value: "Fr/En/Jp" },
+                    { label: "Langues", value: "Fr 🇫🇷 En 🇬🇧 Es 🇪🇸 Jp 🇯🇵" },
                     { label: "Dispo", value: "Alternance" },
                   ].map((stat, i) => (
                     <div key={i} className="space-y-0.5">
                       <p className="text-[8px] uppercase tracking-widest text-[#9F1239] font-black">{stat.label}</p>
-                      <p className="text-lg md:text-2xl font-display font-black text-white">{stat.value}</p>
+                      <p className="text-base md:text-xl font-display font-black text-white">{stat.value}</p>
                     </div>
                   ))}
                 </div>
