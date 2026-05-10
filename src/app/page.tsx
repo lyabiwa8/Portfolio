@@ -158,10 +158,7 @@ export default function Home() {
             style={{ y: isMobile ? 0 : heroY, opacity: heroOpacity }}
             className="lg:col-span-5 relative group z-10"
           >
-            {/* Subtle Spider-Man Animation (Bottom Corner) */}
-            <div className="hidden md:block absolute -bottom-10 -right-10 w-48 h-48 z-20 pointer-events-none mix-blend-multiply">
-              <LottieAnimation className="w-full h-full" />
-            </div>
+
             
             <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 max-w-md mx-auto w-full transition-all duration-700 group-hover:shadow-[#9F1239]/20 group-hover:shadow-[0_0_50px_rgba(159,18,57,0.4)] z-10">
               <Image

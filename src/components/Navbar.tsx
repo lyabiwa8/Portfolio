@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getAssetPath } from "@/utils/imageLoader";
 import { Menu, X, ArrowRight, Instagram, Linkedin, Mail } from "lucide-react";
 import { Magnetic } from "./Magnetic";
+import { LottieAnimation } from "./LottieAnimation";
 
 const links = [
   { href: "/",           label: "Accueil" },
@@ -73,23 +74,30 @@ export function Navbar() {
         >
           {/* Logo */}
           <Magnetic strength={0.2}>
-            <Link href="/" className="flex items-center gap-2 md:gap-4 group relative z-[110]">
-              <div className="relative w-7 h-7 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
-                <Image 
-                  src={getAssetPath("/images/logos/logo-lya-final.png")} 
-                  alt="Logo" 
-                  fill 
-                  className="object-contain"
-                  priority
-                />
+            <div className="relative group z-[110]">
+              <Link href="/" className="flex items-center gap-2 md:gap-4">
+                <div className="relative w-7 h-7 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
+                  <Image 
+                    src={getAssetPath("/images/logos/logo-lya-final.png")} 
+                    alt="Logo" 
+                    fill 
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="font-display font-black text-sm md:text-2xl tracking-tight text-white leading-none">
+                    LYA BIWA
+                  </span>
+                  <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-[#9F1239] font-black mt-0.5">Portfolio</span>
+                </div>
+              </Link>
+              
+              {/* Spider-Man descending from Logo */}
+              <div className="hidden md:block absolute top-[100%] left-1/2 -translate-x-1/2 w-24 h-24 pointer-events-none mix-blend-multiply">
+                <LottieAnimation className="w-full h-full" />
               </div>
-              <div className="flex flex-col text-left">
-                <span className="font-display font-black text-sm md:text-2xl tracking-tight text-white leading-none">
-                  LYA BIWA
-                </span>
-                <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-[#9F1239] font-black mt-0.5">Portfolio</span>
-              </div>
-            </Link>
+            </div>
           </Magnetic>
 
           {/* Desktop Nav */}
