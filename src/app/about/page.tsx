@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { PageWrapper } from "@/components/PageWrapper";
-import { Download, GraduationCap, Briefcase, MapPin, Globe, Mail } from "lucide-react";
+import { Download, GraduationCap, Briefcase, MapPin, Globe, Mail, Car } from "lucide-react";
 import { getAssetPath } from "@/utils/imageLoader";
 
 const education = [
@@ -135,7 +135,7 @@ export default function About() {
             >
               {[
                 { icon: <MapPin size={11} />, text: "Île-de-France" },
-                { icon: <Globe  size={11} />, text: "Permis B" },
+                { icon: <Car    size={11} />, text: "Permis B" },
                 { icon: <Mail   size={11} />, text: "lyabiwa8@gmail.com" },
               ].map((p) => (
                 <span
@@ -179,7 +179,10 @@ export default function About() {
               <h3 className="text-lg md:text-xl font-display font-bold text-white">Formation</h3>
             </div>
 
-            <div className="space-y-7">
+            <div className="space-y-7 relative">
+              {/* Vertical line decoration */}
+              <div className="absolute left-[17px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-[#9F1239]/50 via-[#9F1239]/20 to-transparent" />
+              
               {education.map((item, i) => (
                 <motion.div
                   key={i}
@@ -187,17 +190,17 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="pl-11 relative"
+                  className="pl-14 relative group"
                 >
                   <div
-                    className="absolute left-0 top-0.5 w-9 h-9 rounded-full flex items-center justify-center z-10 bg-white/5 border border-white/10 text-[#9F1239]"
+                    className="absolute left-0 top-1 w-[34px] h-[34px] rounded-full flex items-center justify-center z-10 bg-[#0F172A] border border-[#9F1239]/30 text-[#9F1239] group-hover:scale-110 group-hover:border-[#9F1239] transition-all"
                   >
                     {item.icon}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-0.5 text-[#9F1239]">{item.year}</span>
-                  <h4 className="text-base font-display font-bold mb-0.5 text-white">{item.title}</h4>
-                  <p className="text-xs font-semibold mb-1.5 text-[#E2E8F0]/40">{item.institution}</p>
-                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60">{item.desc}</p>
+                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-1 text-[#9F1239]">{item.year}</span>
+                  <h4 className="text-base md:text-lg font-display font-black mb-0.5 text-white">{item.title}</h4>
+                  <p className="text-xs font-bold mb-2 text-[#E2E8F0]/40 uppercase tracking-tight">{item.institution}</p>
+                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60 max-w-md">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -220,7 +223,10 @@ export default function About() {
               <h3 className="text-lg md:text-xl font-display font-bold text-white">Expérience</h3>
             </div>
 
-            <div className="space-y-7">
+            <div className="space-y-7 relative">
+              {/* Vertical line decoration */}
+              <div className="absolute left-[17px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-[#9F1239]/50 via-[#9F1239]/20 to-transparent" />
+
               {experience.map((item, i) => (
                 <motion.div
                   key={i}
@@ -228,24 +234,24 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="pl-11 relative"
+                  className="pl-14 relative group"
                 >
                   <div
-                    className="absolute left-0 top-0.5 w-9 h-9 rounded-full flex items-center justify-center z-10 bg-white/5 border border-white/10 text-[#9F1239]"
+                    className="absolute left-0 top-1 w-[34px] h-[34px] rounded-full flex items-center justify-center z-10 bg-[#0F172A] border border-[#9F1239]/30 text-[#9F1239] group-hover:scale-110 group-hover:border-[#9F1239] transition-all"
                   >
                     {item.icon}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-0.5 text-[#9F1239]">{item.year}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-1 text-[#9F1239]">{item.year}</span>
                   <div className="flex items-center gap-2 mb-0.5">
-                    <h4 className="text-base font-display font-bold text-white">{item.title}</h4>
+                    <h4 className="text-base md:text-lg font-display font-black text-white">{item.title}</h4>
                     {item.sub && (
-                      <span className="text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[#9F1239]/10 text-[#9F1239]">
+                      <span className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#9F1239] text-white">
                         {item.sub}
                       </span>
                     )}
                   </div>
-                  <p className="text-xs font-semibold mb-1.5 text-[#E2E8F0]/40">{item.institution}</p>
-                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60">{item.desc}</p>
+                  <p className="text-xs font-bold mb-2 text-[#E2E8F0]/40 uppercase tracking-tight">{item.institution}</p>
+                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60 max-w-md">{item.desc}</p>
                 </motion.div>
               ))}
             </div>

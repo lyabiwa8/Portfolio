@@ -10,7 +10,7 @@ const softwareSkills = [
   { name: "InDesign", code: "Id", color: "#49021F", accent: "#FF3366", level: 70, desc: "Mise en page" },
   { name: "Illustrator", code: "Ai", color: "#330000", accent: "#FF9A00", level: 65, desc: "Vectoriel" },
   { name: "Canva", code: "Cv", color: "#00C4CC", accent: "#FFFFFF", level: 95, desc: "Design Rapide" },
-  { name: "CapCut", code: "Cc", color: "#000000", accent: "#FFFFFF", level: 90, desc: "Contenu Social (Noir & Blanc)" },
+  { name: "CapCut", code: "Cc", color: "#000000", accent: "#FFFFFF", level: 90, desc: "Contenu Social" },
 ];
 
 const mainExpertise = [
@@ -39,7 +39,6 @@ const mainExpertise = [
 const languages = [
   { name: "Français", flag: "https://flagcdn.com/w80/fr.png", level: "Maternel", progress: 100 },
   { name: "Anglais", flag: "https://flagcdn.com/w80/gb.png", level: "B2 — Intermédiaire", progress: 75 },
-  { name: "Espagnol", flag: "https://flagcdn.com/w80/es.png", level: "A2 — Élémentaire", progress: 45 },
   { name: "Japonais", flag: "https://flagcdn.com/w80/jp.png", level: "A1 — Débutant", progress: 25 },
 ];
 
@@ -100,19 +99,20 @@ export function Skills() {
             <h4 className="text-xl font-display font-black mb-8 flex items-center gap-3 text-white">
               <span className="w-10 h-[1px] bg-[#9F1239]" /> Logiciels Maîtrisés
             </h4>
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
               {softwareSkills.map((s, i) => (
                 <motion.div
                   key={s.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5, borderColor: s.accent + "50" }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="bg-[#0F172A] p-4 rounded-2xl border border-white/5 group hover:border-[#9F1239]/40 transition-all shadow-xl"
+                  className="bg-[#0F172A] p-5 md:p-6 rounded-[2rem] border border-white/5 group transition-all shadow-xl flex flex-col h-full"
                 >
-                  <div className="flex items-center gap-5 mb-5">
+                  <div className="flex flex-col gap-4 mb-4">
                     <div 
-                      className="w-11 h-11 rounded-xl flex items-center justify-center font-bold text-lg shadow-2xl border transition-transform group-hover:rotate-3"
+                      className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-xl shadow-2xl border transition-transform group-hover:rotate-3 flex-shrink-0"
                       style={{ 
                         backgroundColor: s.color, 
                         borderColor: s.accent + "30",
@@ -122,19 +122,26 @@ export function Skills() {
                       {s.code}
                     </div>
                     <div>
-                      <p className="font-black text-white text-lg group-hover:text-[#9F1239] transition-colors">{s.name}</p>
-                      <p className="text-[8px] md:text-[10px] uppercase tracking-widest text-white/30 font-black">{s.desc}</p>
+                      <p className="font-black text-white text-sm md:text-xl group-hover:text-[#9F1239] transition-colors leading-tight mb-1">{s.name}</p>
+                      <p className="text-[10px] uppercase tracking-widest text-white/40 font-bold leading-tight">{s.desc}</p>
                     </div>
                   </div>
-                  <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${s.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 + i * 0.1 }}
-                      className="h-full rounded-full"
-                      style={{ backgroundColor: s.accent }}
-                    />
+                  
+                  <div className="mt-auto space-y-2">
+                    <div className="flex justify-between items-end">
+                      <span className="text-[10px] font-black text-white/30 uppercase tracking-tighter">Niveau</span>
+                      <span className="text-[10px] font-black text-[#9F1239]">{s.level}%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${s.level}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 + i * 0.1 }}
+                        className="h-full rounded-full"
+                        style={{ backgroundColor: s.accent }}
+                      />
+                    </div>
                   </div>
                 </motion.div>
               ))}

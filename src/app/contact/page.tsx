@@ -28,20 +28,20 @@ export default function Contact() {
             DISONS-NOUS <span className="text-[#9F1239] italic">BONJOUR.</span>
           </motion.h1>
           
-          <div className="grid sm:grid-cols-2 gap-6 mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {/* Mail Block */}
-            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30">
+            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30 flex flex-col items-center text-center">
               <div className="w-12 h-12 rounded-2xl bg-[#9F1239]/10 flex items-center justify-center text-[#9F1239] mb-6 group-hover:bg-[#9F1239] group-hover:text-white transition-all">
                 <Mail size={22} />
               </div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-[#E2E8F0]/30 font-bold mb-3">Email Officiel</p>
-              <a href="mailto:lyabiwa8@gmail.com" className="text-lg font-bold text-white hover:text-[#9F1239] transition-colors break-words">
+              <a href="mailto:lyabiwa8@gmail.com" className="text-base md:text-lg font-bold text-white hover:text-[#9F1239] transition-colors break-all">
                 lyabiwa8@gmail.com
               </a>
             </div>
 
             {/* LinkedIn Block */}
-            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30">
+            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30 flex flex-col items-center text-center">
               <div className="w-12 h-12 rounded-2xl bg-[#9F1239]/10 flex items-center justify-center text-[#9F1239] mb-6 group-hover:bg-[#9F1239] group-hover:text-white transition-all">
                 <Linkedin size={22} />
               </div>
@@ -53,6 +53,24 @@ export default function Contact() {
                 className="text-lg font-bold text-white hover:text-[#9F1239] transition-colors"
               >
                 Lya Biwa
+              </a>
+            </div>
+
+            {/* TikTok Block */}
+            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30 flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#9F1239]/10 flex items-center justify-center text-[#9F1239] mb-6 group-hover:bg-[#9F1239] group-hover:text-white transition-all">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+              </div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-[#E2E8F0]/30 font-bold mb-3">TikTok</p>
+              <a 
+                href="https://www.tiktok.com/@atnightimbatman" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-lg font-bold text-white hover:text-[#9F1239] transition-colors"
+              >
+                @atnightimbatman
               </a>
             </div>
           </div>

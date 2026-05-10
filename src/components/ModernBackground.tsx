@@ -156,6 +156,15 @@ export function ModernBackground() {
 
       {/* ─── Overlays ─── */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
+      
+      {/* Cinematic Scanlines (Bat-Computer Effect) */}
+      <div className="absolute inset-0 pointer-events-none z-20 opacity-[0.03]" 
+           style={{ 
+             background: 'repeating-linear-gradient(0deg, #9F1239, #9F1239 1px, transparent 1px, transparent 2px)',
+             backgroundSize: '100% 2px'
+           }} 
+      />
+
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.95)_100%)]" />
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] z-20 opacity-10" />
     </div>

@@ -1,24 +1,35 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ExternalLink, Play, FileText } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Play, FileText, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { getAssetPath } from "@/utils/imageLoader";
+import { CardSpider } from "@/components/SpiderElements";
 
 const projects = [
+  {
+    title: "Projet Imagine (Hope Power)",
+    category: "Vidéo & Event",
+    type: "video",
+    thumbnail: "/images/couvertures/projet imagine.png",
+    link: "/images/creations/Évent HopePower(projet scolaire).mp4",
+    icon: <Play size={20} fill="currentColor" />,
+  },
   {
     title: "Ogilvy / Candy'Up",
     category: "Vidéo & Campagne",
     type: "video",
     thumbnail: "/images/logos/ogilvy-logo-agence.jpg",
     link: "/images/creations/projet-ogilvy.mov",
-    icon: <Play size={20} />,
+    icon: <Play size={20} fill="currentColor" />,
   },
   {
     title: "Starz Communication",
     category: "Design & Stratégie",
     type: "pdf",
-    thumbnail: "/images/creations/event-affiche-perso.png",
+    thumbnail: "/images/couvertures/couverture starz.png",
     link: "/images/creations/starz.pdf",
     icon: <FileText size={20} />,
   },
@@ -31,12 +42,12 @@ const projects = [
     icon: <FileText size={20} />,
   },
   {
-    title: "Édit Batman Concept",
+    title: "Édit Batman Jeu",
     category: "Motion Design",
     type: "video",
     thumbnail: "/images/creations/batman-thumb.png",
     link: "/images/creations/edit-batman-jeu.mov",
-    icon: <Play size={20} />,
+    icon: <Play size={20} fill="currentColor" />,
   },
   {
     title: "TikTok Schiaparelli",
@@ -44,7 +55,7 @@ const projects = [
     type: "video",
     thumbnail: "/images/photos-presentation/photo-runway-mode.jpg",
     link: "/images/creations/edit-schiaparelli.mp4",
-    icon: <Play size={20} />,
+    icon: <Play size={20} fill="currentColor" />,
   },
   {
     title: "Newsletter Suisse",
@@ -54,9 +65,43 @@ const projects = [
     link: "/images/creations/newsletter-suisse-normande.pdf",
     icon: <FileText size={20} />,
   },
+  {
+    title: "Event Affiche Perso",
+    category: "Design Graphique",
+    type: "image",
+    thumbnail: "/images/creations/event-affiche-perso.png",
+    link: "/images/creations/event-affiche-perso.png",
+    icon: <ExternalLink size={20} />,
+  },
+  {
+    title: "Edit Mode",
+    category: "Vidéo & Mode",
+    type: "video",
+    thumbnail: "/images/photos-presentation/photo-runway-mode.jpg",
+    link: "/images/creations/edit mode.mov",
+    icon: <Play size={20} fill="currentColor" />,
+  },
+  {
+    title: "Faux Article (Projet Scolaire)",
+    category: "Rédaction & PAO",
+    type: "pdf",
+    thumbnail: "/images/couvertures/couverture faux article.png",
+    link: "/images/creations/faux-article.pdf",
+    icon: <FileText size={20} />,
+  },
 ];
 
 export function Portfolio() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<any>(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section id="portfolio" className="py-24 px-6 bg-transparent relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -70,46 +115,175 @@ export function Portfolio() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {projects.slice(0, 3).map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={!isMobile ? { 
+                y: -10,
+                rotateX: 4,
+                rotateY: 2,
+                transition: { duration: 0.4, ease: "easeOut" }
+              } : {}}
+              onClick={() => setSelectedProject(project)}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#0F172A] shadow-xl border border-white/5"
+              className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#0F172A] shadow-2xl border border-white/5 cursor-pointer perspective-1000"
             >
               <Image
                 src={getAssetPath(project.thumbnail)}
                 alt={project.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                className="object-cover transition-all duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-100"
               />
+              {/* Spider-Man perched on card edge */}
+              <CardSpider index={index} />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/20 to-transparent flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="text-[#9F1239] text-sm font-semibold uppercase tracking-wider mb-2">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/50 to-transparent flex flex-col justify-end p-10 pb-14 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <span className="text-[#9F1239] text-[10px] font-bold uppercase tracking-[0.3em] mb-3">
                   {project.category}
                 </span>
-                <h4 className="text-2xl font-display font-bold text-white mb-4">
+                <h4 className="text-2xl md:text-3xl font-display font-bold text-white mb-6">
                   {project.title}
                 </h4>
                 
-                <a
-                  href={getAssetPath(project.link)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white/90 font-medium border-b border-white/30 pb-1 hover:border-[#9F1239] hover:text-[#9F1239] transition-all w-fit"
-                >
-                  {project.icon}
-                  <span>Voir le projet</span>
-                  <ExternalLink size={16} />
-                </a>
+                <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full group-hover:bg-[#9F1239] group-hover:border-[#9F1239] transition-all duration-300 shadow-xl w-fit">
+                  <div className="text-white">
+                    {project.icon}
+                  </div>
+                  <span className="text-[10px] text-white font-bold uppercase tracking-widest">Voir le projet</span>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        <div className="flex justify-center">
+          <Link href="/projects">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-10 py-5 bg-white/5 hover:bg-[#9F1239] border border-white/10 hover:border-[#9F1239] text-white rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-300 shadow-2xl shadow-black group"
+            >
+              Voir tous mes projets
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-2" />
+            </motion.div>
+          </Link>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <MediaModal 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
+      </AnimatePresence>
     </section>
+  );
+}
+
+function MediaModal({ project, onClose }: { project: any; onClose: () => void }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div 
+      className="fixed inset-0 z-[2000] flex items-center justify-center p-4 pt-24 md:p-8 overflow-hidden"
+      onClick={onClose}
+    >
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="absolute inset-0 bg-[#020617]/95 backdrop-blur-xl" 
+      />
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 20 }}
+        className="relative z-10 w-full max-w-4xl bg-[#0f172a] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-white/5">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-[#9F1239] font-bold">{project.category}</p>
+            <h3 className="text-white font-display font-bold text-xl">{project.title}</h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2.5 rounded-full bg-white/5 hover:bg-[#9F1239]/20 border border-white/10 text-white/60 hover:text-white transition-all shadow-lg"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        <div className="relative bg-black min-h-[40vh] flex items-center justify-center">
+          {project.type === "video" && (
+            <video
+              src={getAssetPath(project.link)}
+              controls
+              autoPlay
+              playsInline
+              className="w-full max-h-[70vh] object-contain"
+            />
+          )}
+          
+          {(project.type === "pdf" || project.type === "image") && (
+            <div className="w-full flex flex-col items-center">
+              {isMobile || project.type === "image" ? (
+                <div className="p-8 text-center">
+                  <div className="relative w-full max-w-lg aspect-video md:aspect-[16/9] mx-auto mb-8 rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                    <Image
+                      src={getAssetPath(project.type === "image" ? project.link : project.thumbnail)}
+                      alt={project.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  {project.type === "pdf" && (
+                    <a
+                      href={getAssetPath(project.link)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-[#9F1239] text-white rounded-full font-bold text-sm shadow-xl hover:scale-105 transition-transform"
+                    >
+                      <FileText size={20} />
+                      Ouvrir le document PDF
+                    </a>
+                  )}
+                </div>
+              ) : (
+                <iframe
+                  src={getAssetPath(project.link)}
+                  className="w-full h-[70vh]"
+                  title={project.title}
+                />
+              )}
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </div>
   );
 }

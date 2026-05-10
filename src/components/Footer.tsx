@@ -27,10 +27,28 @@ export function Footer() {
               </div>
               <div>
                 <span className="font-display font-bold text-2xl md:text-3xl text-white tracking-tight">LYA BIWA</span>
-                <p className="text-[10px] uppercase tracking-[0.4em] text-[#9F1239] font-bold mt-1">Portfolio 2026</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-[#9F1239] font-bold">Portfolio 2026</p>
+                  <div className="w-4 h-4 text-[#9F1239]/40 group-hover:text-[#9F1239] transition-colors duration-500">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 4.5C11 4.5 10.2 5.5 9.5 5.5C8.8 5.5 8 4.5 7 4.5C5 4.5 3 6.5 3 9.5C3 12.5 5.5 16.5 12 20.5C18.5 16.5 21 12.5 21 9.5C21 6.5 19 4.5 17 4.5C16 4.5 15.2 5.5 14.5 5.5C13.8 5.5 13 4.5 12 4.5Z" opacity="0" />
+                      {/* Stylized Bat Logo */}
+                      <path d="M12 6c.5 0 1 .5 1.5 1.5.5-1 1-1.5 2-1.5 1.5 0 2.5 1 2.5 2.5 0 1.5-1.5 3.5-6 6.5-4.5-3-6-5-6-6.5 0-1.5 1-2.5 2.5-2.5 1 0 1.5.5 2 1.5.5-1 1-1.5 1.5-1.5z" opacity="0" />
+                      <path d="M12 18s-4.5-2.5-7-5.5c-1-1.5-1.5-3-1.5-4.5C3.5 5.5 5 4.5 6.5 4.5c1 0 2 .5 2.5 1.5.5-1 1.5-1.5 2.5-1.5.5 0 1 .1 1.5.3.5-.2 1-.3 1.5-.3 1 0 2 .5 2.5 1.5.5-1 1.5-1.5 2.5-1.5 1.5 0 3 1 3 3.5 0 1.5-.5 3-1.5 4.5-2.5 3-7 5.5-7 5.5zM12 6c-.5 0-1 .5-1.5 1.5-.5-1-1-1.5-2-1.5-1 0-1.5.5-2 1.5-1.5-1-2.5-1.5-4 0-.5 1-.5 2 0 3 1 2 4 4 9 7 5-3 8-5 9-7 .5-1 .5-2 0-3-1.5-1.5-2.5-1-4 0-.5-1-1-1.5-2-1.5-1 0-1.5.5-2 1.5-.5-1-1-.5-1.5-1.5z" opacity="0" />
+                      {/* Minimalist Bat Wing Shape */}
+                      <path d="M12 18.5c-3-2-6-4.5-6-7.5 0-2 1.5-3.5 3.5-3.5 1 0 1.5.5 2 1.5.5-1 1-1.5 2-1.5s1.5.5 2 1.5c.5-1 1-1.5 2-1.5 2 0 3.5 1.5 3.5 3.5 0 3-3 5.5-6 7.5z" opacity="0" />
+                      {/* Actual Stylized Batwing */}
+                      <path d="M12 6c.5 0 1 .5 1.5 1 0-1 .5-2 1.5-2s1.5.5 2 1c.5-.5 1-1 2-1s2 1 2 2.5c0 2-3 5-7.5 8C8.5 12.5 5.5 9.5 5.5 7.5c0-1.5 1-2.5 2-2.5s1.5.5 2 1c.5-.5 1-1 2-1s1.5 1 1.5 2c.5-.5 1-1 1-1z" opacity="0" />
+                      {/* Simple Bat Signal */}
+                      <path d="M12 6c.5 0 1.5 1 1.5 2.5S11.5 12 12 12s-1.5-1-1.5-3.5S11.5 6 12 6z" opacity="0" />
+                      {/* The real logo path */}
+                      <path d="M21 7.2c-.3-.2-.6-.4-1-.5-1.2-.4-2.5.1-3.5.7-.1-1.2-1.2-2.3-2.5-2.4-1.3-.1-2.4 1-2.5 2.3-.1-1.3-1.2-2.4-2.5-2.3-1.3.1-2.4 1.2-2.5 2.4-1-.6-2.3-1.1-3.5-.7-.4.1-.7.3-1 .5 0 0 1.5 4.5 10 9.8 8.5.2 10-9.8 10-9.8z" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </Link>
-            <p className="text-[#E2E8F0]/40 text-lg font-light leading-relaxed mb-10 max-w-sm">
+            <p className="text-[#E2E8F0]/60 text-base font-display font-medium leading-relaxed mb-10 max-w-sm tracking-wide">
               Concevoir des événements immersifs et des stratégies de communication qui marquent l'identité des marques.
             </p>
             <div className="flex gap-4">
@@ -41,6 +59,16 @@ export function Footer() {
                 className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-white hover:bg-[#9F1239] hover:border-[#9F1239] transition-all duration-300"
               >
                 <Linkedin size={20} />
+              </a>
+              <a 
+                href="https://www.tiktok.com/@atnightimbatman" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-white hover:bg-[#9F1239] hover:border-[#9F1239] transition-all duration-300"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
               </a>
               <a 
                 href="mailto:lyabiwa8@gmail.com" 
@@ -80,6 +108,11 @@ export function Footer() {
                 <li>
                   <a href="https://www.linkedin.com/in/lya-biwa-130832255/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#9F1239] transition-colors text-sm font-medium">
                     LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.tiktok.com/@atnightimbatman" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-[#9F1239] transition-colors text-sm font-medium">
+                    TikTok
                   </a>
                 </li>
               </ul>

@@ -119,12 +119,14 @@ export function Navbar() {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-4">
-            <Link 
-              href="/contact" 
-              className="hidden md:flex items-center gap-2 bg-[#9F1239] hover:bg-[#BE123C] text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
-            >
-              Collaborer <ArrowRight size={14} />
-            </Link>
+            <Magnetic strength={0.15}>
+              <Link 
+                href="/contact" 
+                className="hidden md:flex items-center gap-2 bg-[#9F1239] hover:bg-[#BE123C] text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+              >
+                Collaborer <ArrowRight size={14} />
+              </Link>
+            </Magnetic>
 
             {/* Mobile Toggle */}
             <button 

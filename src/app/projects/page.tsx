@@ -11,6 +11,14 @@ const categories = ["Tous", "Vidéo", "Design", "Rédaction"];
 
 const projects = [
   {
+    title: "Projet Imagine (Hope Power - Scolaire)",
+    category: "Vidéo",
+    type: "video",
+    src: "/images/creations/Évent HopePower(projet scolaire).mp4",
+    thumb: "/images/couvertures/projet imagine.png",
+    desc: "Création vidéo pour un projet scolaire événementiel."
+  },
+  {
     title: "Ogilvy / Candy'Up",
     category: "Vidéo",
     type: "video",
@@ -24,15 +32,17 @@ const projects = [
     type: "pdf",
     src: "/images/creations/article-touristy.pdf",
     thumb: "/images/creations/touristy-thumb.png",
-    desc: "Rédaction d'un article de voyage premium pour le magazine Touristy."
+    desc: "Rédaction d'un article de voyage premium pour le magazine Touristy.",
+    pages: ["/images/creations/touristy-thumb.png"]
   },
   {
     title: "Starz Communication",
     category: "Design",
     type: "pdf",
     src: "/images/creations/starz.pdf",
-    thumb: "/images/creations/event-affiche-perso.png",
-    desc: "Dossier complet de stratégie de communication et identité visuelle pour Starz."
+    thumb: "/images/couvertures/couverture starz.png",
+    desc: "Dossier complet de stratégie de communication et identité visuelle pour Starz.",
+    pages: ["/images/couvertures/couverture starz.png"]
   },
   {
     title: "TikTok Edit Schiaparelli",
@@ -48,7 +58,8 @@ const projects = [
     type: "pdf",
     src: "/images/creations/newsletter-suisse-normande.pdf",
     thumb: "/images/creations/newsletter-thumb.png",
-    desc: "Mise en page et rédaction de la newsletter culturelle Suisse Normande."
+    desc: "Mise en page et rédaction de la newsletter culturelle Suisse Normande.",
+    pages: ["/images/creations/newsletter-thumb.png"]
   },
   {
     title: "Affiche Événementielle RS",
@@ -59,7 +70,15 @@ const projects = [
     desc: "Conception graphique d'une affiche pour les réseaux sociaux."
   },
   {
-    title: "Édit Batman Concept",
+    title: "Event Affiche Perso",
+    category: "Design",
+    type: "image",
+    src: "/images/creations/event-affiche-perso.png",
+    thumb: "/images/creations/event-affiche-perso.png",
+    desc: "Projet personnel de design graphique pour un événement privé."
+  },
+  {
+    title: "Édit Batman Jeu",
     category: "Vidéo",
     type: "video",
     src: "/images/creations/edit-batman-jeu.mov",
@@ -67,12 +86,13 @@ const projects = [
     desc: "Motion design et montage autour de l'univers de Batman."
   },
   {
-    title: "Faux Article Mode",
+    title: "Faux Article (Projet Scolaire)",
     category: "Rédaction",
     type: "pdf",
     src: "/images/creations/faux-article.pdf",
-    thumb: "/images/creations/faux-article-thumb.png",
-    desc: "Exercice de rédaction journalistique et mise en page éditoriale."
+    thumb: "/images/couvertures/couverture faux article.png",
+    desc: "Exercice de rédaction journalistique et mise en page éditoriale.",
+    pages: ["/images/creations/faux-article-thumb.png"]
   },
   {
     title: "Invitation Événement",
@@ -99,6 +119,14 @@ const projects = [
     desc: "Composition artistique type scrapbook mêlant photos et typographies."
   },
   {
+    title: "Edit Mode",
+    category: "Vidéo",
+    type: "video",
+    src: "/images/creations/edit mode.mov",
+    thumb: "/images/photos-presentation/photo-runway-mode.jpg",
+    desc: "Montage créatif axé sur les défilés et l'univers de la mode."
+  },
+  {
     title: "Édit YSL Heritage",
     category: "Vidéo",
     type: "video",
@@ -108,10 +136,26 @@ const projects = [
   }
 ];
 
-type Project = typeof projects[number];
+type Project = {
+  title: string;
+  category: string;
+  type: string;
+  src: string;
+  thumb: string;
+  desc: string;
+  pages?: string[];
+};
 
 function MediaModal({ project, onClose }: { project: Project; onClose: () => void }) {
-  // Close on Escape key
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
@@ -128,11 +172,11 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+        className="fixed inset-0 z-[1000] flex items-center justify-center p-4 pt-24 md:p-8"
         onClick={onClose}
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-[#020617]/90 backdrop-blur-xl" />
+        <div className="absolute inset-0 bg-[#020617]/95 backdrop-blur-xl" />
 
         {/* Modal box */}
         <motion.div
@@ -140,46 +184,75 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.92, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative z-10 w-full max-w-3xl bg-[#0f172a] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl"
+          className="relative z-10 w-full max-w-4xl bg-[#0f172a] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-white/5">
             <div>
               <p className="text-[10px] uppercase tracking-[0.2em] text-[#9F1239] font-bold">{project.category}</p>
-              <h3 className="text-white font-display font-bold text-lg">{project.title}</h3>
+              <h3 className="text-white font-display font-bold text-xl">{project.title}</h3>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-full bg-white/5 hover:bg-[#9F1239]/20 border border-white/10 text-white/60 hover:text-white transition-all"
+              className="p-2.5 rounded-full bg-white/5 hover:bg-[#9F1239]/20 border border-white/10 text-white/60 hover:text-white transition-all shadow-lg"
               aria-label="Fermer"
             >
-              <X size={18} />
+              <X size={20} />
             </button>
           </div>
 
           {/* Content */}
-          <div className="relative bg-black">
+          <div className="relative bg-black min-h-[40vh] flex items-center justify-center">
             {project.type === "video" && (
               <video
                 src={getAssetPath(project.src)}
                 controls
                 autoPlay
                 playsInline
-                className="w-full max-h-[65vh] object-contain"
+                className="w-full max-h-[70vh] object-contain"
               >
                 Votre navigateur ne supporte pas la lecture vidéo.
               </video>
             )}
+            
             {project.type === "pdf" && (
-              <iframe
-                src={getAssetPath(project.src)}
-                className="w-full h-[65vh]"
-                title={project.title}
-              />
+              <div className="w-full flex flex-col items-center">
+                {isMobile ? (
+                  <div className="p-8 text-center">
+                    <div className="relative w-48 h-64 mx-auto mb-8 rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                      <Image
+                        src={getAssetPath(project.thumb)}
+                        alt={project.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <p className="text-white/60 mb-8 text-sm max-w-xs mx-auto">
+                      Ce document PDF est optimisé pour une lecture en plein écran.
+                    </p>
+                    <a
+                      href={getAssetPath(project.src)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-[#9F1239] text-white rounded-full font-bold text-sm shadow-xl hover:scale-105 transition-transform"
+                    >
+                      <FileText size={20} />
+                      Ouvrir le document PDF
+                    </a>
+                  </div>
+                ) : (
+                  <iframe
+                    src={getAssetPath(project.src)}
+                    className="w-full h-[70vh]"
+                    title={project.title}
+                  />
+                )}
+              </div>
             )}
+
             {project.type === "image" && (
-              <div className="relative w-full h-[65vh]">
+              <div className="relative w-full h-[70vh]">
                 <Image
                   src={getAssetPath(project.src)}
                   alt={project.title}
@@ -191,14 +264,26 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
           </div>
 
           {/* Footer */}
-          <div className="px-6 py-4 border-t border-white/10">
-            <p className="text-[#E2E8F0]/60 text-sm italic">{project.desc}</p>
+          <div className="px-8 py-6 border-t border-white/10 bg-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <p className="text-[#E2E8F0]/60 text-sm italic max-w-2xl">{project.desc}</p>
+            {project.type === "pdf" && !isMobile && (
+              <a
+                href={getAssetPath(project.src)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#9F1239] hover:text-[#BE123C] text-xs font-bold uppercase tracking-widest border-b border-[#9F1239]/30 pb-1 flex items-center gap-2 transition-colors whitespace-nowrap"
+              >
+                Ouvrir en plein écran <ExternalLink size={14} />
+              </a>
+            )}
           </div>
         </motion.div>
       </motion.div>
     </AnimatePresence>
   );
 }
+
+import { ExternalLink } from "lucide-react";
 
 export default function Projects() {
   const [filter, setFilter] = useState("Tous");
@@ -257,29 +342,28 @@ export default function Projects() {
                 src={getAssetPath(project.thumb)}
                 alt={project.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                className="object-cover transition-all duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
               />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                <div className="translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="text-[#9F1239] text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent flex flex-col justify-end p-10 pb-14">
+                <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="text-[#9F1239] text-[10px] font-bold uppercase tracking-[0.3em] mb-3 block">
                     {project.category}
                   </span>
-                  <h3 className="text-2xl font-display font-bold text-white mb-4">
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 leading-tight">
                     {project.title}
                   </h3>
-                  <p className="text-[#E2E8F0]/60 text-sm mb-6 line-clamp-2 italic">
-                    {project.desc}
-                  </p>
                   
-                  <div className="flex gap-4">
-                    <div className="p-4 bg-[#9F1239] text-white rounded-full shadow-lg group-hover:scale-110 transition-transform">
-                      {project.type === "video" ? <Play size={20} fill="currentColor" /> : 
-                       project.type === "pdf" ? <FileText size={20} /> : <ImageIcon size={20} />}
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full group-hover:bg-[#9F1239] group-hover:border-[#9F1239] transition-all duration-300 shadow-xl">
+                      <div className="text-white group-hover:scale-110 transition-transform">
+                        {project.type === "video" ? <Play size={16} fill="currentColor" /> : 
+                         project.type === "pdf" ? <FileText size={16} /> : <ImageIcon size={16} />}
+                      </div>
+                      <span className="text-[10px] text-white font-bold uppercase tracking-widest whitespace-nowrap">
+                        {project.type === "video" ? "Regarder" : project.type === "pdf" ? "Découvrir" : "Aperçu"}
+                      </span>
                     </div>
-                    <span className="flex items-center text-xs text-white/60 font-medium">
-                      {project.type === "video" ? "Regarder" : project.type === "pdf" ? "Lire le document" : "Voir l'image"}
-                    </span>
                   </div>
                 </div>
               </div>

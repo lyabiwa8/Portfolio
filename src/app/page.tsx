@@ -3,12 +3,14 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { PageWrapper } from "@/components/PageWrapper";
 import { ArrowRight, Play, Camera, Music, Film, Dumbbell, Globe, Sparkles } from "lucide-react";
 import { getAssetPath } from "@/utils/imageLoader";
 import { Photography } from "@/components/Photography";
+import { Portfolio } from "@/components/Portfolio";
 import { Magnetic } from "@/components/Magnetic";
+import { HeroSpider, ScrollSpider, WebOverlay } from "@/components/SpiderElements";
 
 /* ── Hobbies ── */
 const hobbies = [
@@ -17,7 +19,15 @@ const hobbies = [
   { title: "Musique",      icon: <Music    size={16} />, img: "/images/photos-presentation/what-music-represent-to-me.jpg" },
   { title: "Voyages",      icon: <Globe    size={16} />, img: "/images/photos-presentation/photo-plage.jpg" },
   { title: "Événementiel", icon: <Camera   size={16} />, img: "/images/photos-presentation/mode-lifestyle.jpg" },
-  { title: "Pop Culture",  icon: <Play     size={16} />, img: "/images/photos-presentation/dragon-ball.jpg" },
+  { 
+    title: "Pop Culture",  
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
+        <path d="M21 7.2c-.3-.2-.6-.4-1-.5-1.2-.4-2.5.1-3.5.7-.1-1.2-1.2-2.3-2.5-2.4-1.3-.1-2.4 1-2.5 2.3-.1-1.3-1.2-2.4-2.5-2.3-1.3.1-2.4 1.2-2.5 2.4-1-.6-2.3-1.1-3.5-.7-.4.1-.7.3-1 .5 0 0 1.5 4.5 10 9.8 8.5.2 10-9.8 10-9.8z" />
+      </svg>
+    ), 
+    img: "/images/photos-presentation/dragon-ball.jpg" 
+  },
 ];
 
 function SectionTitle({ subtitle, title, alignment = "left" }: { subtitle: string; title: string | React.ReactNode; alignment?: "left" | "center" }) {
@@ -53,14 +63,25 @@ export default function Home() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
+  // Handle responsive parallax
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <PageWrapper>
       
       {/* ════════════ HERO SECTION ════════════ */}
       <section ref={heroRef} className="relative min-h-[70vh] lg:min-h-[80vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-16 lg:pt-32 pb-12 lg:pb-16">
+        {/* Spider-Man hanging in corner */}
+        <HeroSpider />
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-8 lg:gap-20 items-center">
           
-          <div className="lg:col-span-7 relative z-10 text-center lg:text-left">
+          <div className="lg:col-span-7 relative z-20 text-center lg:text-left">
             {/* Availability Badge - PC ONLY - Above Title */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -76,13 +97,31 @@ export default function Home() {
               </span>
             </motion.div>
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
+              }}
               className="text-4xl md:text-8xl lg:text-[10rem] font-display font-black text-white leading-[0.9] tracking-tighter mb-6"
             >
-              LYA <br />
-              <span className="text-[#9F1239] italic-display">BIWA.</span>
+              <motion.span 
+                variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }} 
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} 
+                className="block group/text relative"
+              >
+                LYA
+                <span className="absolute inset-0 text-[#9F1239] opacity-0 group-hover/text:opacity-50 group-hover/text:translate-x-1 group-hover/text:-translate-y-1 transition-all duration-100 mix-blend-screen pointer-events-none">LYA</span>
+                <span className="absolute inset-0 text-cyan-500 opacity-0 group-hover/text:opacity-30 group-hover/text:-translate-x-1 group-hover/text:translate-y-1 transition-all duration-100 mix-blend-screen pointer-events-none">LYA</span>
+              </motion.span>
+              <motion.span 
+                variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }} 
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} 
+                className="text-[#9F1239] italic-display block group/text2 relative"
+              >
+                BIWA.
+                <span className="absolute inset-0 text-white opacity-0 group-hover/text2:opacity-50 group-hover/text2:translate-x-1 group-hover/text2:-translate-y-1 transition-all duration-100 mix-blend-screen pointer-events-none">BIWA.</span>
+                <span className="absolute inset-0 text-cyan-500 opacity-0 group-hover/text2:opacity-30 group-hover/text2:-translate-x-1 group-hover/text2:translate-y-1 transition-all duration-100 mix-blend-screen pointer-events-none">BIWA.</span>
+              </motion.span>
             </motion.h1>
 
             <motion.p
@@ -115,37 +154,40 @@ export default function Home() {
           </div>
 
           <motion.div
-            style={{ y: heroY, opacity: heroOpacity }}
-            className="lg:col-span-5 relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 max-w-md mx-auto w-full group"
+            style={{ y: isMobile ? 0 : heroY, opacity: heroOpacity }}
+            className="lg:col-span-5 relative group z-10"
           >
-            <Image
-              src={getAssetPath("/images/photos-presentation/photo-runway-mode.jpg")}
-              alt="Hero Portrait"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
-            
-            <div className="absolute bottom-6 left-6 right-6">
-              <div className="glass p-5 rounded-2xl border-white/10 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#9F1239] flex items-center justify-center text-white">
-                  <span className="text-xl">✨</span>
-                </div>
-                <div>
-                  <p className="text-[9px] uppercase tracking-widest text-[#E2E8F0]/40 font-bold">Expertise</p>
-                  <p className="text-white font-bold text-xs">Événementiel & Stratégie</p>
+            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 max-w-md mx-auto w-full transition-all duration-700 group-hover:shadow-[#9F1239]/20 group-hover:shadow-[0_0_50px_rgba(159,18,57,0.3)]">
+              <Image
+                src={getAssetPath("/images/photos-presentation/photo-runway-mode.jpg")}
+                alt="Hero Portrait"
+                fill
+                className="object-cover object-center transition-transform duration-1000 group-hover:scale-110"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60" />
+              
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="glass p-5 rounded-2xl border-white/10 flex items-center gap-4 group/card hover:bg-white/5 transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-[#9F1239] flex items-center justify-center text-white shadow-lg shadow-[#9F1239]/50">
+                    <span className="text-xl">✨</span>
+                  </div>
+                  <div>
+                    <p className="text-[9px] uppercase tracking-widest text-[#E2E8F0]/40 font-bold">Expertise</p>
+                    <p className="text-white font-bold text-xs">Événementiel & Stratégie</p>
+                  </div>
                 </div>
               </div>
             </div>
+            
+            {/* Decorative Red Line */}
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-4 border-l-4 border-[#9F1239] opacity-40 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-3xl" />
           </motion.div>
-
-
         </div>
       </section>
 
       {/* ════════════ BIO SECTION ════════════ */}
-      <section className="py-12 md:py-32 px-6 md:px-12 lg:px-24">
+      <section className="relative z-20 py-12 md:py-32 px-6 md:px-12 lg:px-24 bg-[#020617]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
             
@@ -202,7 +244,7 @@ export default function Home() {
                   <span className="text-[#9F1239] italic-display">au service de l'exception."</span>
                 </h2>
                 
-                <p className="text-sm md:text-2xl text-white/60 font-medium leading-relaxed mb-6 max-w-2xl">
+                <p className="text-sm md:text-xl text-white/70 font-display font-medium leading-relaxed mb-6 max-w-2xl tracking-wide">
                   Actuellement en BTS Communication, je me projette vers une licence spécialisée pour affiner mon expertise dans les secteurs du luxe, de la mode et du sport. Mon parcours est guidé par une curiosité insatiable et une volonté de repousser les limites de la communication traditionnelle.
                 </p>
 
@@ -210,7 +252,7 @@ export default function Home() {
                   {[
                     { label: "Formation", value: "BTS Com" },
                     { label: "Spécialité", value: "Event" },
-                    { label: "Langues", value: "FR EN ES JP" },
+                    { label: "Langues", value: "FR EN JP" },
                     { label: "Dispo", value: "Alternance" },
                   ].map((stat, i) => (
                     <div key={i} className="space-y-0.5">
@@ -227,9 +269,12 @@ export default function Home() {
       </section>
 
       {/* ════════════ HOBBIES SECTION ════════════ */}
-      <section className="py-12 md:py-32 px-6 md:px-12 lg:px-24">
-        <div className="max-w-7xl mx-auto">
-          <SectionTitle subtitle="Inspirations" title="PASSIONS & VIBES" alignment="center" />
+      <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 relative overflow-hidden">
+        {/* Web Pattern Overlay */}
+        <WebOverlay />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <SectionTitle subtitle="Inspirations" title={<>PASSIONS <span className="text-[#9F1239]">&</span> VIBES</>} alignment="center" />
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {hobbies.map((h, i) => (
@@ -237,29 +282,40 @@ export default function Home() {
                 key={h.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  boxShadow: "0 0 30px rgba(159, 18, 57, 0.4)" 
+                }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.1 }}
-                className={`relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/5 group ${h.wide ? "sm:col-span-2 md:col-span-1 md:row-span-2" : "aspect-square"}`}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className={`relative rounded-[1.5rem] overflow-hidden shadow-2xl border-2 border-white/5 group ${h.wide ? "sm:col-span-2 md:col-span-1 md:row-span-2" : "aspect-square"}`}
               >
-                <Image src={getAssetPath(h.img)} alt={h.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
-                <div className="absolute bottom-6 left-6 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-[#9F1239] flex items-center justify-center text-white shadow-lg">
+                <Image src={getAssetPath(h.img)} alt={h.title} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500" />
+                <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2">
+                  <div className="w-10 h-10 rounded-xl bg-[#9F1239] flex items-center justify-center text-white shadow-lg shadow-[#9F1239]/40 group-hover:scale-110 transition-transform">
                     {h.icon}
                   </div>
-                  <span className="text-lg font-display font-black text-white">{h.title}</span>
+                  <span className="text-xl md:text-2xl font-display font-black text-white tracking-tight uppercase italic">{h.title}</span>
                 </div>
+                {/* Comic Border Glow */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#9F1239]/50 rounded-[1.5rem] transition-colors duration-500" />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
       
+      {/* ════════════ PORTFOLIO SECTION ════════════ */}
+      <Portfolio />
+
       {/* ════════════ PHOTOGRAPHY SECTION ════════════ */}
       <Photography />
 
       {/* ════════════ FINAL CTA QUOTE ════════════ */}
-      <section className="py-12 md:py-32 px-6">
+      <section className="py-12 md:py-32 px-6 relative">
+        {/* Spider-Man descending on web */}
+        <ScrollSpider />
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
