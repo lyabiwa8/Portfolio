@@ -73,52 +73,28 @@ function StarBackground() {
   );
 }
 
-function GradientBar({ index, scrollYProgress }: { index: number; scrollYProgress: any }) {
-  // Create a wave effect based on index
-  const delay = index * 0.05;
-  const initialHeight = 40 + Math.random() * 40; // Random base height
-  
-  // Link some movement to scroll
-  const scrollOffset = useTransform(scrollYProgress, [0, 1], [0, index % 2 === 0 ? 200 : -200]);
-
+function MeshBlob({ color, size, duration, delay, initialX, initialY }: any) {
   return (
-    <div className="relative h-full flex-1 min-w-[2px]">
-      <motion.div
-        animate={{ 
-          height: ["20%", "60%", "20%"],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{ 
-          duration: 3 + Math.random() * 2, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay 
-        }}
-        style={{ 
-          y: scrollOffset,
-          background: "linear-gradient(to top, transparent, #9F1239 50%, transparent)",
-        }}
-        className="absolute inset-0 w-full rounded-full"
-      />
-      
-      {/* Secondary accent bar for depth */}
-      <motion.div
-        animate={{ 
-          height: ["10%", "40%", "10%"],
-          opacity: [0.1, 0.3, 0.1],
-        }}
-        transition={{ 
-          duration: 4 + Math.random() * 3, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: delay + 0.5
-        }}
-        style={{ 
-          background: "linear-gradient(to top, transparent, #E11D48 50%, transparent)",
-        }}
-        className="absolute inset-0 w-[1px] left-1/2 -translate-x-1/2 opacity-20"
-      />
-    </div>
+    <motion.div
+      animate={{ 
+        x: [initialX, initialX + 100, initialX - 50, initialX],
+        y: [initialY, initialY - 80, initialY + 40, initialY],
+        scale: [1, 1.2, 0.9, 1],
+      }}
+      transition={{ 
+        duration, 
+        repeat: Infinity, 
+        ease: "easeInOut",
+        delay 
+      }}
+      style={{ 
+        background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
+        width: size,
+        height: size,
+        filter: "blur(100px)",
+      }}
+      className="absolute rounded-full mix-blend-screen pointer-events-none opacity-40"
+    />
   );
 }
 
@@ -130,32 +106,43 @@ export function ModernBackground() {
     setMounted(true);
   }, []);
 
-  // Number of bars based on common screen widths
-  const barCount = 20;
+  // Parallax for the whole mesh system
+  const meshY = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
   if (!mounted) return <div className="fixed inset-0 -z-10 bg-[#020617]" />;
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617] flex items-center justify-around px-4 gap-4 md:gap-8">
-      {/* ─── Gradient Bars Pro ─── */}
-      {Array.from({ length: barCount }).map((_, i) => (
-        <GradientBar key={i} index={i} scrollYProgress={scrollYProgress} />
-      ))}
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617]">
+      {/* ─── Mesh Gradient Layers ─── */}
+      <motion.div style={{ y: meshY }} className="absolute inset-0">
+        {/* Main Bordeaux Hub */}
+        <MeshBlob color="#9F1239" size="100vw" duration={25} delay={0} initialX="-20%" initialY="-20%" />
+        
+        {/* Vibrant Crimson Pulse */}
+        <MeshBlob color="#E11D48" size="80vw" duration={20} delay={2} initialX="40%" initialY="30%" />
+        
+        {/* Deep Rose Shadow */}
+        <MeshBlob color="#881337" size="90vw" duration={30} delay={5} initialX="-10%" initialY="50%" />
+        
+        {/* Subtle Accent */}
+        <MeshBlob color="#BE123C" size="60vw" duration={18} delay={1} initialX="20%" initialY="-10%" />
+      </motion.div>
 
-      {/* ─── Finishing Atmosphere ─── */}
+      {/* ─── Premium Finishing Textures ─── */}
       
-      {/* Cinematic Grain Overlay */}
+      {/* Heavy Cinematic Grain (The "Framer" Secret) */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.12] mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none opacity-[0.25] mix-blend-overlay"
         style={{
           backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')",
+          filter: "contrast(150%) brightness(100%)",
         }}
       />
 
-      {/* Deep Vignette to keep text readable */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.8)_100%)]" />
+      {/* Dark Vignette for Depth & Readability */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.9)_100%)]" />
       
-      {/* Technical Scanlines */}
+      {/* Subliminal Scanlines for Technical Feel */}
       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] z-20 opacity-20" />
     </div>
   );
