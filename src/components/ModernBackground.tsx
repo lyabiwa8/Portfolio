@@ -9,7 +9,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 function ParticleField() {
   const ref = useRef<THREE.Points>(null);
   
-  const particlesCount = 1200;
+  const particlesCount = 1500;
   const positions = useMemo(() => {
     const pos = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount; i++) {
@@ -22,8 +22,8 @@ function ParticleField() {
 
   useFrame((state) => {
     if (ref.current) {
-      ref.current.rotation.y += 0.0001;
-      ref.current.rotation.x += 0.00005;
+      ref.current.rotation.y += 0.0002;
+      ref.current.rotation.x += 0.0001;
     }
   });
 
@@ -31,12 +31,12 @@ function ParticleField() {
     <Points ref={ref} positions={positions} stride={3}>
       <PointMaterial
         transparent
-        color="#9F1239"
-        size={0.07}
+        color="#E11D48"
+        size={0.09}
         sizeAttenuation={true}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
-        opacity={0.4}
+        opacity={0.6}
       />
     </Points>
   );
@@ -46,132 +46,122 @@ function StarBackground() {
   return (
     <motion.div 
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.4 }}
-      transition={{ duration: 2 }}
+      animate={{ opacity: 0.6 }}
+      transition={{ duration: 1.5 }}
       className="absolute inset-0 w-full h-full"
     >
       <Canvas 
         camera={{ position: [0, 0, 1] }} 
-        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
+        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
         dpr={[1, 2]}
       >
-        <Float speed={1} rotationIntensity={0.1} floatIntensity={0.2}>
+        <Float speed={2} rotationIntensity={0.3} floatIntensity={0.5}>
           <Stars 
             radius={100} 
             depth={50} 
-            count={2000} 
-            factor={4} 
+            count={3000} 
+            factor={6} 
             saturation={0} 
             fade 
-            speed={0.6} 
+            speed={1.5} 
           />
         </Float>
         <ParticleField />
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={1} />
       </Canvas>
     </motion.div>
   );
 }
 
 export function ModernBackground() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
   
-  // Mobile Detection for Performance Optimization
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
+    setMounted(true);
   }, []);
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -400]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 400]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 40]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -350]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 350]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
+
+  if (!mounted) return <div className="fixed inset-0 -z-10 bg-[#020617]" />;
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617]">
-      {/* ─── Debug Marker (Hidden but present) ─── */}
-      <span className="sr-only">ModernBackground Active</span>
+      {/* ─── High-Contrast 3D Environment ─── */}
+      <StarBackground />
 
-      {/* 3D Starfield & Particles - Only active on PC/Tablet for performance */}
-      <AnimatePresence mode="wait">
-        {!isMobile && <StarBackground key="desktop-bg" />}
-      </AnimatePresence>
-
-      {/* ─── Adaptive Atmospheric Energy Fields ─── */}
+      {/* ─── Cinematic "Vanta" Energy Fields ─── */}
       
-      {/* Top Left Red Glow */}
+      {/* Top Left: Deep Crimson Pulse */}
       <motion.div
         animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: isMobile ? [0.15, 0.25, 0.15] : [0.3, 0.5, 0.3],
-          x: [0, 30, 0],
-          y: [0, -20, 0]
+          scale: [1, 1.3, 1],
+          opacity: [0.6, 0.9, 0.6],
+          x: [0, 80, 0],
+          y: [0, -40, 0]
         }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         style={{ 
           y: y1,
           rotate,
-          background: "radial-gradient(circle, #9F1239 0%, transparent 70%)",
-          filter: isMobile ? "blur(80px)" : "blur(140px)",
+          background: "radial-gradient(circle, #9F1239 0%, transparent 65%)",
+          filter: "blur(60px)",
         }}
-        className="absolute top-[-20%] left-[-10%] w-[100%] h-[100%] rounded-full mix-blend-screen pointer-events-none"
+        className="absolute top-[-25%] left-[-15%] w-[110%] h-[110%] rounded-full mix-blend-screen pointer-events-none"
       />
       
-      {/* Bottom Right Energy Pulse */}
+      {/* Bottom Right: Vibrant Rose Pulse */}
       <motion.div
         animate={{ 
-          scale: [1.1, 1, 1.1],
-          opacity: isMobile ? [0.1, 0.2, 0.1] : [0.2, 0.4, 0.2],
-          x: [0, -40, 0],
-          y: [0, 30, 0]
+          scale: [1.2, 1, 1.2],
+          opacity: [0.5, 0.8, 0.5],
+          x: [0, -100, 0],
+          y: [0, 60, 0]
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         style={{ 
           y: y2,
           rotate: -rotate,
-          background: "radial-gradient(circle, #BE123C 0%, transparent 75%)",
-          filter: isMobile ? "blur(100px)" : "blur(160px)",
+          background: "radial-gradient(circle, #E11D48 0%, transparent 70%)",
+          filter: "blur(80px)",
         }}
-        className="absolute bottom-[-10%] right-[-15%] w-[110%] h-[110%] rounded-full mix-blend-screen pointer-events-none"
+        className="absolute bottom-[-15%] right-[-20%] w-[120%] h-[120%] rounded-full mix-blend-screen pointer-events-none"
       />
 
-      {/* Floating Magenta Sparkle */}
+      {/* Center Left: Subliminal Glow */}
       <motion.div
         animate={{ 
-          x: ["-10%", "10%", "-10%"],
-          y: ["-5%", "5%", "-5%"],
-          opacity: isMobile ? [0.05, 0.1, 0.05] : [0.1, 0.2, 0.1] 
+          scale: [1, 1.4, 1],
+          opacity: [0.3, 0.5, 0.3] 
         }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] left-[10%] w-[60%] h-[60%] rounded-full mix-blend-screen pointer-events-none"
+        className="absolute top-[30%] left-[5%] w-[70%] h-[70%] rounded-full mix-blend-screen pointer-events-none"
         style={{
-          background: "radial-gradient(circle, #881337 0%, transparent 70%)",
-          filter: isMobile ? "blur(70px)" : "blur(120px)",
+          background: "radial-gradient(circle, #881337 0%, transparent 60%)",
+          filter: "blur(50px)",
         }}
       />
 
-      {/* ─── Texture & Finishing Touches ─── */}
+      {/* ─── Atmosphere & Finishing ─── */}
       
       {/* Cinematic Grain Overlay */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-overlay"
         style={{
           backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')",
         }}
       />
 
-      {/* Vignette */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.7)_100%)]" />
+      {/* Dynamic Vignette (Darker edges to pop the center) */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.95)_100%)]" />
       
-      {/* Scanline Effect (Optimized) */}
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] z-20 opacity-20" />
+      {/* Technical Scanlines (More visible for texture) */}
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] z-20 opacity-35" />
     </div>
   );
 }
+
 
 
