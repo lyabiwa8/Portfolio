@@ -10,8 +10,6 @@ import { getAssetPath } from "@/utils/imageLoader";
 import { Photography } from "@/components/Photography";
 import { Portfolio } from "@/components/Portfolio";
 import { Magnetic } from "@/components/Magnetic";
-import { HeroSpider, ScrollSpider, WebOverlay } from "@/components/SpiderElements";
-import { LottieAnimation } from "@/components/LottieAnimation";
 
 /* ── Hobbies ── */
 const hobbies = [
