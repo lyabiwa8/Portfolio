@@ -173,7 +173,7 @@ export function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className={`text-3xl font-display font-black uppercase tracking-tighter block transition-all duration-300 ${
+                      className={`text-2xl md:text-3xl font-display font-black uppercase tracking-tight block transition-all duration-300 ${
                         pathname === link.href ? "text-[#9F1239] translate-x-2" : "text-white/40 hover:text-white"
                       }`}
                     >

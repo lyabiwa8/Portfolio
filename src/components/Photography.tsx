@@ -33,7 +33,7 @@ export function Photography() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="text-3xl md:text-6xl lg:text-7xl font-display font-black text-white tracking-tighter leading-[1.1]"
+              className="text-2xl md:text-6xl lg:text-7xl font-display font-black text-white tracking-tighter leading-[1.1]"
             >
               LENS & <span className="text-[#9F1239] italic-display">EYE.</span>
             </motion.h3>
