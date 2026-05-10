@@ -202,7 +202,7 @@ export function Navbar() {
                   </a>
                 </div>
                 <p className="text-[#9F1239] font-black tracking-[0.2em] uppercase text-[10px]">
-                  2024 — 2025
+                  © LYA BIWA 2026
                 </p>
               </div>
             </motion.div>
