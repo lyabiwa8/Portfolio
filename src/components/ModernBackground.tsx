@@ -74,91 +74,96 @@ function StarBackground() {
 }
 
 export function ModernBackground() {
-  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { scrollYProgress } = useScroll();
   
   useEffect(() => {
-    setMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -350]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 350]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
-
-  if (!mounted) return <div className="fixed inset-0 -z-10 bg-[#020617]" />;
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 400]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 40]);
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617]">
-      {/* ─── High-Contrast 3D Environment ─── */}
-      <StarBackground />
+      {/* 3D Starfield & Particles - Active on PC/Tablet */}
+      <AnimatePresence mode="wait">
+        {!isMobile && <StarBackground key="desktop-bg" />}
+      </AnimatePresence>
 
-      {/* ─── Cinematic "Vanta" Energy Fields ─── */}
+      {/* ─── Sophisticated Atmospheric Energy Fields ─── */}
       
-      {/* Top Left: Deep Crimson Pulse */}
+      {/* Top Left: Subtle Deep Red Glow */}
       <motion.div
         animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.6, 0.9, 0.6],
-          x: [0, 80, 0],
-          y: [0, -40, 0]
+          scale: [1, 1.2, 1],
+          opacity: [0.25, 0.4, 0.25],
+          x: [0, 50, 0],
+          y: [0, -30, 0]
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         style={{ 
           y: y1,
           rotate,
-          background: "radial-gradient(circle, #9F1239 0%, transparent 65%)",
-          filter: "blur(60px)",
+          background: "radial-gradient(circle, #9F1239 0%, transparent 70%)",
+          filter: "blur(130px)",
         }}
-        className="absolute top-[-25%] left-[-15%] w-[110%] h-[110%] rounded-full mix-blend-screen pointer-events-none"
+        className="absolute top-[-30%] left-[-15%] w-[110%] h-[110%] rounded-full mix-blend-screen pointer-events-none"
       />
       
-      {/* Bottom Right: Vibrant Rose Pulse */}
+      {/* Bottom Right: Ethereal Rose Pulse */}
       <motion.div
         animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.5, 0.8, 0.5],
-          x: [0, -100, 0],
-          y: [0, 60, 0]
+          scale: [1.1, 1, 1.1],
+          opacity: [0.15, 0.35, 0.15],
+          x: [0, -60, 0],
+          y: [0, 40, 0]
         }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         style={{ 
           y: y2,
           rotate: -rotate,
-          background: "radial-gradient(circle, #E11D48 0%, transparent 70%)",
-          filter: "blur(80px)",
+          background: "radial-gradient(circle, #E11D48 0%, transparent 75%)",
+          filter: "blur(150px)",
         }}
-        className="absolute bottom-[-15%] right-[-20%] w-[120%] h-[120%] rounded-full mix-blend-screen pointer-events-none"
+        className="absolute bottom-[-20%] right-[-20%] w-[120%] h-[120%] rounded-full mix-blend-screen pointer-events-none"
       />
 
-      {/* Center Left: Subliminal Glow */}
+      {/* Floating Sparkle Glow */}
       <motion.div
         animate={{ 
-          scale: [1, 1.4, 1],
-          opacity: [0.3, 0.5, 0.3] 
+          scale: [1, 1.3, 1],
+          opacity: [0.1, 0.2, 0.1] 
         }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[30%] left-[5%] w-[70%] h-[70%] rounded-full mix-blend-screen pointer-events-none"
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[20%] left-[10%] w-[70%] h-[70%] rounded-full mix-blend-screen pointer-events-none"
         style={{
-          background: "radial-gradient(circle, #881337 0%, transparent 60%)",
-          filter: "blur(50px)",
+          background: "radial-gradient(circle, #881337 0%, transparent 65%)",
+          filter: "blur(110px)",
         }}
       />
 
-      {/* ─── Atmosphere & Finishing ─── */}
+      {/* ─── Finishing Atmosphere ─── */}
       
       {/* Cinematic Grain Overlay */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none opacity-[0.1] mix-blend-overlay"
         style={{
           backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')",
         }}
       />
 
-      {/* Dynamic Vignette (Darker edges to pop the center) */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.95)_100%)]" />
+      {/* Deep Vignette */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.85)_100%)]" />
       
-      {/* Technical Scanlines (More visible for texture) */}
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] z-20 opacity-35" />
+      {/* Subtle Scanlines */}
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] z-20 opacity-25" />
     </div>
   );
 }
