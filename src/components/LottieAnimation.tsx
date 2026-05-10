@@ -10,18 +10,13 @@ interface LottieAnimationProps {
 
 export const LottieAnimation: React.FC<LottieAnimationProps> = ({ className }) => {
   return (
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1.2 }}
-      transition={{ duration: 1.2, ease: "easeOut" }}
-      className={className}
-    >
+    <div className={className}>
       <DotLottieReact
         src="https://lottie.host/d2f39a3b-306d-4a3b-b206-6d1ce226c5a4/3aPSUo9Oao.lottie"
         loop
         autoplay
         className="w-full h-full"
       />
-    </motion.div>
+    </div>
   );
 };
