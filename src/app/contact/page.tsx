@@ -23,9 +23,9 @@ export default function Contact() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-12 tracking-tighter leading-none break-words"
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-12 tracking-tight leading-[0.9]"
           >
-            DISONS-NOUS <br/><span className="text-[#9F1239] italic">BONJOUR.</span>
+            DISONS-NOUS <span className="text-[#9F1239] italic">BONJOUR.</span>
           </motion.h1>
           
           <div className="grid sm:grid-cols-2 gap-6 mb-16">

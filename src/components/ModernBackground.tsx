@@ -99,27 +99,37 @@ function MeshBlob({ color, size, duration, delay, initialX, initialY }: any) {
 }
 
 export function ModernBackground() {
+  const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
   
   useEffect(() => {
     setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Parallax for the whole mesh system
-  const meshY = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const meshY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -50 : -150]);
 
   if (!mounted) return <div className="fixed inset-0 -z-10 bg-[#020617]" />;
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617]">
-      {/* ─── Mesh Gradient Layers (Dispersed & Soft) ─── */}
+      {/* ─── Mesh Gradient Layers (Mobile-Optimized) ─── */}
       <motion.div style={{ y: meshY }} className="absolute inset-0">
-        {/* Main Hubs - Pushed further to corners for better legibility */}
-        <MeshBlob color="#881337" size="110vw" duration={35} delay={0} initialX="-30%" initialY="-30%" />
-        <MeshBlob color="#9F1239" size="90vw" duration={28} delay={2} initialX="50%" initialY="40%" />
-        <MeshBlob color="#701a28" size="100vw" duration={40} delay={5} initialX="-20%" initialY="60%" />
-        <MeshBlob color="#4c0519" size="70vw" duration={22} delay={1} initialX="30%" initialY="-20%" />
+        {/* Main Hubs - Reduced count on mobile for speed */}
+        <MeshBlob color="#881337" size={isMobile ? "150vw" : "110vw"} duration={isMobile ? 40 : 35} delay={0} initialX="-30%" initialY="-30%" />
+        <MeshBlob color="#9F1239" size={isMobile ? "130vw" : "90vw"} duration={isMobile ? 35 : 28} delay={2} initialX="40%" initialY="40%" />
+        
+        {!isMobile && (
+          <>
+            <MeshBlob color="#701a28" size="100vw" duration={40} delay={5} initialX="-20%" initialY="60%" />
+            <MeshBlob color="#4c0519" size="70vw" duration={22} delay={1} initialX="30%" initialY="-20%" />
+          </>
+        )}
       </motion.div>
 
       {/* ─── Premium Finishing Textures ─── */}
