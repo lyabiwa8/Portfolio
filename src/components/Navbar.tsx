@@ -8,8 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { getAssetPath } from "@/utils/imageLoader";
 import { Menu, X, ArrowRight, Instagram, Linkedin, Mail } from "lucide-react";
 import { Magnetic } from "./Magnetic";
-import { LottieAnimation } from "./LottieAnimation";
-import { SpiderVideo } from "./SpiderVideo";
 
 const links = [
   { href: "/",           label: "Accueil" },
@@ -93,11 +91,6 @@ export function Navbar() {
                   <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-[#9F1239] font-black mt-0.5">Portfolio</span>
                 </div>
               </Link>
-              
-              {/* Spider-Man descending from Logo (using transparent WebM) */}
-              <div className="hidden md:block absolute top-full left-1/2 -translate-x-1/2 w-32 h-32 pointer-events-none z-[120]">
-                <SpiderVideo className="w-full h-full" />
-              </div>
             </div>
           </Magnetic>
 
