@@ -39,7 +39,7 @@ function SectionTitle({ subtitle, title, alignment = "left" }: { subtitle: strin
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        className="text-2xl md:text-5xl lg:text-7xl font-display font-black text-white leading-[1.1] tracking-tighter"
+        className="text-xl md:text-5xl lg:text-7xl font-display font-black text-white leading-[1.1] tracking-tighter break-words"
       >
         {title}
       </motion.h3>
