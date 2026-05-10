@@ -73,12 +73,12 @@ function StarBackground() {
   );
 }
 
-function MeshBlob({ color, size, duration, delay, initialX, initialY }: any) {
+function MeshBlob({ color, size, duration, delay, initialX, initialY, isMobile }: any) {
   return (
     <motion.div
       animate={{ 
-        x: [initialX, initialX + 80, initialX - 40, initialX],
-        y: [initialY, initialY - 60, initialY + 30, initialY],
+        x: [initialX, initialX + (isMobile ? 40 : 80), initialX - (isMobile ? 20 : 40), initialX],
+        y: [initialY, initialY - (isMobile ? 30 : 60), initialY + (isMobile ? 15 : 30), initialY],
         scale: [1, 1.1, 0.95, 1],
       }}
       transition={{ 
@@ -88,12 +88,12 @@ function MeshBlob({ color, size, duration, delay, initialX, initialY }: any) {
         delay 
       }}
       style={{ 
-        background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
+        background: `radial-gradient(circle at center, ${color} 0%, ${color}33 40%, transparent 80%)`,
         width: size,
         height: size,
-        filter: "blur(160px)",
+        filter: `blur(${isMobile ? "100px" : "160px"})`,
       }}
-      className="absolute rounded-full mix-blend-screen pointer-events-none opacity-25"
+      className={`absolute rounded-full mix-blend-screen pointer-events-none ${isMobile ? "opacity-40" : "opacity-25"}`}
     />
   );
 }
@@ -118,35 +118,46 @@ export function ModernBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617]">
-      {/* ─── Mesh Gradient Layers (Mobile-Optimized) ─── */}
+      {/* ─── 3D Star Field (Optimized) ─── */}
+      <div className={`absolute inset-0 transition-opacity duration-1000 ${isMobile ? 'opacity-40' : 'opacity-60'}`}>
+        <Canvas 
+          camera={{ position: [0, 0, 1] }} 
+          gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
+          dpr={[1, isMobile ? 1 : 2]}
+        >
+          <Float speed={isMobile ? 1 : 2} rotationIntensity={0.2} floatIntensity={0.4}>
+            <Stars 
+              radius={100} 
+              depth={50} 
+              count={isMobile ? 800 : 3000} 
+              factor={isMobile ? 4 : 6} 
+              saturation={0} 
+              fade 
+              speed={1.5} 
+            />
+          </Float>
+          <ParticleField />
+          <ambientLight intensity={1} />
+        </Canvas>
+      </div>
+
+      {/* ─── Mesh Gradient Layers ─── */}
       <motion.div style={{ y: meshY }} className="absolute inset-0">
-        {/* Main Hubs - Reduced count on mobile for speed */}
-        <MeshBlob color="#881337" size={isMobile ? "150vw" : "110vw"} duration={isMobile ? 40 : 35} delay={0} initialX="-30%" initialY="-30%" />
-        <MeshBlob color="#9F1239" size={isMobile ? "130vw" : "90vw"} duration={isMobile ? 35 : 28} delay={2} initialX="40%" initialY="40%" />
+        <MeshBlob color="#881337" size={isMobile ? "150vw" : "110vw"} duration={isMobile ? 40 : 35} delay={0} initialX="-30%" initialY="-30%" isMobile={isMobile} />
+        <MeshBlob color="#9F1239" size={isMobile ? "130vw" : "90vw"} duration={isMobile ? 35 : 28} delay={2} initialX="40%" initialY="40%" isMobile={isMobile} />
         
         {!isMobile && (
           <>
-            <MeshBlob color="#701a28" size="100vw" duration={40} delay={5} initialX="-20%" initialY="60%" />
-            <MeshBlob color="#4c0519" size="70vw" duration={22} delay={1} initialX="30%" initialY="-20%" />
+            <MeshBlob color="#701a28" size="100vw" duration={40} delay={5} initialX="-20%" initialY="60%" isMobile={isMobile} />
+            <MeshBlob color="#4c0519" size="70vw" duration={22} delay={1} initialX="30%" initialY="-20%" isMobile={isMobile} />
           </>
         )}
       </motion.div>
 
-      {/* ─── Premium Finishing Textures ─── */}
-      
-      {/* Cinematic Grain */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-overlay"
-        style={{
-          backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')",
-        }}
-      />
-
-      {/* Deep Vignette - Stronger in center for content focus */}
+      {/* ─── Overlays ─── */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.22] mix-blend-overlay" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(2,6,23,0.95)_100%)]" />
-      
-      {/* Technical Scanlines */}
-      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] z-20 opacity-15" />
+      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px] z-20 opacity-10" />
     </div>
   );
 }
