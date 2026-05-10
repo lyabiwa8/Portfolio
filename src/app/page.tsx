@@ -57,14 +57,14 @@ export default function Home() {
     <PageWrapper>
       
       {/* ════════════ HERO SECTION ════════════ */}
-      <section ref={heroRef} className="relative min-h-[70vh] lg:min-h-[80vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-24 lg:pt-32 pb-12 lg:pb-16">
+      <section ref={heroRef} className="relative min-h-[70vh] lg:min-h-[80vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-16 lg:pt-32 pb-12 lg:pb-16">
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-8 lg:gap-20 items-center">
           
           <div className="lg:col-span-7 relative z-10 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy mb-8"
+              className="hidden lg:inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy mb-8"
             >
               <div className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
@@ -116,7 +116,7 @@ export default function Home() {
 
           <motion.div
             style={{ y: heroY, opacity: heroOpacity }}
-            className="lg:col-span-5 relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 max-w-md mx-auto w-full"
+            className="lg:col-span-5 relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 max-w-md mx-auto w-full group"
           >
             <Image
               src={getAssetPath("/images/photos-presentation/photo-runway-mode.jpg")}
@@ -130,7 +130,7 @@ export default function Home() {
             <div className="absolute bottom-6 left-6 right-6">
               <div className="glass p-5 rounded-2xl border-white/10 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full bg-[#9F1239] flex items-center justify-center text-white">
-                  <Sparkles size={18} />
+                  <span className="text-xl">✨</span>
                 </div>
                 <div>
                   <p className="text-[9px] uppercase tracking-widest text-[#E2E8F0]/40 font-bold">Expertise</p>
@@ -139,6 +139,24 @@ export default function Home() {
               </div>
             </div>
           </motion.div>
+
+          {/* Availability Badge for Mobile Only (Below Photo) */}
+          <div className="lg:hidden flex justify-center mt-4">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy"
+            >
+              <div className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
+                <span className="relative rounded-full h-2 w-2 bg-[#BE123C]" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E2E8F0]">
+                Disponibilité : Septembre 2026
+              </span>
+            </motion.div>
+          </div>
 
         </div>
       </section>
