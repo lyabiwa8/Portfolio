@@ -23,7 +23,7 @@ export default function Contact() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-7xl md:text-9xl font-display font-bold text-white mb-12 tracking-tighter leading-none"
+            className="text-4xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-12 tracking-tighter leading-none break-words"
           >
             DISONS-NOUS <br/><span className="text-[#9F1239] italic">BONJOUR.</span>
           </motion.h1>

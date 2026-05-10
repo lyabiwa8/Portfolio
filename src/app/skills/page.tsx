@@ -12,7 +12,7 @@ export default function SkillsPage() {
            <motion.h1 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
-             className="text-6xl md:text-9xl font-display font-bold text-white tracking-tighter"
+             className="text-4xl md:text-8xl lg:text-9xl font-display font-bold text-white tracking-tighter break-words"
            >
              COMPÉTENCES
            </motion.h1>

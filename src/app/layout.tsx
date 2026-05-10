@@ -20,7 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={getAssetPath("/images/logos/logo lya final.png")} />
       </head>
-      <body className="antialiased selection:bg-accent/30 relative">
+      <body className="antialiased selection:bg-accent/30 relative overflow-x-hidden w-full">
         <ModernBackground />
         <Navbar />
         <main className="min-h-screen relative z-10">

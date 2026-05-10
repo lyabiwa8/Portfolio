@@ -120,7 +120,7 @@ export default function Projects() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-9xl font-display font-bold text-white mb-8 md:mb-12 tracking-tighter"
+            className="text-4xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-8 md:mb-12 tracking-tighter break-words"
           >
             PROJETS
           </motion.h1>
