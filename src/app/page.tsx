@@ -78,8 +78,6 @@ export default function Home() {
       
       {/* ════════════ HERO SECTION ════════════ */}
       <section ref={heroRef} className="relative min-h-[70vh] lg:min-h-[80vh] flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-16 lg:pt-32 pb-12 lg:pb-16">
-        {/* Spider-Man hanging in corner */}
-        <HeroSpider />
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-8 lg:gap-20 items-center">
           
           <div className="lg:col-span-7 relative z-20 text-center lg:text-left">

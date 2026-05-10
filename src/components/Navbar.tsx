@@ -94,7 +94,7 @@ export function Navbar() {
               </Link>
               
               {/* Spider-Man descending from Logo */}
-              <div className="hidden md:block absolute top-full left-1/2 -translate-x-1/2 w-32 h-32 pointer-events-none z-[120] mix-blend-multiply">
+              <div className="hidden md:block absolute top-full left-1/2 -translate-x-1/2 w-32 h-32 pointer-events-none z-[120]">
                 <LottieAnimation className="w-full h-full" />
               </div>
             </div>
