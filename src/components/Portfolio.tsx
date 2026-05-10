@@ -6,7 +6,6 @@ import { ExternalLink, Play, FileText, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { getAssetPath } from "@/utils/imageLoader";
-import { CardSpider } from "@/components/SpiderElements";
 
 const projects = [
   {
@@ -138,9 +137,6 @@ export function Portfolio() {
                 fill
                 className="object-cover transition-all duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-100"
               />
-              {/* Spider-Man perched on card edge */}
-              <CardSpider index={index} />
-              
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/50 to-transparent flex flex-col justify-end p-10 pb-14 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                 <span className="text-[#9F1239] text-[10px] font-bold uppercase tracking-[0.3em] mb-3">
                   {project.category}
