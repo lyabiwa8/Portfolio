@@ -94,9 +94,12 @@ export function ModernBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#020617]">
+      {/* ─── Debug Marker (Hidden but present) ─── */}
+      <span className="sr-only">ModernBackground Active</span>
+
       {/* 3D Starfield & Particles - Only active on PC/Tablet for performance */}
-      <AnimatePresence>
-        {!isMobile && <StarBackground />}
+      <AnimatePresence mode="wait">
+        {!isMobile && <StarBackground key="desktop-bg" />}
       </AnimatePresence>
 
       {/* ─── Adaptive Atmospheric Energy Fields ─── */}

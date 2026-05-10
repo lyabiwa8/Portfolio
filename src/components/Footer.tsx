@@ -19,7 +19,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-4 group mb-8">
               <div className="relative w-10 h-10 md:w-12 md:h-12">
                 <Image 
-                  src={getAssetPath("/images/logos/logo lya final.png")} 
+                  src={getAssetPath("/images/logos/logo-lya-final.png")} 
                   alt="Logo" 
                   fill 
                   className="object-contain"

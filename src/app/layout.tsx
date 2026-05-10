@@ -16,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href={getAssetPath("/images/logos/logo lya final.png")} />
-        <link rel="apple-touch-icon" href={getAssetPath("/images/logos/logo lya final.png")} />
+        <link rel="icon" href={getAssetPath("/images/logos/logo-lya-final.png")} />
+        <link rel="apple-touch-icon" href={getAssetPath("/images/logos/logo-lya-final.png")} />
         <meta name="theme-color" content="#020617" />
       </head>
       <body className="antialiased selection:bg-accent/30 relative overflow-x-hidden w-full">

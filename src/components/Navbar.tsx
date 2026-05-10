@@ -76,7 +76,7 @@ export function Navbar() {
             <Link href="/" className="flex items-center gap-2 md:gap-4 group relative z-[110]">
               <div className="relative w-7 h-7 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
                 <Image 
-                  src={getAssetPath("/images/logos/logo lya final.png")} 
+                  src={getAssetPath("/images/logos/logo-lya-final.png")} 
                   alt="Logo" 
                   fill 
                   className="object-contain"
