@@ -10,12 +10,12 @@ interface LottieAnimationProps {
 
 export const LottieAnimation: React.FC<LottieAnimationProps> = ({ className }) => {
   return (
-    <div className={className}>
+    <div className={`${className} bg-transparent`}>
       <DotLottieReact
-        src="https://lottie.host/d2f39a3b-306d-4a3b-b206-6d1ce226c5a4/3aPSUo9Oao.lottie"
+        src="/images/images/animation_spider.json"
         loop
         autoplay
-        className="w-full h-full"
+        className="w-full h-full bg-transparent"
       />
     </div>
   );

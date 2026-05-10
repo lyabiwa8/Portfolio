@@ -159,7 +159,7 @@ export default function Home() {
             className="lg:col-span-5 relative group z-10"
           >
             {/* Subtle Spider-Man Animation (Bottom Corner) */}
-            <div className="hidden md:block absolute -bottom-10 -right-10 w-48 h-48 z-20 pointer-events-none">
+            <div className="hidden md:block absolute -bottom-10 -right-10 w-48 h-48 z-20 pointer-events-none mix-blend-multiply">
               <LottieAnimation className="w-full h-full" />
             </div>
             
