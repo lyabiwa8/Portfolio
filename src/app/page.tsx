@@ -185,7 +185,6 @@ export default function Home() {
                 </motion.div>
               </div>
             </div>
-          </div>
 
           {/* Right side: Text (Order 1 on Mobile, 2 on PC) */}
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-10">
