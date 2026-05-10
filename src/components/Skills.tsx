@@ -130,7 +130,7 @@ export function Skills() {
                       initial={{ width: 0 }}
                       whileInView={{ width: `${s.level}%` }}
                       viewport={{ once: true }}
-                      transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+                      transition={{ duration: 2.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 + i * 0.1 }}
                       className="h-full rounded-full"
                       style={{ backgroundColor: s.accent }}
                     />
