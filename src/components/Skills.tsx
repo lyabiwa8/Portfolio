@@ -127,11 +127,7 @@ export function Skills() {
                     </div>
                   </div>
                   
-                  <div className="mt-auto space-y-2">
-                    <div className="flex justify-between items-end">
-                      <span className="text-[10px] font-black text-white/30 uppercase tracking-tighter">Niveau</span>
-                      <span className="text-[10px] font-black text-[#9F1239]">{s.level}%</span>
-                    </div>
+                  <div className="mt-auto">
                     <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                       <motion.div 
                         initial={{ width: 0 }}
