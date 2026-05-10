@@ -12,7 +12,7 @@ export const LottieAnimation: React.FC<LottieAnimationProps> = ({ className }) =
   return (
     <div className={`${className} bg-transparent`}>
       <DotLottieReact
-        src="/images/images/animation_spider.json"
+        src="/images/images/spider_nav.lottie"
         loop
         autoplay
         className="w-full h-full bg-transparent"
