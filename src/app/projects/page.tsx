@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { PageWrapper } from "@/components/PageWrapper";
-import { Play, FileText, ImageIcon } from "lucide-react";
-import { useState } from "react";
+import { Play, FileText, ImageIcon, X } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import { getAssetPath } from "@/utils/imageLoader";
 
 const categories = ["Tous", "Vidéo", "Design", "Rédaction"];
@@ -108,13 +108,109 @@ const projects = [
   }
 ];
 
+type Project = typeof projects[number];
+
+function MediaModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  // Close on Escape key
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+        onClick={onClose}
+      >
+        {/* Backdrop */}
+        <div className="absolute inset-0 bg-[#020617]/90 backdrop-blur-xl" />
+
+        {/* Modal box */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.92, y: 20 }}
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          className="relative z-10 w-full max-w-3xl bg-[#0f172a] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-[#9F1239] font-bold">{project.category}</p>
+              <h3 className="text-white font-display font-bold text-lg">{project.title}</h3>
+            </div>
+            <button
+              onClick={onClose}
+              className="p-2 rounded-full bg-white/5 hover:bg-[#9F1239]/20 border border-white/10 text-white/60 hover:text-white transition-all"
+              aria-label="Fermer"
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="relative bg-black">
+            {project.type === "video" && (
+              <video
+                src={getAssetPath(project.src)}
+                controls
+                autoPlay
+                playsInline
+                className="w-full max-h-[65vh] object-contain"
+              >
+                Votre navigateur ne supporte pas la lecture vidéo.
+              </video>
+            )}
+            {project.type === "pdf" && (
+              <iframe
+                src={getAssetPath(project.src)}
+                className="w-full h-[65vh]"
+                title={project.title}
+              />
+            )}
+            {project.type === "image" && (
+              <div className="relative w-full h-[65vh]">
+                <Image
+                  src={getAssetPath(project.src)}
+                  alt={project.title}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="px-6 py-4 border-t border-white/10">
+            <p className="text-[#E2E8F0]/60 text-sm italic">{project.desc}</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 export default function Projects() {
   const [filter, setFilter] = useState("Tous");
+  const [selected, setSelected] = useState<Project | null>(null);
 
   const filteredProjects = projects.filter(p => filter === "Tous" || p.category === filter);
+  const closeModal = useCallback(() => setSelected(null), []);
 
   return (
     <PageWrapper>
+      {selected && <MediaModal project={selected} onClose={closeModal} />}
+
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="text-center mb-16 md:mb-20 bg-[#020617]/50 py-16 md:py-24 rounded-[2rem] md:rounded-[4rem] border border-white/5 shadow-2xl">
           <motion.h1
@@ -154,7 +250,8 @@ export default function Projects() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: i * 0.05 }}
-              className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#111827] border border-white/5 shadow-2xl"
+              className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#111827] border border-white/5 shadow-2xl cursor-pointer"
+              onClick={() => setSelected(project)}
             >
               <Image
                 src={getAssetPath(project.thumb)}
@@ -176,15 +273,13 @@ export default function Projects() {
                   </p>
                   
                   <div className="flex gap-4">
-                    <a
-                      href={getAssetPath(project.src)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-[#9F1239] text-white rounded-full hover:bg-[#BE123C] transition-all shadow-lg"
-                    >
+                    <div className="p-4 bg-[#9F1239] text-white rounded-full shadow-lg group-hover:scale-110 transition-transform">
                       {project.type === "video" ? <Play size={20} fill="currentColor" /> : 
                        project.type === "pdf" ? <FileText size={20} /> : <ImageIcon size={20} />}
-                    </a>
+                    </div>
+                    <span className="flex items-center text-xs text-white/60 font-medium">
+                      {project.type === "video" ? "Regarder" : project.type === "pdf" ? "Lire le document" : "Voir l'image"}
+                    </span>
                   </div>
                 </div>
               </div>
