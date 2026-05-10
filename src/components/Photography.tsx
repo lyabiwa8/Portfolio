@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { getAssetPath } from "@/utils/imageLoader";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { X } from "lucide-react";
 
 const photos = [
   { id: 1, src: "/images/photographie/jey-uso.jpg", alt: "Jey Uso" },
@@ -14,6 +15,7 @@ const photos = [
 
 export function Photography() {
   const containerRef = useRef(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<null | typeof photos[0]>(null);
 
   return (
     <section id="photography" className="py-20 md:py-32 px-6 bg-[#020617]">
@@ -56,7 +58,8 @@ export function Photography() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-              className="relative aspect-[3/4] rounded-3xl overflow-hidden group shadow-2xl border border-white/5"
+              className="relative aspect-[3/4] rounded-3xl overflow-hidden group shadow-2xl border border-white/5 cursor-pointer"
+              onClick={() => setSelectedPhoto(photo)}
             >
               <Image
                 src={getAssetPath(photo.src)}
@@ -73,6 +76,50 @@ export function Photography() {
           ))}
         </div>
       </div>
+
+      {/* Fullscreen Lightbox */}
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[210] p-4"
+              onClick={() => setSelectedPhoto(null)}
+            >
+              <X size={32} />
+            </motion.button>
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full h-full max-w-5xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={getAssetPath(selectedPhoto.src)}
+                alt={selectedPhoto.alt}
+                fill
+                className="object-contain"
+                priority
+              />
+              <div className="absolute -bottom-12 left-0 right-0 text-center">
+                <span className="text-white font-display font-black text-xl md:text-3xl uppercase tracking-tighter">
+                  {selectedPhoto.alt}
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
