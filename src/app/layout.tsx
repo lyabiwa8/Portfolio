@@ -7,18 +7,14 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { getAssetPath } from "@/utils/imageLoader";
 
 export const metadata: Metadata = {
-  title: "Lya Biwa | Portfolio",
+  title: "Lya Biwa",
   description: "Portfolio professionnel de Lya Biwa, étudiante en communication. Créativité, stratégie et design.",
   icons: {
-    icon: [
-      { url: "/images/logos/logo-lya-final.png", href: "/images/logos/logo-lya-final.png" },
-    ],
-    apple: [
-      { url: "/images/logos/logo-lya-final.png", href: "/images/logos/logo-lya-final.png" },
-    ],
+    icon: "/images/logos/logo-lya-final.png",
+    apple: "/images/logos/logo-lya-final.png",
   },
   openGraph: {
-    title: "Lya Biwa | Portfolio",
+    title: "Lya Biwa",
     description: "Créativité, stratégie et design en communication.",
     images: [
       {
