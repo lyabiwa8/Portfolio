@@ -58,13 +58,24 @@ export function Skills() {
             Compétences
           </motion.h2>
           <motion.h3 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-2xl md:text-7xl lg:text-[8rem] font-display font-black text-white leading-[1] tracking-tighter"
+            className="text-3xl md:text-6xl lg:text-7xl font-display font-black text-white leading-[1.1] tracking-tighter"
           >
-            Expertise & <br /> Vision Stratégique
+            {"Expertise & Vision Stratégique".split("").map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 0.1 + index * 0.02,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+                style={{ display: "inline-block", whiteSpace: "pre" }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </motion.h3>
         </div>
 

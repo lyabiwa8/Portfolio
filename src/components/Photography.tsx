@@ -29,19 +29,31 @@ export function Photography() {
               Capturer l'instant
             </motion.span>
             <motion.h3
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-8xl font-display font-black text-white tracking-tighter leading-[1]"
+              className="text-3xl md:text-6xl lg:text-7xl font-display font-black text-white tracking-tighter leading-[1.1]"
             >
-              LENS & <span className="text-[#9F1239] italic-display">EYE.</span>
+              {"LENS & EYE.".split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.1 + index * 0.02,
+                    ease: [0.16, 1, 0.3, 1]
+                  }}
+                  style={{ display: "inline-block", whiteSpace: "pre" }}
+                >
+                  {char}
+                </motion.span>
+              ))}
             </motion.h3>
           </div>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-[#E2E8F0]/40 text-sm italic max-w-xs text-right"
+            className="text-white/40 text-xs italic max-w-xs text-left md:text-right"
           >
             "La photographie me permet d'immortaliser l'éphémère et de porter un regard unique sur le monde qui nous entoure."
           </motion.p>

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { getAssetPath } from "@/utils/imageLoader";
 import { Menu, X, ArrowRight, Instagram, Linkedin, Mail } from "lucide-react";
+import { Magnetic } from "./Magnetic";
 
 const links = [
   { href: "/",           label: "Accueil" },
@@ -71,45 +72,48 @@ export function Navbar() {
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 md:gap-4 group relative z-[110]">
-            <div className="relative w-7 h-7 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
-              <Image 
-                src={getAssetPath("/images/logos/logo lya final.png")} 
-                alt="Logo" 
-                fill 
-                className="object-contain"
-                priority
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-black text-sm md:text-2xl tracking-tight text-white leading-none">
-                LYA BIWA
-              </span>
-              <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-[#9F1239] font-black mt-0.5">Portfolio</span>
-            </div>
-          </Link>
+          <Magnetic strength={0.2}>
+            <Link href="/" className="flex items-center gap-2 md:gap-4 group relative z-[110]">
+              <div className="relative w-7 h-7 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
+                <Image 
+                  src={getAssetPath("/images/logos/logo lya final.png")} 
+                  alt="Logo" 
+                  fill 
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="font-display font-black text-sm md:text-2xl tracking-tight text-white leading-none">
+                  LYA BIWA
+                </span>
+                <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-[#9F1239] font-black mt-0.5">Portfolio</span>
+              </div>
+            </Link>
+          </Magnetic>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-2">
             {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="relative px-6 py-3 group overflow-hidden"
-              >
-                <span className={`relative z-10 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 ${
-                  pathname === link.href ? "text-white" : "text-[#E2E8F0]/40 group-hover:text-white"
-                }`}>
-                  {link.label}
-                </span>
-                {pathname === link.href && (
-                  <motion.div
-                    layoutId="nav-pill"
-                    className="absolute inset-0 bg-[#9F1239]/10 border border-[#9F1239]/20 rounded-full"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </Link>
+              <Magnetic key={link.href} strength={0.1}>
+                <Link
+                  href={link.href}
+                  className="relative px-6 py-3 group overflow-hidden"
+                >
+                  <span className={`relative z-10 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 ${
+                    pathname === link.href ? "text-white" : "text-white/40 group-hover:text-white"
+                  }`}>
+                    {link.label}
+                  </span>
+                  {pathname === link.href && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-[#9F1239]/10 border border-[#9F1239]/20 rounded-full"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </Link>
+              </Magnetic>
             ))}
           </div>
 

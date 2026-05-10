@@ -8,6 +8,7 @@ import { PageWrapper } from "@/components/PageWrapper";
 import { ArrowRight, Play, Camera, Music, Film, Dumbbell, Globe, Sparkles } from "lucide-react";
 import { getAssetPath } from "@/utils/imageLoader";
 import { Photography } from "@/components/Photography";
+import { Magnetic } from "@/components/Magnetic";
 
 /* ── Hobbies ── */
 const hobbies = [
@@ -34,12 +35,23 @@ function SectionTitle({ subtitle, title, alignment = "left" }: { subtitle: strin
         {subtitle}
       </motion.span>
       <motion.h3
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="text-2xl md:text-7xl lg:text-9xl font-display font-black text-white leading-[1] tracking-tighter"
+        className="text-3xl md:text-5xl lg:text-7xl font-display font-black text-white leading-[1.1] tracking-tighter"
       >
-        {title}
+        {String(title).split("").map((char, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ 
+              duration: 0.5, 
+              delay: 0.1 + index * 0.02,
+              ease: [0.16, 1, 0.3, 1]
+            }}
+            style={{ display: "inline-block", whiteSpace: "pre" }}
+          >
+            {char}
+          </motion.span>
+        ))}
       </motion.h3>
     </div>
   );
@@ -98,9 +110,17 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex justify-center lg:justify-start"
             >
-              <Link href="/projects" className="btn-primary group flex items-center gap-3 px-10 py-5 rounded-full text-xs font-bold uppercase tracking-[0.2em]">
-                Découvrir mon univers <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <Magnetic strength={0.2}>
+                <Link href="/projects" className="btn-primary group flex items-center gap-3 px-10 py-5 rounded-full text-xs font-black uppercase tracking-[0.2em]">
+                  Découvrir mon univers 
+                  <motion.div
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                  >
+                    <ArrowRight size={18} />
+                  </motion.div>
+                </Link>
+              </Magnetic>
             </motion.div>
           </div>
 
