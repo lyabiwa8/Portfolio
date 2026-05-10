@@ -140,23 +140,6 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Availability Badge for Mobile Only (Below Photo) */}
-          <div className="lg:hidden flex justify-center mt-4">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy"
-            >
-              <div className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
-                <span className="relative rounded-full h-2 w-2 bg-[#BE123C]" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E2E8F0]">
-                Disponibilité : Septembre 2026
-              </span>
-            </motion.div>
-          </div>
 
         </div>
       </section>
@@ -181,6 +164,24 @@ export default function Home() {
                 className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-40" />
+            </motion.div>
+
+            {/* Availability Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-6 flex justify-center lg:justify-start"
+            >
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-burgundy">
+                <div className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inset-0 rounded-full bg-[#BE123C] opacity-75" />
+                  <span className="relative rounded-full h-2 w-2 bg-[#BE123C]" />
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E2E8F0]">
+                  Disponibilité : Septembre 2026
+                </span>
+              </div>
             </motion.div>
 
             {/* Right side: Text (Order 1 on Mobile, 2 on PC) */}
