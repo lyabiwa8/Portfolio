@@ -35,23 +35,13 @@ function SectionTitle({ subtitle, title, alignment = "left" }: { subtitle: strin
         {subtitle}
       </motion.span>
       <motion.h3
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
         className="text-3xl md:text-5xl lg:text-7xl font-display font-black text-white leading-[1.1] tracking-tighter"
       >
-        {String(title).split("").map((char, index) => (
-          <motion.span
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ 
-              duration: 0.5, 
-              delay: 0.1 + index * 0.02,
-              ease: [0.16, 1, 0.3, 1]
-            }}
-            style={{ display: "inline-block", whiteSpace: "pre" }}
-          >
-            {char}
-          </motion.span>
-        ))}
+        {title}
       </motion.h3>
     </div>
   );

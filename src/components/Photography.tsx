@@ -29,24 +29,13 @@ export function Photography() {
               Capturer l'instant
             </motion.span>
             <motion.h3
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className="text-3xl md:text-6xl lg:text-7xl font-display font-black text-white tracking-tighter leading-[1.1]"
             >
-              {"LENS & EYE.".split("").map((char, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.1 + index * 0.02,
-                    ease: [0.16, 1, 0.3, 1]
-                  }}
-                  style={{ display: "inline-block", whiteSpace: "pre" }}
-                >
-                  {char}
-                </motion.span>
-              ))}
+              LENS & <span className="text-[#9F1239] italic-display">EYE.</span>
             </motion.h3>
           </div>
           <motion.p
