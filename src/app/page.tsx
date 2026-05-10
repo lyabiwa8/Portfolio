@@ -158,10 +158,10 @@ export default function Home() {
             style={{ y: isMobile ? 0 : heroY, opacity: heroOpacity }}
             className="lg:col-span-5 relative group z-10"
           >
-            {/* Lottie Animation Background Effect */}
-            <LottieAnimation className="absolute -inset-10 md:-inset-20 opacity-30 mix-blend-screen pointer-events-none z-0" />
+            {/* Spider-Man Lottie Animation Effect */}
+            <LottieAnimation className="absolute -inset-20 md:-inset-32 opacity-70 mix-blend-screen pointer-events-none z-0" />
             
-            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 max-w-md mx-auto w-full transition-all duration-700 group-hover:shadow-[#9F1239]/20 group-hover:shadow-[0_0_50px_rgba(159,18,57,0.3)] z-10">
+            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 max-w-md mx-auto w-full transition-all duration-700 group-hover:shadow-[#9F1239]/20 group-hover:shadow-[0_0_50px_rgba(159,18,57,0.4)] z-10">
               <Image
                 src={getAssetPath("/images/photos-presentation/photo-runway-mode.jpg")}
                 alt="Hero Portrait"
