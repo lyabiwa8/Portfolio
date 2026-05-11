@@ -25,16 +25,14 @@ export function ModernBackground() {
   }, []);
 
   useEffect(() => {
-    if (!mounted || isMobile) return;
+    if (!mounted) return;
 
     let effect: any = null;
     const loadVanta = async () => {
       try {
-        // Essential: Vanta needs p5 globally available
         const p5 = (await import("p5")).default;
         window.p5 = p5;
         
-        // Dynamic import for Vanta Topology
         // @ts-ignore
         const TOPOLOGY = (await import("vanta/dist/vanta.topology.min")).default;
 
@@ -46,8 +44,8 @@ export function ModernBackground() {
             gyroControls: false,
             minHeight: 200.00,
             minWidth: 200.00,
-            scale: 3.50,
-            scaleMobile: 2.00,
+            scale: isMobile ? 1.50 : 3.50, // Smaller scale for mobile
+            scaleMobile: 1.50,
             color: 0x5d4037, // Wood Brown
             backgroundColor: 0xf2f4e8,
           });
