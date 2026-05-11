@@ -54,10 +54,10 @@ export function ModernBackground() {
 
   const meshY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -30 : -80]);
 
-  if (!mounted) return <div className="fixed inset-0 -z-10 bg-[#D8DCC8]" />;
+  if (!mounted) return <div className="fixed inset-0 z-0 bg-[#D8DCC8]" />;
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-[#D8DCC8]">
+    <div className="fixed inset-0 z-0 overflow-hidden bg-[#D8DCC8]">
       {/* ─── Cursor Follow Glow ─── */}
       {!isMobile && (
         <motion.div 
