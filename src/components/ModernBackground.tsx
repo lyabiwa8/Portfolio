@@ -30,85 +30,71 @@ function MeshBlob({ color, size, duration, delay, isMobile }: any) {
 }
 
 export function ModernBackground() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { scrollYProgress } = useScroll();
   
   useEffect(() => {
     setMounted(true);
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    
     checkMobile();
     window.addEventListener("resize", checkMobile);
-    if (!isMobile) window.addEventListener("mousemove", handleMouseMove);
-    
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [isMobile]);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-  const meshY = useTransform(scrollYProgress, [0, 1], [0, isMobile ? -30 : -80]);
-
-  if (!mounted) return <div className="fixed inset-0 z-0 bg-[#D8DCC8]" />;
+  if (!mounted) return <div className="fixed inset-0 -z-10 bg-[#F2F4E8]" />;
 
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden bg-[#D8DCC8]">
-      {/* ─── Cursor Follow Glow ─── */}
-      {!isMobile && (
-        <motion.div 
-          className="absolute w-[600px] h-[600px] rounded-full pointer-events-none opacity-[0.12] z-0"
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-[#F2F4E8]">
+      {/* ─── Framer-Style Mesh Gradients (Light Green Version) ─── */}
+      <div className="absolute inset-0 filter blur-[140px] opacity-80">
+        {/* Blob 1: Soft Sage */}
+        <motion.div
           animate={{
-            x: mousePos.x - 300,
-            y: mousePos.y - 300,
+            x: ["-15%", "15%", "-10%", "10%", "-15%"],
+            y: ["-10%", "20%", "5%", "-15%", "-10%"],
+            scale: [1, 1.1, 0.9, 1.2, 1],
           }}
-          transition={{ type: "spring", damping: 50, stiffness: 200, mass: 0.5 }}
-          style={{
-            background: "radial-gradient(circle, #8A5A2B 0%, transparent 70%)",
-            filter: "blur(80px)"
-          }}
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-[100vw] h-[100vw] rounded-full bg-[#D8DCC8] opacity-70"
         />
-      )}
 
-      {/* ─── Soft Mesh Gradient Layers ─── */}
-      <motion.div style={{ y: meshY }} className="absolute inset-0">
-        {/* Top Left - Sage */}
-        <div className="absolute top-[-20%] left-[-10%]">
-          <MeshBlob color="#3A4D39" size={isMobile ? "120vw" : "80vw"} duration={isMobile ? 25 : 30} delay={0} isMobile={isMobile} />
-        </div>
-        
-        {/* Top Right - Terracotta */}
-        <div className="absolute top-[-10%] right-[-20%]">
-          <MeshBlob color="#8B4513" size={isMobile ? "100vw" : "70vw"} duration={isMobile ? 20 : 25} delay={2} isMobile={isMobile} />
-        </div>
+        {/* Blob 2: Mint Frost */}
+        <motion.div
+          animate={{
+            x: ["10%", "-20%", "5%", "-10%", "10%"],
+            y: ["20%", "-10%", "-5%", "15%", "20%"],
+            scale: [1.1, 0.9, 1.2, 1, 1.1],
+          }}
+          transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[10%] right-[-20%] w-[110vw] h-[110vw] rounded-full bg-[#E0E4D1] opacity-60"
+        />
 
-        {/* Center - Sand/Beige */}
-        <div className="absolute top-[20%] left-[10%]">
-          <MeshBlob color="#D4A373" size={isMobile ? "130vw" : "90vw"} duration={isMobile ? 30 : 35} delay={4} isMobile={isMobile} />
-        </div>
+        {/* Blob 3: Deep Sage (Muted) */}
+        <motion.div
+          animate={{
+            x: ["-5%", "10%", "0%", "-10%", "-5%"],
+            y: ["40%", "20%", "50%", "30%", "40%"],
+            scale: [1, 1.2, 1.1, 1, 1],
+          }}
+          transition={{ duration: 65, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-20%] left-[10%] w-[90vw] h-[90vw] rounded-full bg-[#C0C5AD] opacity-50"
+        />
 
-        {/* Bottom Right - Deep Green */}
-        <div className="absolute bottom-[-20%] right-[-10%]">
-          <MeshBlob color="#2F3B24" size={isMobile ? "140vw" : "80vw"} duration={isMobile ? 28 : 32} delay={1} isMobile={isMobile} />
-        </div>
+        {/* Blob 4: Earthy Accent */}
+        <motion.div
+          animate={{
+            opacity: [0.1, 0.25, 0.15, 0.3, 0.1],
+          }}
+          transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-gradient-to-br from-[#3A4D39]/10 to-transparent"
+        />
+      </div>
 
-        {/* Bottom Left - Soft Cream */}
-        <div className="absolute bottom-[10%] left-[-20%]">
-          <MeshBlob color="#E0E4D1" size={isMobile ? "110vw" : "75vw"} duration={isMobile ? 35 : 40} delay={6} isMobile={isMobile} />
-        </div>
-      </motion.div>
-
-      {/* ─── Premium Textures & Overlays ─── */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-multiply" 
-           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+      {/* ─── Premium Textures ─── */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.08] mix-blend-multiply contrast-125" 
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
       
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(43,33,24,0.06)_100%)]" />
-      
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#D8DCC8] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(47,59,36,0.03)_100%)]" />
     </div>
   );
 }
