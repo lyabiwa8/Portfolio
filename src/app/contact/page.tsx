@@ -5,6 +5,15 @@ import { motion } from "framer-motion";
 import { PageWrapper } from "@/components/PageWrapper";
 import { Send, CheckCircle2, Linkedin, Mail } from "lucide-react";
 
+const C = {
+  text:     "var(--text-primary)",
+  muted:    "var(--text-secondary)",
+  accent:   "var(--accent-primary)",
+  border:   "var(--border-subtle)",
+  surface:  "var(--surface)",
+  bg:       "var(--bg-main)",
+};
+
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
 
@@ -18,131 +27,139 @@ export default function Contact() {
 
   return (
     <PageWrapper>
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center min-h-[85vh]">
-        <div className="py-12">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-display font-black text-white mb-12 tracking-tight leading-[0.9]"
-          >
-            DISONS-NOUS <span className="text-[#9F1239] italic">BONJOUR.</span>
-          </motion.h1>
+      <div className="max-w-7xl mx-auto px-6 py-28 md:py-40">
+        <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-start">
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-            {/* Mail Block */}
-            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30 flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#9F1239]/10 flex items-center justify-center text-[#9F1239] mb-6 group-hover:bg-[#9F1239] group-hover:text-white transition-all">
-                <Mail size={22} />
-              </div>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-[#E2E8F0]/30 font-bold mb-3">Email Officiel</p>
-              <a href="mailto:lyabiwa8@gmail.com" className="text-base md:text-lg font-bold text-white hover:text-[#9F1239] transition-colors break-all">
-                lyabiwa8@gmail.com
-              </a>
-            </div>
-
-            {/* LinkedIn Block */}
-            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30 flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#9F1239]/10 flex items-center justify-center text-[#9F1239] mb-6 group-hover:bg-[#9F1239] group-hover:text-white transition-all">
-                <Linkedin size={22} />
-              </div>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-[#E2E8F0]/30 font-bold mb-3">LinkedIn</p>
-              <a 
-                href="https://www.linkedin.com/in/lya-biwa-130832255/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-lg font-bold text-white hover:text-[#9F1239] transition-colors"
+          <div className="space-y-12 md:space-y-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 
+                className="font-display font-bold leading-[0.9] tracking-tighter mb-8"
+                style={{ fontSize: "clamp(3rem, 10vw, 6rem)", color: C.text }}
               >
-                Lya Biwa
-              </a>
-            </div>
-
-            {/* TikTok Block */}
-            <div className="p-8 rounded-[2rem] bg-[#111827] border border-white/5 group transition-all duration-500 hover:border-[#9F1239]/30 flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#9F1239]/10 flex items-center justify-center text-[#9F1239] mb-6 group-hover:bg-[#9F1239] group-hover:text-white transition-all">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-                </svg>
-              </div>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-[#E2E8F0]/30 font-bold mb-3">TikTok</p>
-              <a 
-                href="https://www.tiktok.com/@atnightimbatman" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-lg font-bold text-white hover:text-[#9F1239] transition-colors"
-              >
-                @atnightimbatman
-              </a>
+                Disons-nous <br />
+                <span className="text-accent-primary italic">bonjour.</span>
+              </h1>
+              <p className="text-lg md:text-xl font-medium leading-relaxed max-w-md" style={{ color: C.muted }}>
+                Besoin d'une alternance en communication ou d'un projet créatif ? 
+                Je suis à votre écoute pour collaborer.
+              </p>
+            </motion.div>
+            
+            <div className="grid gap-6">
+              {[
+                { 
+                  icon: <Mail size={20} />, 
+                  label: "Email Officiel", 
+                  value: "lyabiwa8@gmail.com", 
+                  href: "mailto:lyabiwa8@gmail.com" 
+                },
+                { 
+                  icon: <Linkedin size={20} />, 
+                  label: "LinkedIn", 
+                  value: "Lya Biwa", 
+                  href: "https://www.linkedin.com/in/lya-biwa-130832255/" 
+                },
+                { 
+                  icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>, 
+                  label: "TikTok", 
+                  value: "@atnightimbatman", 
+                  href: "https://www.tiktok.com/@atnightimbatman" 
+                }
+              ].map((item, i) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 * i + 0.3 }}
+                  className="group flex items-center gap-6 p-6 rounded-[2rem] bg-surface/40 backdrop-blur-sm border border-border-subtle/20 hover:border-accent-primary/30 transition-all duration-500 soft-shadow"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-accent-primary text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-500">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest opacity-40 mb-1" style={{ color: C.text }}>{item.label}</p>
+                    <p className="text-base md:text-lg font-bold group-hover:text-accent-primary transition-colors" style={{ color: C.text }}>{item.value}</p>
+                  </div>
+                </motion.a>
+              ))}
             </div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="bg-surface p-8 md:p-14 rounded-[3rem] border border-border-subtle/20 shadow-2xl relative overflow-hidden"
+          >
+            {status === "success" ? (
+              <div className="h-full flex flex-col items-center justify-center text-center space-y-8 py-12">
+                <div className="w-24 h-24 rounded-full bg-accent-primary flex items-center justify-center text-white shadow-xl shadow-accent-primary/20">
+                  <CheckCircle2 size={48} />
+                </div>
+                <div className="space-y-3">
+                  <h2 className="text-3xl font-display font-bold" style={{ color: C.text }}>Message Envoyé !</h2>
+                  <p className="font-medium opacity-60" style={{ color: C.text }}>
+                    Merci beaucoup. Je vous répondrai <br /> dans les plus brefs délais.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="text-accent-primary font-bold hover:underline tracking-widest text-xs uppercase"
+                >
+                  Envoyer un autre message
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] ml-6 opacity-50" style={{ color: C.text }}>Nom Complet</label>
+                  <input
+                    required
+                    type="text"
+                    placeholder="Jean Dupont"
+                    className="w-full bg-bg-main/50 border border-border-subtle/30 rounded-2xl px-8 py-5 outline-none focus:border-accent-primary transition-all font-medium text-text-primary placeholder:opacity-30"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] ml-6 opacity-50" style={{ color: C.text }}>Email</label>
+                  <input
+                    required
+                    type="email"
+                    placeholder="jean@exemple.com"
+                    className="w-full bg-bg-main/50 border border-border-subtle/30 rounded-2xl px-8 py-5 outline-none focus:border-accent-primary transition-all font-medium text-text-primary placeholder:opacity-30"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] font-bold uppercase tracking-[0.2em] ml-6 opacity-50" style={{ color: C.text }}>Message</label>
+                  <textarea
+                    required
+                    rows={4}
+                    placeholder="Dites-moi tout..."
+                    className="w-full bg-bg-main/50 border border-border-subtle/30 rounded-[2.5rem] px-8 py-6 outline-none focus:border-accent-primary transition-all font-medium text-text-primary placeholder:opacity-30 resize-none"
+                  />
+                </div>
+
+                <button
+                  disabled={status === "sending"}
+                  type="submit"
+                  className="w-full btn-primary py-6 rounded-full font-bold text-sm flex items-center justify-center gap-3 shadow-xl transition-all active:scale-[0.98] disabled:opacity-50"
+                >
+                  {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
+                  <Send size={18} />
+                </button>
+              </form>
+            )}
+          </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-[#111827] rounded-[3rem] p-10 md:p-14 border border-white/5 shadow-2xl relative overflow-hidden"
-        >
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#9F1239]/5 blur-[100px] -mr-32 -mt-32" />
-          
-          {status === "success" ? (
-            <div className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12 relative z-10">
-              <div className="w-20 h-20 rounded-full bg-[#9F1239] flex items-center justify-center text-white shadow-2xl shadow-[#9F1239]/40">
-                <CheckCircle2 size={40} />
-              </div>
-              <h2 className="text-3xl font-display font-bold text-white">Message Envoyé !</h2>
-              <p className="text-[#E2E8F0]/60 max-w-xs mx-auto">
-                Merci pour votre message. Je reviens vers vous très rapidement.
-              </p>
-              <button
-                onClick={() => setStatus("idle")}
-                className="text-[#9F1239] font-bold hover:underline tracking-widest text-xs uppercase"
-              >
-                Envoyer un autre message
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
-              <div className="space-y-3">
-                <label className="text-[10px] font-bold text-[#E2E8F0]/40 uppercase tracking-[0.2em] ml-4">Nom Complet</label>
-                <input
-                  required
-                  type="text"
-                  placeholder="Jean Dupont"
-                  className="w-full bg-[#020617] border border-white/5 rounded-2xl px-8 py-4.5 outline-none focus:border-[#9F1239] transition-colors text-white"
-                />
-              </div>
-
-              <div className="space-y-3">
-                <label className="text-[10px] font-bold text-[#E2E8F0]/40 uppercase tracking-[0.2em] ml-4">Email</label>
-                <input
-                  required
-                  type="email"
-                  placeholder="jean@exemple.com"
-                  className="w-full bg-[#020617] border border-white/5 rounded-2xl px-8 py-4.5 outline-none focus:border-[#9F1239] transition-colors text-white"
-                />
-              </div>
-
-              <div className="space-y-3">
-                <label className="text-[10px] font-bold text-[#E2E8F0]/40 uppercase tracking-[0.2em] ml-4">Message</label>
-                <textarea
-                  required
-                  rows={4}
-                  placeholder="Dites-moi tout..."
-                  className="w-full bg-[#0F172A] border border-white/5 rounded-[2rem] px-8 py-4.5 outline-none focus:border-[#9F1239] transition-colors text-white resize-none"
-                />
-              </div>
-
-              <button
-                disabled={status === "sending"}
-                type="submit"
-                className="w-full bg-[#9F1239] text-white rounded-full py-5 font-bold hover:bg-[#BE123C] transition-all shadow-xl shadow-[#9F1239]/20 flex items-center justify-center gap-3 disabled:opacity-70"
-              >
-                {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
-                <Send size={20} />
-              </button>
-            </form>
-          )}
-        </motion.div>
       </div>
     </PageWrapper>
   );

@@ -3,9 +3,19 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { PageWrapper } from "@/components/PageWrapper";
-import { Play, FileText, ImageIcon, X } from "lucide-react";
+import { Play, FileText, ImageIcon, X, ExternalLink } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { getAssetPath } from "@/utils/imageLoader";
+
+const C = {
+  text:     "var(--text-primary)",
+  muted:    "var(--text-secondary)",
+  accent:   "var(--accent-primary)",
+  accentLt: "var(--accent-secondary)",
+  border:   "var(--border-subtle)",
+  surface:  "var(--surface)",
+  bg:       "var(--bg-main)",
+};
 
 const categories = ["Tous", "Vidéo", "Design", "Rédaction"];
 
@@ -136,15 +146,7 @@ const projects = [
   }
 ];
 
-type Project = {
-  title: string;
-  category: string;
-  type: string;
-  src: string;
-  thumb: string;
-  desc: string;
-  pages?: string[];
-};
+type Project = typeof projects[0];
 
 function MediaModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -176,34 +178,34 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
         onClick={onClose}
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-[#020617]/95 backdrop-blur-xl" />
+        <div className="absolute inset-0 bg-[#2B2118]/80 backdrop-blur-xl" />
 
         {/* Modal box */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.92, y: 20 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative z-10 w-full max-w-4xl bg-[#0f172a] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl"
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 w-full max-w-4xl bg-surface rounded-[2.5rem] overflow-hidden border border-border-subtle/20 shadow-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-white/5">
+          <div className="flex items-center justify-between px-8 py-6 border-b border-border-subtle/10 bg-surface/50">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[#9F1239] font-bold">{project.category}</p>
-              <h3 className="text-white font-display font-bold text-xl">{project.title}</h3>
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-accent-primary mb-1">{project.category}</p>
+              <h3 className="font-display font-bold text-xl md:text-2xl text-text-primary">{project.title}</h3>
             </div>
             <button
               onClick={onClose}
-              className="p-2.5 rounded-full bg-white/5 hover:bg-[#9F1239]/20 border border-white/10 text-white/60 hover:text-white transition-all shadow-lg"
+              className="p-3 rounded-full bg-bg-main/50 hover:bg-accent-primary/10 border border-border-subtle/20 text-text-primary/40 hover:text-accent-primary transition-all shadow-sm group"
               aria-label="Fermer"
             >
-              <X size={20} />
+              <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
             </button>
           </div>
 
           {/* Content */}
-          <div className="relative bg-black min-h-[40vh] flex items-center justify-center">
+          <div className="relative bg-black min-h-[40vh] flex items-center justify-center overflow-hidden">
             {project.type === "video" && (
               <video
                 src={getAssetPath(project.src)}
@@ -217,10 +219,10 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
             )}
             
             {project.type === "pdf" && (
-              <div className="w-full flex flex-col items-center">
+              <div className="w-full flex flex-col items-center bg-bg-main">
                 {isMobile ? (
-                  <div className="p-8 text-center">
-                    <div className="relative w-48 h-64 mx-auto mb-8 rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                  <div className="p-12 text-center">
+                    <div className="relative w-48 h-64 mx-auto mb-8 rounded-[1.5rem] overflow-hidden shadow-2xl border border-border-subtle/20">
                       <Image
                         src={getAssetPath(project.thumb)}
                         alt={project.title}
@@ -228,17 +230,17 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
                         className="object-cover"
                       />
                     </div>
-                    <p className="text-white/60 mb-8 text-sm max-w-xs mx-auto">
+                    <p className="text-text-secondary mb-8 text-sm font-medium max-w-xs mx-auto">
                       Ce document PDF est optimisé pour une lecture en plein écran.
                     </p>
                     <a
                       href={getAssetPath(project.src)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 px-8 py-4 bg-[#9F1239] text-white rounded-full font-bold text-sm shadow-xl hover:scale-105 transition-transform"
+                      className="inline-flex items-center gap-3 px-10 py-5 bg-accent-primary text-white rounded-full font-bold text-sm shadow-xl active:scale-95 transition-all"
                     >
                       <FileText size={20} />
-                      Ouvrir le document PDF
+                      Ouvrir le PDF
                     </a>
                   </div>
                 ) : (
@@ -252,7 +254,7 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
             )}
 
             {project.type === "image" && (
-              <div className="relative w-full h-[70vh]">
+              <div className="relative w-full h-[70vh] bg-bg-main">
                 <Image
                   src={getAssetPath(project.src)}
                   alt={project.title}
@@ -264,16 +266,16 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
           </div>
 
           {/* Footer */}
-          <div className="px-8 py-6 border-t border-white/10 bg-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <p className="text-[#E2E8F0]/60 text-sm italic max-w-2xl">{project.desc}</p>
+          <div className="px-10 py-8 border-t border-border-subtle/10 bg-surface/50 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <p className="text-text-secondary text-sm font-medium leading-relaxed max-w-2xl italic">"{project.desc}"</p>
             {project.type === "pdf" && !isMobile && (
               <a
                 href={getAssetPath(project.src)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#9F1239] hover:text-[#BE123C] text-xs font-bold uppercase tracking-widest border-b border-[#9F1239]/30 pb-1 flex items-center gap-2 transition-colors whitespace-nowrap"
+                className="text-accent-primary hover:text-accent-secondary text-[10px] font-bold uppercase tracking-widest border-b border-accent-primary/30 pb-1 flex items-center gap-2 transition-all whitespace-nowrap"
               >
-                Ouvrir en plein écran <ExternalLink size={14} />
+                Plein écran <ExternalLink size={14} />
               </a>
             )}
           </div>
@@ -282,8 +284,6 @@ function MediaModal({ project, onClose }: { project: Project; onClose: () => voi
     </AnimatePresence>
   );
 }
-
-import { ExternalLink } from "lucide-react";
 
 export default function Projects() {
   const [filter, setFilter] = useState("Tous");
@@ -296,26 +296,36 @@ export default function Projects() {
     <PageWrapper>
       {selected && <MediaModal project={selected} onClose={closeModal} />}
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="text-center mb-16 md:mb-20 bg-[#020617]/50 py-16 md:py-24 rounded-[2rem] md:rounded-[4rem] border border-white/5 shadow-2xl">
-          <motion.h1
+      <div className="max-w-7xl mx-auto px-6 pt-28 md:pt-40 pb-20">
+        
+        {/* Header Section */}
+        <div className="text-center mb-16 md:mb-24 space-y-10">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-8 md:mb-12 tracking-tighter break-words"
+            transition={{ duration: 0.8 }}
           >
-            PROJETS
-          </motion.h1>
+            <h1 
+              className="font-display font-bold leading-[0.9] tracking-tighter mb-4"
+              style={{ fontSize: "clamp(3.5rem, 12vw, 8rem)", color: C.text }}
+            >
+              Projets<span className="text-accent-primary italic">.</span>
+            </h1>
+            <p className="text-lg md:text-xl font-medium opacity-60 max-w-2xl mx-auto" style={{ color: C.text }}>
+              Une sélection de mes travaux en communication, design and création de contenu.
+            </p>
+          </motion.div>
           
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4 px-4">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 px-4">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={cn(
-                  "px-6 md:px-10 py-2.5 md:py-3.5 rounded-full text-[10px] md:text-xs font-bold transition-all border uppercase tracking-[0.2em]",
+                  "px-8 md:px-12 py-3.5 md:py-4 rounded-full text-[10px] md:text-xs font-bold transition-all border uppercase tracking-[0.2em] active:scale-95",
                   filter === cat 
-                    ? "bg-[#9F1239] text-white border-[#9F1239] shadow-lg shadow-[#9F1239]/30" 
-                    : "bg-white/5 text-[#E2E8F0]/60 border-white/10 hover:border-[#9F1239] hover:text-white"
+                    ? "bg-accent-primary text-white border-accent-primary shadow-lg shadow-accent-primary/20" 
+                    : "bg-surface/50 text-text-secondary border-border-subtle/20 hover:border-accent-primary/50 hover:text-accent-primary"
                 )}
               >
                 {cat}
@@ -324,38 +334,39 @@ export default function Projects() {
           </div>
         </div>
 
+        {/* Grid Section */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-24"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 pb-24"
         >
           {filteredProjects.map((project, i) => (
             <motion.div
               layout
               key={project.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: i * 0.05 }}
-              className="group relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#111827] border border-white/5 shadow-2xl cursor-pointer"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative aspect-[3.5/4.5] rounded-[2.5rem] overflow-hidden bg-surface border border-border-subtle/20 shadow-xl cursor-pointer"
               onClick={() => setSelected(project)}
             >
               <Image
                 src={getAssetPath(project.thumb)}
                 alt={project.title}
                 fill
-                className="object-cover transition-all duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                className="object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-[0.8] brightness-[0.95]"
               />
               
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent flex flex-col justify-end p-10 pb-14">
-                <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="text-[#9F1239] text-[10px] font-bold uppercase tracking-[0.3em] mb-3 block">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-12">
+                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-out">
+                  <span className="text-accent-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-3 block">
                     {project.category}
                   </span>
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-6 leading-tight">
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-8 leading-tight">
                     {project.title}
                   </h3>
                   
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full group-hover:bg-[#9F1239] group-hover:border-[#9F1239] transition-all duration-300 shadow-xl">
+                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    <div className="flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-full group-hover:bg-accent-primary group-hover:border-accent-primary transition-all duration-300 shadow-xl">
                       <div className="text-white group-hover:scale-110 transition-transform">
                         {project.type === "video" ? <Play size={16} fill="currentColor" /> : 
                          project.type === "pdf" ? <FileText size={16} /> : <ImageIcon size={16} />}

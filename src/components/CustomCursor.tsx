@@ -38,7 +38,7 @@ export function CustomCursor() {
     <div className="fixed inset-0 pointer-events-none z-[9999]">
       {/* Outer Circle */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#9F1239]/40 mix-blend-difference"
+        className="fixed top-0 left-0 w-10 h-10 rounded-full border border-accent-primary/30 mix-blend-multiply"
         style={{
           translateX: cursorXSpring,
           translateY: cursorYSpring,
@@ -48,7 +48,7 @@ export function CustomCursor() {
       />
       {/* Inner Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1 h-1 rounded-full bg-[#9F1239]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent-primary shadow-sm"
         style={{
           translateX: cursorX,
           translateY: cursorY,

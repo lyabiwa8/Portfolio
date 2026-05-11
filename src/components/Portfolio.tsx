@@ -106,10 +106,10 @@ export function Portfolio() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
-            <h2 className="text-sm uppercase tracking-widest text-[#9F1239] font-semibold mb-4">Mes Créations</h2>
-            <h3 className="text-4xl md:text-5xl font-display font-bold text-white">Portfolio</h3>
+            <h2 className="text-sm uppercase tracking-widest text-accent-primary font-semibold mb-4">Mes Créations</h2>
+            <h3 className="text-4xl md:text-5xl font-display font-bold text-text-primary">Portfolio</h3>
           </div>
-          <p className="max-w-md text-white/60 text-lg italic">
+          <p className="max-w-md text-text-secondary text-lg italic">
             "Chaque création est une fenêtre ouverte sur mon imaginaire et mes compétences techniques."
           </p>
         </div>
@@ -122,34 +122,32 @@ export function Portfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={!isMobile ? { 
                 y: -10,
-                rotateX: 4,
-                rotateY: 2,
                 transition: { duration: 0.4, ease: "easeOut" }
               } : {}}
               onClick={() => setSelectedProject(project)}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-[#0F172A] shadow-2xl border border-white/5 cursor-pointer perspective-1000"
+              className="group relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-surface soft-shadow border border-border-subtle/20 cursor-pointer"
             >
               <Image
                 src={getAssetPath(project.thumbnail)}
                 alt={project.title}
                 fill
-                className="object-cover transition-all duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-100"
+                className="object-cover transition-all duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/50 to-transparent flex flex-col justify-end p-10 pb-14 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                <span className="text-[#9F1239] text-[10px] font-bold uppercase tracking-[0.3em] mb-3">
+              <div className="absolute inset-0 bg-gradient-to-t from-bg-main via-bg-main/40 to-transparent flex flex-col justify-end p-10 pb-14 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <span className="text-accent-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-3">
                   {project.category}
                 </span>
-                <h4 className="text-2xl md:text-3xl font-display font-bold text-white mb-6">
+                <h4 className="text-2xl md:text-3xl font-display font-bold text-text-primary mb-6">
                   {project.title}
                 </h4>
                 
-                <div className="flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full group-hover:bg-[#9F1239] group-hover:border-[#9F1239] transition-all duration-300 shadow-xl w-fit">
-                  <div className="text-white">
+                <div className="flex items-center gap-3 px-6 py-3 bg-white/40 backdrop-blur-md border border-white/60 rounded-full group-hover:bg-accent-primary group-hover:border-accent-primary group-hover:text-white transition-all duration-300 shadow-sm w-fit">
+                  <div className="text-text-primary group-hover:text-white">
                     {project.icon}
                   </div>
-                  <span className="text-[10px] text-white font-bold uppercase tracking-widest">Voir le projet</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest">Voir le projet</span>
                 </div>
               </div>
             </motion.div>
@@ -159,9 +157,9 @@ export function Portfolio() {
         <div className="flex justify-center">
           <Link href="/projects">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-10 py-5 bg-white/5 hover:bg-[#9F1239] border border-white/10 hover:border-[#9F1239] text-white rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-300 shadow-2xl shadow-black group"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-3 px-10 py-5 bg-surface hover:bg-accent-primary border border-border-subtle hover:border-accent-primary text-text-primary hover:text-white rounded-full font-bold text-sm tracking-widest uppercase transition-all duration-300 soft-shadow group"
             >
               Voir tous mes projets
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-2" />
@@ -211,30 +209,30 @@ function MediaModal({ project, onClose }: { project: any; onClose: () => void })
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-[#020617]/95 backdrop-blur-xl" 
+        className="absolute inset-0 bg-bg-main/90 backdrop-blur-xl" 
       />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.92, y: 20 }}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.92, y: 20 }}
-        className="relative z-10 w-full max-w-4xl bg-[#0f172a] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl"
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        className="relative z-10 w-full max-w-4xl bg-surface rounded-[2rem] overflow-hidden border border-border-subtle shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-white/5">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-border-subtle bg-bg-main/50">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-[#9F1239] font-bold">{project.category}</p>
-            <h3 className="text-white font-display font-bold text-xl">{project.title}</h3>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-accent-primary font-bold">{project.category}</p>
+            <h3 className="text-text-primary font-display font-bold text-xl">{project.title}</h3>
           </div>
           <button
             onClick={onClose}
-            className="p-2.5 rounded-full bg-white/5 hover:bg-[#9F1239]/20 border border-white/10 text-white/60 hover:text-white transition-all shadow-lg"
+            className="p-2.5 rounded-full bg-white/20 hover:bg-accent-primary/10 border border-border-subtle text-text-secondary hover:text-accent-primary transition-all"
           >
             <X size={20} />
           </button>
         </div>
 
-        <div className="relative bg-black min-h-[40vh] flex items-center justify-center">
+        <div className="relative bg-[#2B2118] min-h-[40vh] flex items-center justify-center">
           {project.type === "video" && (
             <video
               src={getAssetPath(project.link)}
@@ -262,7 +260,7 @@ function MediaModal({ project, onClose }: { project: any; onClose: () => void })
                       href={getAssetPath(project.link)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 px-8 py-4 bg-[#9F1239] text-white rounded-full font-bold text-sm shadow-xl hover:scale-105 transition-transform"
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-accent-primary text-white rounded-full font-bold text-sm shadow-xl hover:scale-105 transition-transform"
                     >
                       <FileText size={20} />
                       Ouvrir le document PDF
@@ -281,5 +279,6 @@ function MediaModal({ project, onClose }: { project: any; onClose: () => void })
         </div>
       </motion.div>
     </div>
+
   );
 }

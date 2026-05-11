@@ -44,21 +44,21 @@ export function Parcours() {
     <section id="parcours" className="py-24 px-6 bg-transparent relative z-10">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-sm uppercase tracking-widest text-[#9F1239] font-semibold mb-4">Mon Expérience</h2>
-          <h3 className="text-4xl md:text-5xl font-display font-bold text-white">Mon Parcours</h3>
+          <h2 className="text-sm uppercase tracking-widest text-accent-primary font-semibold mb-4">Mon Expérience</h2>
+          <h3 className="text-4xl md:text-5xl font-display font-bold text-text-primary">Mon Parcours</h3>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Education */}
           <div>
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 bg-[#9F1239] text-white rounded-lg">
+              <div className="p-3 bg-accent-primary text-white rounded-lg shadow-sm">
                 <GraduationCap size={24} />
               </div>
-              <h4 className="text-2xl font-display font-bold text-white">Formation</h4>
+              <h4 className="text-2xl font-display font-bold text-text-primary">Formation</h4>
             </div>
 
-            <div className="space-y-8 border-l-2 border-white/10 ml-6 pl-8">
+            <div className="space-y-8 border-l-2 border-border-subtle/30 ml-6 pl-8">
               {education.map((item, index) => (
                 <motion.div
                   key={index}
@@ -68,11 +68,11 @@ export function Parcours() {
                   transition={{ delay: index * 0.1 }}
                   className="relative"
                 >
-                  <div className="absolute -left-[41px] top-0 w-4 h-4 bg-[#9F1239] rounded-full border-4 border-[#020617]" />
-                  <span className="text-sm font-semibold text-[#9F1239] mb-1 block">{item.year}</span>
-                  <h5 className="text-xl font-bold text-white mb-1">{item.title}</h5>
-                  <p className="text-sm font-medium text-white/40 mb-2">{item.institution}</p>
-                  <p className="text-white/60 text-sm leading-relaxed">{item.description}</p>
+                  <div className="absolute -left-[41px] top-0 w-4 h-4 bg-accent-primary rounded-full border-4 border-bg-main" />
+                  <span className="text-sm font-semibold text-accent-primary mb-1 block">{item.year}</span>
+                  <h5 className="text-xl font-bold text-text-primary mb-1">{item.title}</h5>
+                  <p className="text-sm font-medium text-text-secondary/60 mb-2">{item.institution}</p>
+                  <p className="text-text-secondary text-sm leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -81,13 +81,13 @@ export function Parcours() {
           {/* Professional */}
           <div>
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 bg-[#9F1239] text-white rounded-lg">
+              <div className="p-3 bg-accent-primary text-white rounded-lg shadow-sm">
                 <Briefcase size={24} />
               </div>
-              <h4 className="text-2xl font-display font-bold text-white">Expériences</h4>
+              <h4 className="text-2xl font-display font-bold text-text-primary">Expériences</h4>
             </div>
 
-            <div className="space-y-8 border-l-2 border-white/10 ml-6 pl-8">
+            <div className="space-y-8 border-l-2 border-border-subtle/30 ml-6 pl-8">
               {experience.map((item, index) => (
                 <motion.div
                   key={index}
@@ -97,11 +97,11 @@ export function Parcours() {
                   transition={{ delay: index * 0.1 }}
                   className="relative"
                 >
-                  <div className="absolute -left-[41px] top-0 w-4 h-4 bg-[#9F1239] rounded-full border-4 border-[#020617]" />
-                  <span className="text-sm font-semibold text-[#9F1239] mb-1 block">{item.year}</span>
-                  <h5 className="text-xl font-bold text-white mb-1">{item.title}</h5>
-                  <p className="text-sm font-medium text-white/40 mb-2">{item.company}</p>
-                  <p className="text-white/60 text-sm leading-relaxed">{item.description}</p>
+                  <div className="absolute -left-[41px] top-0 w-4 h-4 bg-accent-primary rounded-full border-4 border-bg-main" />
+                  <span className="text-sm font-semibold text-accent-primary mb-1 block">{item.year}</span>
+                  <h5 className="text-xl font-bold text-text-primary mb-1">{item.title}</h5>
+                  <p className="text-sm font-medium text-text-secondary/60 mb-2">{item.company}</p>
+                  <p className="text-text-secondary text-sm leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -109,6 +109,7 @@ export function Parcours() {
         </div>
       </div>
     </section>
+
   );
 }
 

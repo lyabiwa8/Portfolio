@@ -10,15 +10,15 @@ export const metadata: Metadata = {
   title: "Lya Biwa",
   description: "Portfolio professionnel de Lya Biwa, étudiante en communication. Créativité, stratégie et design.",
   icons: {
-    icon: "/images/logos/logo-lya-final.png",
-    apple: "/images/logos/logo-lya-final.png",
+    icon: "/images/logos/logo-lya-final.png.png",
+    apple: "/images/logos/logo-lya-final.png.png",
   },
   openGraph: {
     title: "Lya Biwa",
     description: "Créativité, stratégie et design en communication.",
     images: [
       {
-        url: "/images/logos/logo-lya-final.png",
+        url: "/images/logos/logo-lya-final.png.png",
         width: 800,
         height: 600,
       },

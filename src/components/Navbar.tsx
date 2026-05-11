@@ -68,27 +68,28 @@ export function Navbar() {
       >
         <div 
           className={`max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 rounded-[1.5rem] md:rounded-[2.5rem] px-4 py-2 md:px-10 md:py-5 ${
-            scrolled ? "bg-[#020617]/80 backdrop-blur-xl border border-white/5 shadow-2xl" : "bg-transparent border-transparent"
+            scrolled ? "bg-bg-main/80 backdrop-blur-xl border border-border-subtle/30 shadow-sm" : "bg-transparent border-transparent"
           }`}
         >
           {/* Logo */}
           <Magnetic strength={0.2}>
             <div className="relative group z-[110]">
               <Link href="/" className="flex items-center gap-2 md:gap-4">
-                <div className="relative w-7 h-7 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
+                <div className="relative w-8 h-8 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
                   <Image 
-                    src={getAssetPath("/images/logos/logo-lya-final.png")} 
+                    src={getAssetPath("/images/logos/logo-lya-final.png.png")} 
                     alt="Logo" 
-                    fill 
-                    className="object-contain"
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-contain"
                     priority
                   />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="font-display font-black text-sm md:text-2xl tracking-tight text-white leading-none">
+                  <span className="font-display font-black text-sm md:text-2xl tracking-tight text-text-primary leading-none">
                     LYA BIWA
                   </span>
-                  <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-[#9F1239] font-black mt-0.5">Portfolio</span>
+                  <span className="text-[7px] md:text-[10px] uppercase tracking-[0.3em] text-accent-primary font-black mt-0.5">Portfolio</span>
                 </div>
               </Link>
             </div>
@@ -103,14 +104,14 @@ export function Navbar() {
                   className="relative px-6 py-3 group overflow-hidden"
                 >
                   <span className={`relative z-10 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 ${
-                    (pathname === link.href || pathname === `${link.href}/`) ? "text-[#9F1239]" : "text-white/70 group-hover:text-[#9F1239]"
+                    (pathname === link.href || pathname === `${link.href}/`) ? "text-accent-primary" : "text-text-secondary group-hover:text-accent-primary"
                   }`}>
                     {link.label}
                   </span>
                   {(pathname === link.href || pathname === `${link.href}/`) && (
                     <motion.div
                       layoutId="nav-pill"
-                      className="absolute inset-0 bg-[#9F1239]/10 border border-[#9F1239]/20 rounded-full"
+                      className="absolute inset-0 bg-accent-primary/5 border border-accent-primary/10 rounded-full"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
@@ -124,7 +125,7 @@ export function Navbar() {
             <Magnetic strength={0.15}>
               <Link 
                 href="/contact" 
-                className="hidden md:flex items-center gap-2 bg-[#9F1239] hover:bg-[#BE123C] text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95"
+                className="hidden md:flex items-center gap-2 bg-accent-primary hover:bg-accent-primary/90 text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-sm"
               >
                 Collaborer <ArrowRight size={14} />
               </Link>
@@ -136,15 +137,15 @@ export function Navbar() {
               className="lg:hidden relative z-[110] flex flex-col gap-1.5 p-2 group"
               aria-label="Toggle Menu"
             >
-              <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-              <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
-              <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+              <div className={`w-6 h-0.5 bg-text-primary transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <div className={`w-6 h-0.5 bg-text-primary transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+              <div className={`w-6 h-0.5 bg-text-primary transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Sidebar Menu (Tharsanan Style) */}
+      {/* Mobile Sidebar Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -154,7 +155,7 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-[120] bg-[#020617]/60 backdrop-blur-md lg:hidden"
+              className="fixed inset-0 z-[120] bg-text-primary/10 backdrop-blur-md lg:hidden"
             />
             
             {/* Sidebar */}
@@ -163,10 +164,10 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[75%] max-w-[320px] z-[130] bg-[#020617] border-l border-white/5 flex flex-col lg:hidden shadow-[-20px_0_60px_rgba(0,0,0,0.8)]"
+              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[320px] z-[130] bg-bg-main border-l border-border-subtle/20 flex flex-col lg:hidden shadow-2xl"
             >
               <div className="flex flex-col p-10 pt-32 gap-6 items-start overflow-y-auto flex-1">
-                <p className="text-[#9F1239] font-black tracking-[0.3em] uppercase text-[10px] mb-4">Navigation</p>
+                <p className="text-accent-primary font-black tracking-[0.3em] uppercase text-[10px] mb-4">Navigation</p>
                 {links.map((link, i) => (
                   <motion.div
                     key={link.href}
@@ -177,8 +178,8 @@ export function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className={`text-base md:text-3xl font-display font-black uppercase tracking-tight block transition-all duration-300 ${
-                        (pathname === link.href || pathname === `${link.href}/`) ? "text-[#9F1239] translate-x-2" : "text-white hover:text-[#9F1239]"
+                      className={`text-2xl md:text-3xl font-display font-black uppercase tracking-tight block transition-all duration-300 ${
+                        (pathname === link.href || pathname === `${link.href}/`) ? "text-accent-primary translate-x-2" : "text-text-primary hover:text-accent-primary"
                       }`}
                     >
                       {link.label}
@@ -188,24 +189,24 @@ export function Navbar() {
               </div>
               
               {/* Footer Part of Sidebar */}
-              <div className="p-10 bg-white/[0.02] border-t border-white/5">
+              <div className="p-10 bg-accent-primary/[0.02] border-t border-border-subtle/20">
                 <div className="flex items-center gap-6 mb-8">
                   <a 
                     href="https://www.linkedin.com/in/lya-biwa-130832255/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-white hover:text-[#9F1239] transition-all hover:scale-110"
+                    className="text-text-primary hover:text-accent-primary transition-all hover:scale-110"
                   >
                     <Linkedin size={24} />
                   </a>
                   <a 
                     href="mailto:lyabiwa8@gmail.com" 
-                    className="text-white hover:text-[#9F1239] transition-all hover:scale-110"
+                    className="text-text-primary hover:text-accent-primary transition-all hover:scale-110"
                   >
                     <Mail size={24} />
                   </a>
                 </div>
-                <p className="text-[#9F1239] font-black tracking-[0.2em] uppercase text-[10px]">
+                <p className="text-accent-primary font-black tracking-[0.2em] uppercase text-[10px]">
                   © LYA BIWA 2026
                 </p>
               </div>
@@ -213,6 +214,7 @@ export function Navbar() {
           </>
         )}
       </AnimatePresence>
+
     </>
   );
 }

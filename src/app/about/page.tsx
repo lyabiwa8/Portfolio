@@ -51,74 +51,73 @@ const experience = [
 ];
 
 const C = {
-  bg:       "#020617",
-  text:     "#F8FAFC",
-  muted:    "rgba(226,232,240,0.60)",
-  accent:   "#9F1239",
-  accentLt: "#BE123C",
-  border:   "rgba(255,255,255,0.08)",
-  card:     "#111827",
+  bg:       "var(--bg-main)",
+  text:     "var(--text-primary)",
+  muted:    "var(--text-secondary)",
+  accent:   "var(--accent-primary)",
+  accentLt: "var(--accent-secondary)",
+  border:   "var(--border-subtle)",
+  card:     "var(--surface)",
 };
 
 export default function About() {
   return (
     <PageWrapper>
-      <div className="max-w-6xl mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-20">
+      <div className="max-w-6xl mx-auto px-6 pt-28 md:pt-40 pb-20">
 
         {/* ═══ HERO ═══ */}
-        <div className="flex flex-col lg:flex-row gap-10 md:gap-16 items-start mb-16 md:mb-24">
+        <div className="flex flex-col lg:flex-row gap-12 md:gap-20 items-center lg:items-start mb-20 md:mb-32">
 
           {/* Portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative w-full max-w-[240px] sm:max-w-[290px] lg:max-w-[320px] mx-auto lg:mx-0 flex-shrink-0"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] mx-auto lg:mx-0 flex-shrink-0"
           >
             <div
-              className="aspect-[3/4] rounded-2xl md:rounded-3xl overflow-hidden img-zoom shadow-2xl"
-              style={{ boxShadow: "0 24px 64px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05)" }}
+              className="aspect-[3/4] rounded-[3rem] overflow-hidden soft-shadow border border-border-subtle/20"
             >
               <Image
                 src={getAssetPath("/images/photos-presentation/bio-photo.jpg")}
-                alt="Lya Biwa" fill sizes="320px"
-                className="object-cover object-top" priority
+                alt="Lya Biwa" fill sizes="380px"
+                className="object-cover object-top brightness-[1.02]" priority
               />
             </div>
             <motion.div
               animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-3 -right-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl rotate-2 bg-[#9F1239] text-white shadow-lg"
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-4 -right-4 text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-2xl rotate-3 bg-accent-primary text-white shadow-xl"
             >
               Événementiel
             </motion.div>
             <motion.div
               animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -top-3 -left-3 text-[9px] font-bold uppercase tracking-widest px-3 py-2 rounded-xl -rotate-2 bg-[#111827] backdrop-blur-md border border-white/10 text-[#9F1239]"
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -top-4 -left-4 text-[10px] font-bold uppercase tracking-widest px-5 py-2.5 rounded-2xl -rotate-3 bg-surface backdrop-blur-md border border-border-subtle/30 text-accent-primary shadow-lg"
             >
               BTS Com
             </motion.div>
           </motion.div>
 
           {/* Text */}
-          <div className="flex-1">
+          <div className="flex-1 text-center lg:text-left">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.7 }}
-              className="font-display font-bold leading-tight tracking-tight mb-5"
-              style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)", color: C.text }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="font-display font-bold leading-tight tracking-tighter mb-8"
+              style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)", color: C.text }}
             >
               Étudiante en{" "}
-              <em className="not-italic text-[#9F1239]">Communication.</em>
+              <em className="not-italic text-accent-primary">Communication.</em>
             </motion.h1>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.22, duration: 0.6 }}
-              className="space-y-3 text-base md:text-[17px] leading-relaxed mb-7"
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="space-y-4 text-base md:text-xl leading-relaxed mb-10 font-medium"
               style={{ color: C.muted }}
             >
               <p>
@@ -130,17 +129,17 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-wrap gap-2 mb-8"
+              transition={{ delay: 0.4 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10"
             >
               {[
-                { icon: <MapPin size={11} />, text: "Île-de-France" },
-                { icon: <Car    size={11} />, text: "Permis B" },
-                { icon: <Mail   size={11} />, text: "lyabiwa8@gmail.com" },
+                { icon: <MapPin size={13} />, text: "Île-de-France" },
+                { icon: <Car    size={13} />, text: "Permis B" },
+                { icon: <Mail   size={13} />, text: "lyabiwa8@gmail.com" },
               ].map((p) => (
                 <span
                   key={p.text}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#E2E8F0]/70 backdrop-blur-md"
+                  className="inline-flex items-center gap-2 text-xs font-bold px-5 py-2.5 rounded-full bg-surface/50 border border-border-subtle/20 text-text-secondary shadow-sm"
                 >
                   {p.icon}{p.text}
                 </span>
@@ -150,57 +149,56 @@ export default function About() {
             <motion.a
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.38 }}
+              transition={{ delay: 0.5 }}
               href={getAssetPath("/cv/cv_lya_alternance.pdf")}
               download
-              className="inline-flex items-center gap-2.5 btn-primary text-sm font-bold px-8 py-4 rounded-full shadow-lg shadow-[#9F1239]/20"
+              className="inline-flex items-center gap-3 btn-primary text-sm font-bold px-10 py-5 rounded-full shadow-lg"
             >
-              Télécharger mon CV <Download size={15} />
+              Télécharger mon CV <Download size={18} />
             </motion.a>
           </div>
         </div>
 
         {/* ═══ PARCOURS ═══ */}
-        <div className="grid md:grid-cols-2 gap-4 md:gap-5 mb-5">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-10">
           {/* Formation */}
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="rounded-2xl md:rounded-3xl p-6 md:p-8 bg-[#111827]/70 backdrop-blur-xl border border-white/5 shadow-2xl"
+            transition={{ duration: 0.8 }}
+            className="rounded-[2.5rem] p-8 md:p-12 bg-surface/40 backdrop-blur-sm border border-border-subtle/20 soft-shadow"
           >
-            <div className="flex items-center gap-3 mb-7">
+            <div className="flex items-center gap-4 mb-10">
               <div
-                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-[#9F1239]/10 border border-[#9F1239]/30 text-[#9F1239]"
+                className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 bg-accent-primary text-white shadow-md"
               >
-                <GraduationCap size={17} />
+                <GraduationCap size={22} />
               </div>
-              <h3 className="text-lg md:text-xl font-display font-bold text-white">Formation</h3>
+              <h3 className="text-xl md:text-2xl font-display font-bold text-text-primary">Formation</h3>
             </div>
 
-            <div className="space-y-7 relative">
-              {/* Vertical line decoration */}
-              <div className="absolute left-[17px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-[#9F1239]/50 via-[#9F1239]/20 to-transparent" />
+            <div className="space-y-10 relative">
+              <div className="absolute left-[23px] top-4 bottom-4 w-[1px] bg-border-subtle" />
               
               {education.map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 14 }}
+                  initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="pl-14 relative group"
+                  transition={{ delay: i * 0.15 }}
+                  className="pl-16 relative group"
                 >
                   <div
-                    className="absolute left-0 top-1 w-[34px] h-[34px] rounded-full flex items-center justify-center z-10 bg-[#0F172A] border border-[#9F1239]/30 text-[#9F1239] group-hover:scale-110 group-hover:border-[#9F1239] transition-all"
+                    className="absolute left-0 top-1 w-[46px] h-[46px] rounded-full flex items-center justify-center z-10 bg-bg-main border border-border-subtle text-accent-primary group-hover:bg-accent-primary group-hover:text-white group-hover:border-accent-primary transition-all duration-500 shadow-sm"
                   >
                     {item.icon}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-1 text-[#9F1239]">{item.year}</span>
-                  <h4 className="text-base md:text-lg font-display font-black mb-0.5 text-white">{item.title}</h4>
-                  <p className="text-xs font-bold mb-2 text-[#E2E8F0]/40 uppercase tracking-tight">{item.institution}</p>
-                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60 max-w-md">{item.desc}</p>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-2 text-accent-secondary">{item.year}</span>
+                  <h4 className="text-lg md:text-xl font-display font-bold mb-1 text-text-primary">{item.title}</h4>
+                  <p className="text-[10px] font-bold mb-3 text-accent-primary/60 uppercase tracking-widest">{item.institution}</p>
+                  <p className="text-sm md:text-base leading-relaxed text-text-secondary font-medium">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -208,50 +206,49 @@ export default function About() {
 
           {/* Expérience */}
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-            className="rounded-2xl md:rounded-3xl p-6 md:p-8 bg-[#111827]/70 backdrop-blur-xl border border-white/5 shadow-2xl"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="rounded-[2.5rem] p-8 md:p-12 bg-surface/40 backdrop-blur-sm border border-border-subtle/20 soft-shadow"
           >
-            <div className="flex items-center gap-3 mb-7">
+            <div className="flex items-center gap-4 mb-10">
               <div
-                className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 bg-[#9F1239]/10 border border-[#9F1239]/30 text-[#9F1239]"
+                className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 bg-accent-primary text-white shadow-md"
               >
-                <Briefcase size={17} />
+                <Briefcase size={22} />
               </div>
-              <h3 className="text-lg md:text-xl font-display font-bold text-white">Expérience</h3>
+              <h3 className="text-xl md:text-2xl font-display font-bold text-text-primary">Expérience</h3>
             </div>
 
-            <div className="space-y-7 relative">
-              {/* Vertical line decoration */}
-              <div className="absolute left-[17px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-[#9F1239]/50 via-[#9F1239]/20 to-transparent" />
+            <div className="space-y-10 relative">
+              <div className="absolute left-[23px] top-4 bottom-4 w-[1px] bg-border-subtle" />
 
               {experience.map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, x: 14 }}
+                  initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="pl-14 relative group"
+                  transition={{ delay: i * 0.15 }}
+                  className="pl-16 relative group"
                 >
                   <div
-                    className="absolute left-0 top-1 w-[34px] h-[34px] rounded-full flex items-center justify-center z-10 bg-[#0F172A] border border-[#9F1239]/30 text-[#9F1239] group-hover:scale-110 group-hover:border-[#9F1239] transition-all"
+                    className="absolute left-0 top-1 w-[46px] h-[46px] rounded-full flex items-center justify-center z-10 bg-bg-main border border-border-subtle text-accent-primary group-hover:bg-accent-primary group-hover:text-white group-hover:border-accent-primary transition-all duration-500 shadow-sm"
                   >
                     {item.icon}
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest block mb-1 text-[#9F1239]">{item.year}</span>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <h4 className="text-base md:text-lg font-display font-black text-white">{item.title}</h4>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] block mb-2 text-accent-secondary">{item.year}</span>
+                  <div className="flex flex-wrap items-center gap-3 mb-1.5">
+                    <h4 className="text-lg md:text-xl font-display font-bold text-text-primary">{item.title}</h4>
                     {item.sub && (
-                      <span className="text-[8px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#9F1239] text-white">
+                      <span className="text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-accent-secondary text-white shadow-sm">
                         {item.sub}
                       </span>
                     )}
                   </div>
-                  <p className="text-xs font-bold mb-2 text-[#E2E8F0]/40 uppercase tracking-tight">{item.institution}</p>
-                  <p className="text-sm leading-relaxed text-[#E2E8F0]/60 max-w-md">{item.desc}</p>
+                  <p className="text-[10px] font-bold mb-3 text-accent-primary/60 uppercase tracking-widest">{item.institution}</p>
+                  <p className="text-sm md:text-base leading-relaxed text-text-secondary font-medium">{item.desc}</p>
                 </motion.div>
               ))}
             </div>

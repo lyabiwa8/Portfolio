@@ -3,76 +3,107 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { getAssetPath } from "@/utils/imageLoader";
-import { cn } from "@/lib/utils";
 
 const passions = [
   {
     title: "Gymnastique",
-    description: "Praticienne et coach, une discipline qui m'apprend la rigueur et le dépassement de soi.",
     image: "/images/photos-presentation/gymnastique-life.jpg",
-    size: "col-span-2 row-span-2",
-  },
-  {
-    title: "Mode & Lifestyle",
-    description: "L'art de s'exprimer sans parler.",
-    image: "/images/photos-presentation/mode-lifestyle.jpg",
-    size: "col-span-1 row-span-1",
   },
   {
     title: "Cinéma",
-    description: "Une source d'inspiration inépuisable pour mes montages.",
-    image: "/images/photos-presentation/cinema-life-2.jpg",
-    size: "col-span-1 row-span-1",
-  },
-  {
-    title: "Manga & Culture Japonaise",
-    description: "Passionnée par l'esthétique et les récits du Japon.",
-    image: "/images/photos-presentation/goku.jpg",
-    size: "col-span-1 row-span-2",
+    image: "/images/photos-presentation/cinema-life.jpg",
   },
   {
     title: "Musique",
-    description: "La bande sonore de ma créativité.",
-    image: "/images/photos-presentation/music-life.jpg",
-    size: "col-span-1 row-span-1",
+    image: "/images/photos-presentation/what-music-represent-to-me.jpg",
+  },
+  {
+    title: "Voyages",
+    image: "/images/photos-presentation/photo-plage.jpg",
+  },
+  {
+    title: "Événementiel",
+    image: "/images/photos-presentation/photo-mode-musee.jpg",
+  },
+  {
+    title: "Acting",
+    image: "/images/photos-presentation/acting-life.jpg",
+  },
+  {
+    title: "Mode & Runway",
+    image: "/images/photos-presentation/photo-runway-mode.jpg",
+  },
+  {
+    title: "Lifestyle",
+    image: "/images/photos-presentation/vogue-lifestyle.jpg",
+  },
+  {
+    title: "Pop Culture",
+    image: "/images/photos-presentation/goku.jpg",
+  },
+  {
+    title: "Arts Martiaux",
+    image: "/images/photos-presentation/arts-martiaux.jpg",
   },
 ];
 
 export function Passions() {
-  return (
-    <section id="passions" className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-4">Hors des Médias</h2>
-          <h3 className="text-4xl md:text-5xl font-display font-bold text-brown-900">Mes Passions</h3>
-        </div>
+  // Double the array for seamless infinite scroll
+  const doubledPassions = [...passions, ...passions];
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-          {passions.map((passion, index) => (
-            <motion.div
+  return (
+    <section id="passions" className="py-32 bg-transparent overflow-hidden relative z-10">
+      <div className="max-w-7xl mx-auto px-6 mb-16">
+        <motion.h2 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="text-[10px] uppercase tracking-[0.4em] font-bold text-accent-primary mb-4"
+        >
+          Inspirations
+        </motion.h2>
+        <motion.h3 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-7xl font-display font-bold text-text-primary leading-[0.9] tracking-tighter"
+        >
+          PASSIONS <span className="text-accent-primary italic">& VIBES.</span>
+        </motion.h3>
+      </div>
+
+      <div className="relative flex">
+        {/* Infinite Marquee Container */}
+        <motion.div 
+          className="flex gap-8 px-4"
+          animate={{ 
+            x: ["0%", "-50%"] 
+          }}
+          transition={{ 
+            duration: 30, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+        >
+          {doubledPassions.map((passion, index) => (
+            <div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={cn(
-                "relative group rounded-3xl overflow-hidden shadow-lg",
-                passion.size
-              )}
+              className="relative w-[250px] md:w-[400px] aspect-[4/5] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden soft-shadow border border-white/5 flex-shrink-0 group"
             >
               <Image
                 src={getAssetPath(passion.image)}
                 alt={passion.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brown-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <h4 className="text-xl font-display font-bold text-beige-50 mb-1">{passion.title}</h4>
-                <p className="text-beige-100 text-sm leading-relaxed">{passion.description}</p>
+              {/* Overlay with Title */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-100 flex flex-col justify-end p-6 md:p-10">
+                <h4 className="text-lg md:text-3xl font-display font-bold text-white tracking-tight uppercase italic">{passion.title}</h4>
+                <div className="mt-4 w-10 h-1 bg-accent-primary rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
