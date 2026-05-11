@@ -46,10 +46,10 @@ export function ModernBackground() {
             gyroControls: false,
             minHeight: 200.00,
             minWidth: 200.00,
-            scale: 2.50, // Larger scale for visibility
+            scale: 3.00,
             scaleMobile: 2.00,
-            color: 0x5d4037, // Rich Wood Brown
-            backgroundColor: 0xf2f4e8, // Silk base
+            color: 0x5d4037, // Wood Brown
+            backgroundColor: 0xf2f4e8,
           });
           setVantaEffect(effect);
         }
@@ -69,10 +69,19 @@ export function ModernBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#F2F4E8]">
-      {/* ─── Vanta Topology Overlay (WOOD GRAIN EFFECT) ─── */}
-      <div 
+      {/* ─── Vanta Topology Overlay (ALIVE & MOVING) ─── */}
+      <motion.div 
         ref={vantaRef} 
-        className="absolute inset-0 z-0 opacity-[0.65] mix-blend-multiply pointer-events-none" 
+        animate={{
+          scale: [1, 1.1, 1],
+          rotate: [0, 1, 0, -1, 0],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute inset-0 z-0 opacity-[0.7] mix-blend-multiply pointer-events-none" 
       />
 
       {/* ─── Framer-Style Mesh Gradients (Soft Backdrop) ─── */}
