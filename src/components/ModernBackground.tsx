@@ -11,8 +11,8 @@ declare global {
 }
 
 export function ModernBackground() {
-  const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const vantaRef = useRef<HTMLDivElement>(null);
   const [vantaEffect, setVantaEffect] = useState<any>(null);
 
@@ -30,6 +30,7 @@ export function ModernBackground() {
     let effect: any = null;
     const loadVanta = async () => {
       try {
+        // Essential: Vanta needs p5 globally available
         const p5 = (await import("p5")).default;
         window.p5 = p5;
         
@@ -40,13 +41,12 @@ export function ModernBackground() {
         if (vantaRef.current && !vantaEffect) {
           effect = TOPOLOGY({
             el: vantaRef.current,
-            p5: p5,
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
             minHeight: 200.00,
             minWidth: 200.00,
-            scale: 3.00,
+            scale: 3.50,
             scaleMobile: 2.00,
             color: 0x5d4037, // Wood Brown
             backgroundColor: 0xf2f4e8,
@@ -54,12 +54,11 @@ export function ModernBackground() {
           setVantaEffect(effect);
         }
       } catch (err) {
-        console.error("Vanta initialization failed:", err);
+        console.error("Vanta failed:", err);
       }
     };
 
     loadVanta();
-
     return () => {
       if (effect) effect.destroy();
     };
@@ -69,59 +68,34 @@ export function ModernBackground() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden bg-[#F2F4E8]">
-      {/* ─── Vanta Topology Overlay (ALIVE & MOVING) ─── */}
+      {/* ─── Vanta Topology Overlay (WOOD GRAIN) ─── */}
       <motion.div 
-        ref={vantaRef} 
         animate={{
-          scale: [1, 1.1, 1],
-          rotate: [0, 1, 0, -1, 0],
+          scale: [1, 1.05, 1],
+          opacity: [0.6, 0.8, 0.6]
         }}
         transition={{
-          duration: 30,
+          duration: 20,
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute inset-0 z-0 opacity-[0.7] mix-blend-multiply pointer-events-none" 
-      />
-
-      {/* ─── Framer-Style Mesh Gradients (Soft Backdrop) ─── */}
-      <div className="absolute inset-0 filter blur-[140px] opacity-60 z-[-1]">
-        <motion.div
-          animate={{
-            x: ["-15%", "15%", "-10%", "10%", "-15%"],
-            y: ["-10%", "20%", "5%", "-15%", "-10%"],
-            scale: [1, 1.1, 0.9, 1.2, 1],
-          }}
-          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[100vw] h-[100vw] rounded-full bg-[#D8DCC8] opacity-70"
+        className="absolute inset-0 z-0 mix-blend-multiply"
+      >
+        <div 
+          ref={vantaRef} 
+          className="w-full h-full" 
         />
+      </motion.div>
 
-        <motion.div
-          animate={{
-            x: ["10%", "-20%", "5%", "-10%", "10%"],
-            y: ["20%", "-10%", "-5%", "15%", "20%"],
-            scale: [1.1, 0.9, 1.2, 1, 1.1],
-          }}
-          transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[10%] right-[-20%] w-[110vw] h-[110vw] rounded-full bg-[#E0E4D1] opacity-60"
-        />
-
-        <motion.div
-          animate={{
-            x: ["-5%", "10%", "0%", "-10%", "-5%"],
-            y: ["40%", "20%", "50%", "30%", "40%"],
-            scale: [1, 1.2, 1.1, 1, 1],
-          }}
-          transition={{ duration: 65, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-20%] left-[10%] w-[90vw] h-[90vw] rounded-full bg-[#C0C5AD] opacity-50"
-        />
+      {/* ─── Soft Green Backdrop ─── */}
+      <div className="absolute inset-0 filter blur-[120px] opacity-50 z-[-1]">
+        <div className="absolute top-[-10%] left-[-10%] w-[100vw] h-[100vw] rounded-full bg-[#D8DCC8] opacity-70" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[100vw] h-[100vw] rounded-full bg-[#E0E4D1] opacity-60" />
       </div>
 
-      {/* Noise Texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-multiply contrast-125" 
+      {/* Texture Noise */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.06] mix-blend-multiply" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
-      
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(47,59,36,0.02)_100%)]" />
     </div>
   );
 }
