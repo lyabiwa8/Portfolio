@@ -3,27 +3,28 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-function MeshBlob({ color, size, duration, delay, initialX, initialY, isMobile }: any) {
+function MeshBlob({ color, size, duration, delay, isMobile }: any) {
   return (
     <motion.div
       animate={{ 
-        x: [initialX, initialX + (isMobile ? 30 : 60), initialX - (isMobile ? 15 : 30), initialX],
-        y: [initialY, initialY - (isMobile ? 20 : 40), initialY + (isMobile ? 10 : 20), initialY],
-        scale: [1, 1.05, 0.98, 1],
+        x: ["-20%", "20%", "-10%", "10%", "-20%"],
+        y: ["-10%", "30%", "10%", "-20%", "-10%"],
+        rotate: [0, 90, 180, 270, 360],
+        scale: [1, 1.2, 0.9, 1.1, 1],
       }}
       transition={{ 
         duration, 
         repeat: Infinity, 
-        ease: "easeInOut",
+        ease: "linear",
         delay 
       }}
       style={{ 
-        background: `radial-gradient(circle at center, ${color} 0%, ${color}22 50%, transparent 100%)`,
+        background: `radial-gradient(circle at center, ${color} 0%, ${color}44 40%, transparent 70%)`,
         width: size,
         height: size,
-        filter: `blur(${isMobile ? "80px" : "140px"})`,
+        filter: `blur(${isMobile ? "60px" : "120px"})`,
       }}
-      className={`absolute rounded-full pointer-events-none ${isMobile ? "opacity-20" : "opacity-15"}`}
+      className={`absolute rounded-full pointer-events-none opacity-40 mix-blend-soft-light`}
     />
   );
 }
@@ -75,17 +76,30 @@ export function ModernBackground() {
 
       {/* ─── Soft Mesh Gradient Layers ─── */}
       <motion.div style={{ y: meshY }} className="absolute inset-0">
-        <MeshBlob color="#E0E4D1" size={isMobile ? "150vw" : "100vw"} duration={isMobile ? 35 : 30} delay={0} initialX="-20%" initialY="-10%" isMobile={isMobile} />
-        <MeshBlob color="#3A4D39" size={isMobile ? "130vw" : "80vw"} duration={isMobile ? 30 : 25} delay={2} initialX="40%" initialY="20%" isMobile={isMobile} />
-        <MeshBlob color="#8B4513" size={isMobile ? "100vw" : "60vw"} duration={isMobile ? 25 : 20} delay={4} initialX="10%" initialY="60%" isMobile={isMobile} />
+        {/* Top Left - Sage */}
+        <div className="absolute top-[-20%] left-[-10%]">
+          <MeshBlob color="#3A4D39" size={isMobile ? "120vw" : "80vw"} duration={isMobile ? 25 : 30} delay={0} isMobile={isMobile} />
+        </div>
         
-        {!isMobile && (
-          <>
-            <MeshBlob color="#D4A373" size="70vw" duration={45} delay={5} initialX="60%" initialY="0%" isMobile={isMobile} />
-            <MeshBlob color="#F4EFE6" size="50vw" duration={20} delay={1} initialX="-10%" initialY="30%" isMobile={isMobile} />
-            <MeshBlob color="#2F3B24" size="90vw" duration={40} delay={8} initialX="-20%" initialY="70%" isMobile={isMobile} />
-          </>
-        )}
+        {/* Top Right - Terracotta */}
+        <div className="absolute top-[-10%] right-[-20%]">
+          <MeshBlob color="#8B4513" size={isMobile ? "100vw" : "70vw"} duration={isMobile ? 20 : 25} delay={2} isMobile={isMobile} />
+        </div>
+
+        {/* Center - Sand/Beige */}
+        <div className="absolute top-[20%] left-[10%]">
+          <MeshBlob color="#D4A373" size={isMobile ? "130vw" : "90vw"} duration={isMobile ? 30 : 35} delay={4} isMobile={isMobile} />
+        </div>
+
+        {/* Bottom Right - Deep Green */}
+        <div className="absolute bottom-[-20%] right-[-10%]">
+          <MeshBlob color="#2F3B24" size={isMobile ? "140vw" : "80vw"} duration={isMobile ? 28 : 32} delay={1} isMobile={isMobile} />
+        </div>
+
+        {/* Bottom Left - Soft Cream */}
+        <div className="absolute bottom-[10%] left-[-20%]">
+          <MeshBlob color="#E0E4D1" size={isMobile ? "110vw" : "75vw"} duration={isMobile ? 35 : 40} delay={6} isMobile={isMobile} />
+        </div>
       </motion.div>
 
       {/* ─── Premium Textures & Overlays ─── */}
