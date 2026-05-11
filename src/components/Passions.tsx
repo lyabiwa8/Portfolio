@@ -72,38 +72,40 @@ export function Passions() {
         </motion.h3>
       </div>
 
-      <div className="relative flex">
-        {/* Infinite Marquee Container */}
-        <motion.div 
-          className="flex gap-8 px-4"
-          animate={{ 
-            x: ["0%", "-50%"] 
-          }}
-          transition={{ 
-            duration: 30, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-        >
-          {doubledPassions.map((passion, index) => (
-            <div
-              key={index}
-              className="relative w-[250px] md:w-[400px] aspect-[4/5] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden soft-shadow border border-white/5 flex-shrink-0 group"
-            >
-              <Image
-                src={getAssetPath(passion.image)}
-                alt={passion.title}
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
-              />
-              {/* Overlay with Title */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-100 flex flex-col justify-end p-6 md:p-10">
-                <h4 className="text-lg md:text-3xl font-display font-bold text-white tracking-tight uppercase italic">{passion.title}</h4>
-                <div className="mt-4 w-10 h-1 bg-accent-primary rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+      <div className="max-w-7xl mx-auto px-6 overflow-visible">
+        <div className="relative flex">
+          {/* Infinite Marquee Container */}
+          <motion.div 
+            className="flex gap-6 md:gap-8"
+            animate={{ 
+              x: ["0%", "-50%"] 
+            }}
+            transition={{ 
+              duration: 40, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+          >
+            {doubledPassions.map((passion, index) => (
+              <div
+                key={index}
+                className="relative w-[280px] md:w-[380px] aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden soft-shadow border border-white/5 flex-shrink-0 group"
+              >
+                <Image
+                  src={getAssetPath(passion.image)}
+                  alt={passion.title}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
+                />
+                {/* Overlay with Title */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-100 flex flex-col justify-end p-6 md:p-8">
+                  <h4 className="text-lg md:text-2xl font-display font-bold text-white tracking-tight uppercase italic">{passion.title}</h4>
+                  <div className="mt-4 w-10 h-1 bg-accent-primary rounded-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                </div>
               </div>
-            </div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
