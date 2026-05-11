@@ -72,11 +72,11 @@ export function Passions() {
         </motion.h3>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 overflow-visible">
-        <div className="relative flex">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="relative overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem]">
           {/* Infinite Marquee Container */}
           <motion.div 
-            className="flex gap-6 md:gap-8"
+            className="flex gap-4 md:gap-6"
             animate={{ 
               x: ["0%", "-50%"] 
             }}
@@ -89,7 +89,7 @@ export function Passions() {
             {doubledPassions.map((passion, index) => (
               <div
                 key={index}
-                className="relative w-[280px] md:w-[380px] aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden soft-shadow border border-white/5 flex-shrink-0 group"
+                className="relative w-[280px] md:w-[350px] aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden soft-shadow border border-white/5 flex-shrink-0 group"
               >
                 <Image
                   src={getAssetPath(passion.image)}
@@ -105,6 +105,10 @@ export function Passions() {
               </div>
             ))}
           </motion.div>
+
+          {/* Fade Gradients for cleaner edges */}
+          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#F2F4E8] to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#F2F4E8] to-transparent z-10 pointer-events-none" />
         </div>
       </div>
     </section>
