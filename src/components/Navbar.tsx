@@ -77,7 +77,7 @@ export function Navbar() {
               <Link href="/" className="flex items-center gap-2 md:gap-4">
                 <div className="relative w-8 h-8 md:w-12 md:h-12 transition-transform duration-500 group-hover:rotate-12">
                   <Image 
-                    src={getAssetPath("/images/logos/logo-lya-final.png.png")} 
+                    src={getAssetPath("/images/logos/logo-lya-final.png.webp")} 
                     alt="Logo" 
                     width={48}
                     height={48}
