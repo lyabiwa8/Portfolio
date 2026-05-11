@@ -14,7 +14,18 @@ const C = {
   bg:       "var(--bg-main)",
 };
 
-const softwareSkills = [
+interface SoftwareSkill {
+  name: string;
+  code: string;
+  icons8Slug?: string;
+  directUrl?: string;
+  color: string;
+  accent: string;
+  level: number;
+  desc: string;
+}
+
+const softwareSkills: SoftwareSkill[] = [
   { name: "Photoshop", code: "Ps", icons8Slug: "adobe-photoshop", color: "#31A8FF", accent: "#31A8FF", level: 85, desc: "Retouche & Création" },
   { name: "Illustrator", code: "Ai", icons8Slug: "adobe-illustrator", color: "#FF9A00", accent: "#FF9A00", level: 75, desc: "Vectoriel" },
   { name: "Premiere Pro", code: "Pr", icons8Slug: "adobe-premiere-pro", color: "#EA77FF", accent: "#EA77FF", level: 80, desc: "Montage Vidéo" },
@@ -140,12 +151,7 @@ export function Skills() {
                     >
                       <div className="relative w-full h-full flex items-center justify-center">
                         <img 
-                          src={s.directUrl 
-                            ? s.directUrl
-                            : s.icons8Slug 
-                              ? `https://img.icons8.com/color/96/${s.icons8Slug}.png`
-                              : `https://cdn.simpleicons.org/${s.iconSlug}/${s.color.replace('#', '')}`
-                          } 
+                          src={s.directUrl || `https://img.icons8.com/color/96/${s.icons8Slug}.png`} 
                           alt={s.name}
                           className="w-full h-full object-contain"
                         />
