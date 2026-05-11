@@ -163,26 +163,31 @@ export function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 30, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[320px] z-[130] bg-bg-main border-l border-border-subtle/20 flex flex-col lg:hidden shadow-2xl"
+              transition={{ type: "spring", damping: 25, stiffness: 180 }}
+              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-[340px] z-[130] bg-bg-main border-l border-border-subtle/20 flex flex-col lg:hidden shadow-2xl"
             >
-              <div className="flex flex-col p-10 pt-32 gap-6 items-start overflow-y-auto flex-1">
-                <p className="text-accent-primary font-black tracking-[0.3em] uppercase text-[10px] mb-4">Navigation</p>
+              <div className="flex flex-col p-8 pt-28 gap-1 items-start overflow-y-auto flex-1">
+                <p className="text-accent-primary font-black tracking-[0.4em] uppercase text-[9px] mb-8 opacity-60">Menu</p>
                 {links.map((link, i) => (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + i * 0.05 }}
+                    transition={{ delay: 0.1 + i * 0.08 }}
                     className="w-full"
                   >
                     <Link
                       href={link.href}
-                      className={`text-2xl md:text-3xl font-display font-black uppercase tracking-tight block transition-all duration-300 ${
-                        (pathname === link.href || pathname === `${link.href}/`) ? "text-accent-primary translate-x-2" : "text-text-primary hover:text-accent-primary"
-                      }`}
+                      className="group flex items-baseline gap-4 py-4 border-b border-border-subtle/10"
                     >
-                      {link.label}
+                      <span className="text-[10px] font-display font-bold text-accent-primary opacity-50">
+                        0{i + 1}.
+                      </span>
+                      <span className={`text-lg font-black uppercase tracking-[0.25em] transition-all duration-500 ${
+                        (pathname === link.href || pathname === `${link.href}/`) ? "text-accent-primary" : "text-text-primary group-hover:tracking-[0.35em]"
+                      }`}>
+                        {link.label}
+                      </span>
                     </Link>
                   </motion.div>
                 ))}
