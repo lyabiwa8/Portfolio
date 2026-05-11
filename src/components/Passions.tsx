@@ -81,7 +81,7 @@ export function Passions() {
               x: ["0%", "-50%"] 
             }}
             transition={{ 
-              duration: 40, 
+              duration: 25, 
               repeat: Infinity, 
               ease: "linear" 
             }}
