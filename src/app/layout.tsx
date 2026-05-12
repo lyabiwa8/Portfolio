@@ -7,7 +7,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { getAssetPath } from "@/utils/imageLoader";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tharsananarul.github.io/lya-portfolio"),
+  metadataBase: new URL("https://lyabiwa8.github.io/Portfolio"),
   title: "Lya Biwa",
   description: "Portfolio professionnel de Lya Biwa, étudiante en communication. Créativité, stratégie et design.",
   icons: {
