@@ -7,6 +7,7 @@ declare global {
   interface Window {
     VANTA: any;
     p5: any;
+    THREE: any;
   }
 }
 
@@ -30,6 +31,8 @@ export function ModernBackground() {
     let effect: any = null;
     const loadVanta = async () => {
       try {
+        const THREE = await import("three");
+        window.THREE = THREE;
         const p5 = (await import("p5")).default;
         window.p5 = p5;
         

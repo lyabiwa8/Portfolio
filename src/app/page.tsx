@@ -91,7 +91,7 @@ export default function Home() {
                 <span className="relative rounded-full h-2 w-2 bg-accent-primary" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-primary">
-                Disponibilité : Septembre 2026
+                Recherche une alternante : Septembre 2026
               </span>
             </motion.div>
             
@@ -212,7 +212,7 @@ export default function Home() {
                     <span className="relative rounded-full h-2 w-2 bg-accent-primary" />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-primary">
-                    Disponibilité : Septembre 2026
+                    Recherche une alternante : Septembre 2026
                   </span>
                 </motion.div>
               </div>
@@ -242,7 +242,7 @@ export default function Home() {
                     { label: "Formation", value: "BTS Com" },
                     { label: "Spécialité", value: "Event" },
                     { label: "Langues", value: "FR EN JP" },
-                    { label: "Dispo", value: "Alternance" },
+                    { label: "Besoin", value: "Alternante" },
                   ].map((stat, i) => (
                     <div key={i} className="space-y-1">
                       <p className="text-[9px] uppercase tracking-widest text-accent-primary font-bold">{stat.label}</p>

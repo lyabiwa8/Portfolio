@@ -44,7 +44,7 @@ export default function Contact() {
                 <span className="text-accent-primary italic">bonjour.</span>
               </h1>
               <p className="text-lg md:text-xl font-medium leading-relaxed max-w-md" style={{ color: C.muted }}>
-                Besoin d'une alternance en communication ou d'un projet créatif ? 
+                Recherche d'une alternante en communication ou d'un projet créatif ? 
                 Je suis à votre écoute pour collaborer.
               </p>
             </motion.div>
