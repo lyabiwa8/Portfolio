@@ -40,7 +40,7 @@ const softwareSkills: SoftwareSkill[] = [
 const mainExpertise = [
   {
     title: "Créations de contenus",
-    desc: "Conceptions de supports digitaux et print, incluant des flyers, visuels et montage vidéo pour campagnes publicitaire.",
+    desc: "Conceptions de supports digitaux et print, incluant des flyers, visuels et montage vidéo pour campagnes publicitaires.",
     icon: <Layers className="w-6 h-6" />,
   },
   {
@@ -49,13 +49,13 @@ const mainExpertise = [
     icon: <BarChart3 className="w-6 h-6" />,
   },
   {
-    title: "Ingéniérie événementielle",
+    title: "Ingénierie événementielle",
     desc: "Conception de dispositifs immersifs, scénographie et design d’expériences.",
     icon: <Zap className="w-6 h-6" />,
   },
   {
     title: "Pilotage de projet",
-    desc: "Coordination opérationnelle des prestataire, gestion budgétaire et management d’équipes.",
+    desc: "Coordination opérationnelle des prestataires, gestion budgétaire et management d’équipes.",
     icon: <Target className="w-6 h-6" />,
   },
 ];
