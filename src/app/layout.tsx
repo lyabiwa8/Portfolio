@@ -7,19 +7,19 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { getAssetPath } from "@/utils/imageLoader";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lyabiwa08.github.io/portfolio"),
+  metadataBase: new URL("https://lyabiwa8.github.io/Portfolio"),
   title: "Lya Biwa",
   description: "Portfolio professionnel de Lya Biwa, étudiante en communication. Créativité, stratégie et design.",
   icons: {
-    icon: "/portfolio/images/logos/favicon-v3.webp",
-    apple: "/portfolio/images/logos/favicon-v3.webp",
+    icon: "/Portfolio/images/logos/favicon-v3.webp",
+    apple: "/Portfolio/images/logos/favicon-v3.webp",
   },
   openGraph: {
     title: "Lya Biwa",
     description: "Créativité, stratégie et design en communication.",
     images: [
       {
-        url: "/portfolio/images/logos/logo-lya-final.png.webp",
+        url: "/Portfolio/images/logos/logo-lya-final.png.webp",
         width: 800,
         height: 600,
       },
