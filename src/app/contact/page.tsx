@@ -17,12 +17,32 @@ const C = {
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setStatus("success");
+    
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/lyabiwa08@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        setStatus("success");
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      alert("Une erreur est survenue. Veuillez réessayer ou m'envoyer un mail directement.");
+      setStatus("idle");
+    }
   };
 
   return (
@@ -121,6 +141,7 @@ export default function Contact() {
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold uppercase tracking-[0.2em] ml-6 opacity-50" style={{ color: C.text }}>Nom Complet</label>
                   <input
+                    name="name"
                     required
                     type="text"
                     placeholder="Jean Dupont"
@@ -131,6 +152,7 @@ export default function Contact() {
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold uppercase tracking-[0.2em] ml-6 opacity-50" style={{ color: C.text }}>Email</label>
                   <input
+                    name="email"
                     required
                     type="email"
                     placeholder="jean@exemple.com"
@@ -141,6 +163,7 @@ export default function Contact() {
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold uppercase tracking-[0.2em] ml-6 opacity-50" style={{ color: C.text }}>Message</label>
                   <textarea
+                    name="message"
                     required
                     rows={4}
                     placeholder="Dites-moi tout..."

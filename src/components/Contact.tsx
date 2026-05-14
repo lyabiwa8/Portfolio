@@ -19,14 +19,30 @@ export function Contact() {
     e.preventDefault();
     setFormState({ ...formState, submitting: true });
     
-    // Simulate API call
-    setTimeout(() => {
-      setFormState({ submitting: false, submitted: true, error: null });
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormState(prev => ({ ...prev, submitted: false }));
-      }, 3000);
-    }, 1500);
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/lyabiwa08@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        setFormState({ submitting: false, submitted: true, error: null });
+        // Reset after 3s
+        setTimeout(() => setFormState(prev => ({ ...prev, submitted: false })), 3000);
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      alert("Une erreur est survenue. Veuillez réessayer.");
+      setFormState({ submitting: false, submitted: false, error: "Erreur" });
+    }
   };
 
   return (
@@ -90,6 +106,7 @@ export function Contact() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#E2E8F0]/60">Nom complet</label>
                   <input
+                    name="name"
                     required
                     type="text"
                     className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors"
@@ -99,6 +116,7 @@ export function Contact() {
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#E2E8F0]/60">Email</label>
                   <input
+                    name="email"
                     required
                     type="email"
                     className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors"
@@ -109,6 +127,7 @@ export function Contact() {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-[#E2E8F0]/60">Objet</label>
                 <input
+                  name="subject"
                   required
                   type="text"
                   className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors"
@@ -118,6 +137,7 @@ export function Contact() {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-[#E2E8F0]/60">Message</label>
                 <textarea
+                  name="message"
                   required
                   rows={4}
                   className="w-full bg-[#0F172A] border border-white/10 rounded-xl px-4 py-3.5 focus:outline-none focus:border-[#9F1239] transition-colors resize-none"
