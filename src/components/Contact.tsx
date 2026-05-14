@@ -101,7 +101,16 @@ export function Contact() {
               <p className="text-white/60">Merci, Lya vous répondra dans les plus brefs délais.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+            <form 
+              action="https://formsubmit.co/lyabiwa08@gmail.com" 
+              method="POST"
+              className="space-y-6 relative z-10"
+            >
+              {/* Configuration FormSubmit */}
+              <input type="hidden" name="_next" value="https://lyabiwa8.github.io/Portfolio/" />
+              <input type="hidden" name="_subject" value="Nouveau message depuis la page d'accueil !" />
+              <input type="hidden" name="_captcha" value="false" />
+
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-[#E2E8F0]/60">Nom complet</label>
@@ -145,10 +154,10 @@ export function Contact() {
                 />
               </div>
               <button 
-                disabled={formState.submitting}
-                className="w-full py-4 bg-[#9F1239] text-white rounded-xl font-bold hover:bg-[#BE123C] transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-[#9F1239]/20"
+                type="submit"
+                className="w-full py-4 bg-[#9F1239] text-white rounded-xl font-bold hover:bg-[#BE123C] transition-all flex items-center justify-center gap-2 shadow-xl shadow-[#9F1239]/20"
               >
-                {formState.submitting ? "Envoi en cours..." : "Envoyer"} <Send size={20} />
+                Envoyer <Send size={20} />
               </button>
             </form>
           )}

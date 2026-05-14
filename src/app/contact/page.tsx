@@ -137,7 +137,16 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
+               <form 
+                action="https://formsubmit.co/lyabiwa08@gmail.com" 
+                method="POST"
+                className="space-y-8"
+              >
+                {/* Configuration FormSubmit */}
+                <input type="hidden" name="_next" value="https://lyabiwa8.github.io/Portfolio/contact" />
+                <input type="hidden" name="_subject" value="Nouveau message depuis le Portfolio !" />
+                <input type="hidden" name="_captcha" value="false" />
+
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold uppercase tracking-[0.2em] ml-6 opacity-50" style={{ color: C.text }}>Nom Complet</label>
                   <input
@@ -172,11 +181,10 @@ export default function Contact() {
                 </div>
 
                 <button
-                  disabled={status === "sending"}
                   type="submit"
-                  className="w-full btn-primary py-6 rounded-full font-bold text-sm flex items-center justify-center gap-3 shadow-xl transition-all active:scale-[0.98] disabled:opacity-50"
+                  className="w-full btn-primary py-6 rounded-full font-bold text-sm flex items-center justify-center gap-3 shadow-xl transition-all active:scale-[0.98]"
                 >
-                  {status === "sending" ? "Envoi en cours..." : "Envoyer le message"}
+                  Envoyer le message
                   <Send size={18} />
                 </button>
               </form>
