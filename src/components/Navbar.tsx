@@ -205,7 +205,7 @@ export function Navbar() {
                     <Linkedin size={24} />
                   </a>
                   <a 
-                    href="mailto:lyabiwa8@gmail.com" 
+                    href="mailto:lyabiwa08@gmail.com" 
                     className="text-text-primary hover:text-accent-primary transition-all hover:scale-110"
                   >
                     <Mail size={24} />

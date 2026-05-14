@@ -54,7 +54,7 @@ export function Footer() {
                   color: "#000000" 
                 },
                 { 
-                  href: "mailto:lyabiwa8@gmail.com", 
+                  href: "mailto:lyabiwa08@gmail.com", 
                   icon: <Mail size={22} />, 
                   label: "Email",
                   color: "#D44638" 
@@ -108,7 +108,7 @@ export function Footer() {
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-accent-primary">Contact</h4>
               <ul className="space-y-5">
                 <li>
-                  <a href="mailto:lyabiwa8@gmail.com" className="text-text-secondary hover:text-accent-primary transition-colors text-sm font-bold">
+                  <a href="mailto:lyabiwa08@gmail.com" className="text-text-secondary hover:text-accent-primary transition-colors text-sm font-bold">
                     Email Officiel
                   </a>
                 </li>

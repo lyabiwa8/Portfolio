@@ -47,8 +47,8 @@ export function Contact() {
               </div>
               <div>
                 <span className="block text-sm text-white/40 uppercase tracking-widest mb-1">Email Officiel</span>
-                <a href="mailto:lyabiwa8@gmail.com" className="text-2xl md:text-3xl font-display font-bold hover:text-[#9F1239] transition-colors">
-                  lyabiwa8@gmail.com
+                <a href="mailto:lyabiwa08@gmail.com" className="text-2xl md:text-3xl font-display font-bold hover:text-[#9F1239] transition-colors">
+                  lyabiwa08@gmail.com
                 </a>
               </div>
             </div>

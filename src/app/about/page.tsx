@@ -135,7 +135,7 @@ export default function About() {
               {[
                 { icon: <MapPin size={13} />, text: "Île-de-France" },
                 { icon: <Car    size={13} />, text: "Permis B" },
-                { icon: <Mail   size={13} />, text: "lyabiwa8@gmail.com" },
+                { icon: <Mail   size={13} />, text: "lyabiwa08@gmail.com" },
               ].map((p) => (
                 <span
                   key={p.text}

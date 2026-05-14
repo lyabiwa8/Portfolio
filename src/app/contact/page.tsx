@@ -54,8 +54,8 @@ export default function Contact() {
                 { 
                   icon: <Mail size={20} />, 
                   label: "Email Officiel", 
-                  value: "lyabiwa8@gmail.com", 
-                  href: "mailto:lyabiwa8@gmail.com" 
+                  value: "lyabiwa08@gmail.com", 
+                  href: "mailto:lyabiwa08@gmail.com" 
                 },
                 { 
                   icon: <Linkedin size={20} />, 
