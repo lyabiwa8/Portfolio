@@ -137,9 +137,22 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-border-subtle/20 flex flex-col md:flex-row items-center justify-between gap-8">
-          <p className="text-[10px] text-text-secondary opacity-40 uppercase tracking-[0.2em] font-bold">
-            © 2026 Lya Biwa — Tous droits réservés
-          </p>
+          <div className="flex flex-col gap-2 items-center md:items-start">
+            <p className="text-[10px] text-text-secondary opacity-40 uppercase tracking-[0.2em] font-bold">
+              © 2026 Lya Biwa — Tous droits réservés
+            </p>
+            <p className="text-[10px] text-text-secondary opacity-40 uppercase tracking-[0.2em] font-bold">
+              Réalisé par{" "}
+              <a 
+                href="https://www.instagram.com/tharsh.studio/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-accent-primary hover:opacity-100 transition-colors duration-300 underline underline-offset-4 decoration-accent-primary/20"
+              >
+                @tharsh.studio
+              </a>
+            </p>
+          </div>
           <button 
             onClick={scrollToTop}
             className="group flex items-center gap-4 text-[10px] text-accent-primary uppercase tracking-[0.4em] font-bold hover:text-text-primary transition-all duration-500"
