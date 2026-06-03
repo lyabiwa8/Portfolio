@@ -138,7 +138,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-border-subtle/20 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <p className="text-[10px] text-text-secondary opacity-40 uppercase tracking-[0.2em] font-bold">
+            <p className="text-[10px] text-text-secondary opacity-75 uppercase tracking-[0.2em] font-bold">
               © 2026 Lya Biwa — Tous droits réservés
             </p>
             <p className="text-[10px] text-text-secondary opacity-75 uppercase tracking-[0.2em] font-bold">
