@@ -141,13 +141,13 @@ export function Footer() {
             <p className="text-[10px] text-text-secondary opacity-40 uppercase tracking-[0.2em] font-bold">
               © 2026 Lya Biwa — Tous droits réservés
             </p>
-            <p className="text-[10px] text-text-secondary opacity-40 uppercase tracking-[0.2em] font-bold">
+            <p className="text-[10px] text-text-secondary opacity-75 uppercase tracking-[0.2em] font-bold">
               Réalisé par{" "}
               <a 
                 href="https://www.instagram.com/tharsh.studio/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:text-accent-primary hover:opacity-100 transition-colors duration-300 underline underline-offset-4 decoration-accent-primary/20"
+                className="text-text-primary hover:text-accent-primary transition-colors duration-300 underline underline-offset-4 decoration-accent-primary/30"
               >
                 @tharsh.studio
               </a>
